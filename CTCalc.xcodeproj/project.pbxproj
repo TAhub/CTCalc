@@ -54,14 +54,46 @@
 		E40C5BFB1BF6682E00F608F4 /* CTCalc */ = {
 			isa = PBXGroup;
 			children = (
-				E40C5BFC1BF6682E00F608F4 /* AppDelegate.swift */,
-				E40C5BFE1BF6682E00F608F4 /* ViewController.swift */,
-				E40C5C001BF6682E00F608F4 /* Main.storyboard */,
-				E40C5C031BF6682E00F608F4 /* Assets.xcassets */,
-				E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */,
-				E40C5C081BF6682E00F608F4 /* Info.plist */,
+				E40C5C0E1BF668A300F608F4 /* Supporting Files */,
+				E40C5C111BF668CF00F608F4 /* Model */,
+				E40C5C101BF668CB00F608F4 /* Controller */,
+				E40C5C0F1BF668BB00F608F4 /* View */,
 			);
 			path = CTCalc;
+			sourceTree = "<group>";
+		};
+		E40C5C0E1BF668A300F608F4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E40C5C031BF6682E00F608F4 /* Assets.xcassets */,
+				E40C5BFC1BF6682E00F608F4 /* AppDelegate.swift */,
+				E40C5C081BF6682E00F608F4 /* Info.plist */,
+				E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E40C5C0F1BF668BB00F608F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E40C5C001BF6682E00F608F4 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E40C5C101BF668CB00F608F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E40C5BFE1BF6682E00F608F4 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E40C5C111BF668CF00F608F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
