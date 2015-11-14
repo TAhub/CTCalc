@@ -10,6 +10,13 @@ import UIKit
 
 private let reuseIdentifier = "buttonCell"
 
+struct PickedUpCell
+{
+	var cellRow:Int
+	var appearance:UIView
+	var viewControllerFrom:DraggableButtonCollectionViewController
+}
+
 class DraggableButtonCollectionViewController: UICollectionViewController {
 	var buttons = [UIColor]()
 	{
@@ -32,28 +39,45 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		view.addGestureRecognizer(pancakes)
 	}
 	
+	override func viewWillAppear(animated: Bool)
+	{
+		super.viewWillAppear(animated)
+		
+		if let pickedUp = pickedUp
+		{
+			if !pickedUp.appearance.isDescendantOfView(collectionView!)
+			{
+				collectionView?.addSubview(pickedUp.appearance)
+			}
+		}
+		
+		collectionView?.reloadData()
+	}
+	
 	//MARK: drag and drop stuff
-	private var tappedCellAppearance:UIView?
-	private var tappedCell:Int?
+	private var pickedUp:PickedUpCell?
 	{
 		didSet
 		{
-			if let tappedCell = tappedCell, let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: tappedCell, inSection: 0))
-			{
-				let startX = collectionView!.contentOffset.x + cell.frame.origin.x
-				let startY = collectionView!.contentOffset.y + cell.frame.origin.y
-				tappedCellAppearance = UIView(frame: CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height))
-				tappedCellAppearance!.backgroundColor = cell.backgroundColor
-				view.addSubview(tappedCellAppearance!)
-			}
-			else
-			{
-				tappedCellAppearance?.removeFromSuperview()
-				tappedCellAppearance = nil
-			}
 			collectionView?.reloadData()
 		}
 	}
+	
+	func transferCell(to:DraggableButtonCollectionViewController)
+	{
+		to.editMode = editMode
+		if let pickedUp = pickedUp
+		{
+			//give them your pickedUp
+			to.pickedUp = pickedUp
+			//you can't add it's appearance yet, so do that later
+			
+			//remove it from yourself
+			pickedUp.appearance.removeFromSuperview()
+			self.pickedUp = nil
+		}
+	}
+	
 	private var editMode:Bool = false
 	{
 		didSet
@@ -67,6 +91,10 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		if sender.state == UIGestureRecognizerState.Began
 		{
 			editMode = !editMode
+			if !editMode
+			{
+				pickedUp = nil
+			}
 		}
 	}
 	
@@ -81,27 +109,74 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 			switch sender.state
 			{
 			case UIGestureRecognizerState.Began:
-				if let path = collectionView?.indexPathForItemAtPoint(point)
+				if let pickedUp = pickedUp
 				{
-					tappedCell = path.row
+					//you've carried a view from elsewhere
+					pickedUp.appearance.frame.origin.x = point.x
+					pickedUp.appearance.frame.origin.y = point.y
+				}
+				else if let path = collectionView?.indexPathForItemAtPoint(point), let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: path.row, inSection: 0))
+				{
+					//pick something up
+					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
+					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
+					let pickedUpCellView = UIView(frame: CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height))
+					pickedUpCellView.backgroundColor = cell.backgroundColor
+					view.addSubview(pickedUpCellView)
+					
+					pickedUp = PickedUpCell(cellRow: path.row, appearance: pickedUpCellView, viewControllerFrom: self)
 				}
 			case UIGestureRecognizerState.Changed:
-				if let tappedCellAppearance = tappedCellAppearance
+				if let pickedUp = pickedUp
 				{
-					tappedCellAppearance.frame.origin.x += drag.x
-					tappedCellAppearance.frame.origin.y += drag.y
-					tappedCellAppearance.layoutIfNeeded()
+					//move whatever you have picked up
+					pickedUp.appearance.frame.origin.x += drag.x
+					pickedUp.appearance.frame.origin.y += drag.y
 				}
 			case UIGestureRecognizerState.Ended:
-				if let path = collectionView?.indexPathForItemAtPoint(point), let tappedCell = tappedCell
+				if let path = collectionView?.indexPathForItemAtPoint(point), let pickedUp = pickedUp
 				{
 					let old = buttons[path.row]
-					buttons[path.row] = buttons[tappedCell]
-					buttons[tappedCell] = old
+					buttons[path.row] = pickedUp.viewControllerFrom.buttons[pickedUp.cellRow]
+					pickedUp.viewControllerFrom.buttons[pickedUp.cellRow] = old
 				}
-				tappedCell = nil
+				
+				//remove picked up
+				pickedUp?.appearance.removeFromSuperview()
+				self.pickedUp = nil
 			default: break
 			}
+		}
+		
+		
+		//TODO: this is temporary code to change view controller
+		//there is probably a better way to do this
+		//I tried a swipe recognizer, but you can't do that while dragging
+		if sender.state == UIGestureRecognizerState.Changed
+		{
+			if drag.x < 0 && point.x < 20
+			{
+				navigationController?.popToRootViewControllerAnimated(true)
+				if let newVC = navigationController?.viewControllers.first as? DraggableButtonCollectionViewController
+				{
+					if !(newVC === self)
+					{
+						transferCell(newVC)
+					}
+				}
+			}
+			else if drag.x > 0 && point.x > collectionView!.bounds.width - 20
+			{
+				performSegueWithIdentifier("swipeRight", sender: self)
+			}
+		}
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	{
+		if let dest = segue.destinationViewController as? DraggableButtonCollectionViewController
+		{
+			transferCell(dest)
 		}
 	}
 	
@@ -128,7 +203,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		{
 			cell.layer.cornerRadius = 10
 		}
-		cell.hidden = tappedCell != nil && tappedCell! == indexPath.row
+		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
 		return cell
 	}
 	

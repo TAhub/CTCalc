@@ -29,5 +29,4 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 			}
 		}
     }
-
 }
