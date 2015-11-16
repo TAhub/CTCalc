@@ -17,7 +17,7 @@ struct PickedUpCell
 	var viewControllerFrom:DraggableButtonCollectionViewController
 }
 
-class DraggableButtonCollectionViewController: UICollectionViewController, DraggableNavigationControllerDelegate {
+class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate {
 	var buttons = [UIColor]()
 	{
 		didSet
@@ -33,14 +33,20 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	{
 		super.viewDidLoad()
 		
+		print("did load")
+		
 		let recognizer = UILongPressGestureRecognizer()
 		recognizer.addTarget(self, action: "toggleEditMode:")
 		view.addGestureRecognizer(recognizer)
+		
+		collectionView?.collectionViewLayout = ButtonLayout(contentSize: CGSize(width: view.frame.width, height: view.frame.height))
 	}
 	
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
+		
+		print("will appear")
 		
 		if let pickedUp = pickedUp
 		{
@@ -50,7 +56,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			}
 		}
 		
-		(navigationController as? DraggableNavigationController)?.dragDelegate = self
+		(self.parentViewController as? DraggableContainerViewController)?.dragDelegate = self
 		
 		collectionView?.reloadData()
 	}
@@ -157,14 +163,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		{
 			if drag.x < 0 && point.x < 40 && hasLeftSegue
 			{
-				navigationController?.popToRootViewControllerAnimated(true)
-				if let newVC = navigationController?.viewControllers.first as? DraggableButtonCollectionViewController
-				{
-					if !(newVC === self)
-					{
-						transferCell(newVC)
-					}
-				}
+				performSegueWithIdentifier("swipeLeft", sender: self)
 			}
 			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40 && hasRightSegue
 			{
@@ -178,6 +177,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		if let dest = segue.destinationViewController as? DraggableButtonCollectionViewController
 		{
 			transferCell(dest)
+		}
+		else
+		{
+			editMode = false
+			pickedUp = nil
 		}
 	}
 	
@@ -207,5 +211,4 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
 		return cell
 	}
-	
 }

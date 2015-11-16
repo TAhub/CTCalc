@@ -13,7 +13,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        for _ in 0..<20
+        for _ in 0..<32
 		{
 			switch arc4random_uniform(8)
 			{

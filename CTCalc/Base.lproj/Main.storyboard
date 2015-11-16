@@ -1,106 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ktq-of-c1H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JCo-cl-bGB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Calculator Collection View Controller-->
-        <scene sceneID="CZO-de-9pN">
+        <!--Draggable Container View Controller-->
+        <scene sceneID="I2P-fw-Ed0">
             <objects>
-                <collectionViewController id="Mzm-Z9-5OU" customClass="CalculatorCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="1c0-qx-jXb">
+                <viewController id="JCo-cl-bGB" customClass="DraggableContainerViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R46-h9-nyb"/>
+                        <viewControllerLayoutGuide type="bottom" id="IUI-yl-qvA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HaA-B3-AiM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DIa-F0-5EG">
-                            <size key="itemSize" width="110" height="106"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4v-uV-BdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-212" y="182"/>
+        </scene>
+        <!--Calculator Collection View Controller-->
+        <scene sceneID="VNx-BW-k1Q">
+            <objects>
+                <collectionViewController storyboardIdentifier="MainCollection" id="u8a-oT-EmV" customClass="CalculatorCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="Yya-tZ-q60">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FTR-3n-cBA">
+                            <size key="itemSize" width="164" height="131"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="Kih-Vk-qVh">
-                                <rect key="frame" x="0.0" y="0.0" width="110" height="106"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="qvc-mf-Om9">
+                                <rect key="frame" x="0.0" y="0.0" width="164" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="106"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="Mzm-Z9-5OU" id="bI8-8h-z8O"/>
-                            <outlet property="delegate" destination="Mzm-Z9-5OU" id="iDH-hY-f8k"/>
+                            <outlet property="dataSource" destination="u8a-oT-EmV" id="ghO-bv-sSK"/>
+                            <outlet property="delegate" destination="u8a-oT-EmV" id="IFT-YY-Ido"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="C4J-FN-k3D"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasRightSegue" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="dlI-K1-xQ9" kind="show" identifier="swipeRight" id="7JS-TM-DDf"/>
+                        <segue destination="A9c-RK-uQD" kind="custom" identifier="swipeRight" customClass="DraggableSegue" customModule="CTCalc" customModuleProvider="target" id="hll-9w-aiF"/>
                     </connections>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iso-Ys-cCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3oL-7E-RVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="598" y="225"/>
-        </scene>
-        <!--Draggable Navigation Controller-->
-        <scene sceneID="fAu-xa-tms">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ktq-of-c1H" customClass="DraggableNavigationController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="USq-sP-Z0u">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Mzm-Z9-5OU" kind="relationship" relationship="rootViewController" id="X1E-2L-Um1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ml3-9x-1n6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-214" y="225"/>
+            <point key="canvasLocation" x="525" y="181"/>
         </scene>
         <!--Calculator Collection View Controller-->
-        <scene sceneID="WvX-9L-c0m">
+        <scene sceneID="QV2-if-DpL">
             <objects>
-                <collectionViewController id="dlI-K1-xQ9" customClass="CalculatorCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="eL8-v0-3zC">
+                <collectionViewController storyboardIdentifier="FirstContainerCollection" id="A9c-RK-uQD" customClass="CalculatorCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="15a-uz-OAE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7lH-mp-qDJ">
-                            <size key="itemSize" width="110" height="106"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Llf-V1-dlM">
+                            <size key="itemSize" width="198" height="160"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="ioM-I3-22d">
-                                <rect key="frame" x="0.0" y="0.0" width="110" height="106"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="5iN-3G-myZ">
+                                <rect key="frame" x="0.0" y="0.0" width="198" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="106"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="198" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="dlI-K1-xQ9" id="MpE-PJ-sRz"/>
-                            <outlet property="delegate" destination="dlI-K1-xQ9" id="Bgc-jd-C8P"/>
+                            <outlet property="dataSource" destination="A9c-RK-uQD" id="oQO-1J-Q1w"/>
+                            <outlet property="delegate" destination="A9c-RK-uQD" id="9Gn-C8-57g"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="2eo-Oo-7Z6"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasLeftSegue" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="u8a-oT-EmV" kind="custom" identifier="swipeLeft" customClass="DraggableSegue" customModule="CTCalc" customModuleProvider="target" id="A0d-KB-Uod"/>
+                    </connections>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f9C-Fm-ZWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d6h-pd-Lgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1330" y="225"/>
+            <point key="canvasLocation" x="1212" y="182"/>
         </scene>
     </scenes>
 </document>
