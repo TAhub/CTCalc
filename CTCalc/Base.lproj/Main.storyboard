@@ -35,6 +35,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="C4J-FN-k3D"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasRightSegue" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="dlI-K1-xQ9" kind="show" identifier="swipeRight" id="7JS-TM-DDf"/>
                     </connections>
@@ -43,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="598" y="225"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Draggable Navigation Controller-->
         <scene sceneID="fAu-xa-tms">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ktq-of-c1H" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ktq-of-c1H" customClass="DraggableNavigationController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="USq-sP-Z0u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -91,6 +94,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="2eo-Oo-7Z6"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasLeftSegue" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9C-Fm-ZWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

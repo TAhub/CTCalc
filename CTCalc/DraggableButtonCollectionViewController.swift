@@ -17,7 +17,7 @@ struct PickedUpCell
 	var viewControllerFrom:DraggableButtonCollectionViewController
 }
 
-class DraggableButtonCollectionViewController: UICollectionViewController {
+class DraggableButtonCollectionViewController: UICollectionViewController, DraggableNavigationControllerDelegate {
 	var buttons = [UIColor]()
 	{
 		didSet
@@ -26,6 +26,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		}
 	}
 	
+	@IBInspectable var hasRightSegue:Bool = false
+	@IBInspectable var hasLeftSegue:Bool = false
+	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -33,10 +36,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		let recognizer = UILongPressGestureRecognizer()
 		recognizer.addTarget(self, action: "toggleEditMode:")
 		view.addGestureRecognizer(recognizer)
-		
-		let pancakes = UIPanGestureRecognizer()
-		pancakes.addTarget(self, action: "panned:")
-		view.addGestureRecognizer(pancakes)
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -50,6 +49,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 				collectionView?.addSubview(pickedUp.appearance)
 			}
 		}
+		
+		(navigationController as? DraggableNavigationController)?.dragDelegate = self
 		
 		collectionView?.reloadData()
 	}
@@ -154,7 +155,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 		//I tried a swipe recognizer, but you can't do that while dragging
 		if sender.state == UIGestureRecognizerState.Changed
 		{
-			if drag.x < 0 && point.x < 20
+			if drag.x < 0 && point.x < 40 && hasLeftSegue
 			{
 				navigationController?.popToRootViewControllerAnimated(true)
 				if let newVC = navigationController?.viewControllers.first as? DraggableButtonCollectionViewController
@@ -165,7 +166,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController {
 					}
 				}
 			}
-			else if drag.x > 0 && point.x > collectionView!.bounds.width - 20
+			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40 && hasRightSegue
 			{
 				performSegueWithIdentifier("swipeRight", sender: self)
 			}
