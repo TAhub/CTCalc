@@ -18,7 +18,14 @@ struct PickedUpCell
 }
 
 class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate {
-	var buttons = [UIColor]()
+	var buttonsPortrait = [Int]()
+	{
+		didSet
+		{
+			collectionView?.reloadData()
+		}
+	}
+	var buttonsLandscape = [Int]()
 	{
 		didSet
 		{
@@ -26,27 +33,24 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	@IBInspectable var hasRightSegue:Bool = false
-	@IBInspectable var hasLeftSegue:Bool = false
+	@IBInspectable var rightSegue:String? = nil
+	@IBInspectable var leftSegue:String? = nil
 	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
 		
-		print("did load")
-		
 		let recognizer = UILongPressGestureRecognizer()
 		recognizer.addTarget(self, action: "toggleEditMode:")
 		view.addGestureRecognizer(recognizer)
 		
-		collectionView?.collectionViewLayout = ButtonLayout(contentSize: CGSize(width: view.frame.width, height: view.frame.height))
+		let nib = UINib(nibName: "CalculatorButton", bundle: nil)
+		collectionView?.registerNib(nib, forCellWithReuseIdentifier: "buttonCell")
 	}
 	
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
-		
-		print("will appear")
 		
 		if let pickedUp = pickedUp
 		{
@@ -57,8 +61,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		
 		(self.parentViewController as? DraggableContainerViewController)?.dragDelegate = self
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
 		
-		collectionView?.reloadData()
+		//the screen doesn't know about it's layout before here
+		generateLayout()
 	}
 	
 	//MARK: drag and drop stuff
@@ -66,6 +75,15 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	{
 		didSet
 		{
+			//remove it from the superview, if that superview was you
+			if let old = oldValue
+			{
+				if old.appearance.superview == view
+				{
+					old.appearance.removeFromSuperview()
+				}
+			}
+			
 			collectionView?.reloadData()
 		}
 	}
@@ -80,7 +98,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			//you can't add it's appearance yet, so do that later
 			
 			//remove it from yourself
-			pickedUp.appearance.removeFromSuperview()
 			self.pickedUp = nil
 		}
 	}
@@ -143,13 +160,21 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			case UIGestureRecognizerState.Ended:
 				if let path = collectionView?.indexPathForItemAtPoint(point), let pickedUp = pickedUp
 				{
-					let old = buttons[path.row]
-					buttons[path.row] = pickedUp.viewControllerFrom.buttons[pickedUp.cellRow]
-					pickedUp.viewControllerFrom.buttons[pickedUp.cellRow] = old
+					if landscape
+					{
+						let old = buttonsLandscape[path.row]
+						buttonsLandscape[path.row] = pickedUp.viewControllerFrom.buttonsLandscape[pickedUp.cellRow]
+						pickedUp.viewControllerFrom.buttonsLandscape[pickedUp.cellRow] = old
+					}
+					else
+					{
+						let old = buttonsPortrait[path.row]
+						buttonsPortrait[path.row] = pickedUp.viewControllerFrom.buttonsPortrait[pickedUp.cellRow]
+						pickedUp.viewControllerFrom.buttonsPortrait[pickedUp.cellRow] = old
+					}
 				}
 				
 				//remove picked up
-				pickedUp?.appearance.removeFromSuperview()
 				self.pickedUp = nil
 			default: break
 			}
@@ -161,14 +186,31 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		//I tried a swipe recognizer, but you can't do that while dragging
 		if sender.state == UIGestureRecognizerState.Changed
 		{
-			if drag.x < 0 && point.x < 40 && hasLeftSegue
+			if drag.x < 0 && point.x < 40
 			{
-				performSegueWithIdentifier("swipeLeft", sender: self)
+				if let leftSegue = leftSegue
+				{
+					(parentViewController as? DraggableContainerViewController)?.segue(leftSegue)
+				}
 			}
-			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40 && hasRightSegue
+			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40
 			{
-				performSegueWithIdentifier("swipeRight", sender: self)
+				if let rightSegue = rightSegue
+				{
+					(parentViewController as? DraggableContainerViewController)?.segue(rightSegue)
+				}
 			}
+		}
+	}
+	
+	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+		coordinator.animateAlongsideTransition(nil)
+		{ (success) in
+			self.generateLayout()
+		
+			//drop whatever you have picked up
+			//because we don't want to carry something from landscape to portrait
+			self.pickedUp = nil
 		}
 	}
 	
@@ -185,21 +227,32 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
+	private func generateLayout()
+	{
+		collectionView?.collectionViewLayout = ButtonLayout(contentSize: view.frame.size, landscape: landscape)
+		collectionView?.reloadData()
+	}
+	
 	//MARK: collection view dataSource
 	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
 	{
 		return 1
 	}
 	
+	private var landscape:Bool
+	{
+		return interfaceOrientation.isLandscape
+	}
+	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
 	{
-		return buttons.count
+		return (landscape ? buttonsLandscape : buttonsPortrait).count
 	}
 	
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
-		cell.backgroundColor = buttons[indexPath.row]
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ButtonCollectionViewCell
+		cell.label.text = "\((landscape ? buttonsLandscape : buttonsPortrait)[indexPath.row])"
 		if editMode
 		{
 			cell.layer.cornerRadius = 0

@@ -58,6 +58,17 @@ class DraggableContainerViewController: UIViewController {
 		activeViewController = viewControllers[0]
 	}
 	
+	func segue(to:String)
+	{
+		for i in 0..<kViewControllerIDs.count
+		{
+			if kViewControllerIDs[i] == to
+			{
+				activeViewController = viewControllers[i]
+			}
+		}
+	}
+	
 	private func removeView(oldValue:UIViewController)
 	{
 		oldValue.willMoveToParentViewController(nil)

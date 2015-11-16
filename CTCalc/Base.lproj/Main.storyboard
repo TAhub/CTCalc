@@ -36,28 +36,15 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="qvc-mf-Om9">
-                                <rect key="frame" x="0.0" y="0.0" width="164" height="131"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="164" height="131"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="u8a-oT-EmV" id="ghO-bv-sSK"/>
                             <outlet property="delegate" destination="u8a-oT-EmV" id="IFT-YY-Ido"/>
                         </connections>
                     </collectionView>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasRightSegue" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rightSegue" value="FirstContainerCollection"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="A9c-RK-uQD" kind="custom" identifier="swipeRight" customClass="DraggableSegue" customModule="CTCalc" customModuleProvider="target" id="hll-9w-aiF"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3oL-7E-RVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,28 +63,15 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="buttonCell" id="5iN-3G-myZ">
-                                <rect key="frame" x="0.0" y="0.0" width="198" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="198" height="160"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
+                        <cells/>
                         <connections>
                             <outlet property="dataSource" destination="A9c-RK-uQD" id="oQO-1J-Q1w"/>
                             <outlet property="delegate" destination="A9c-RK-uQD" id="9Gn-C8-57g"/>
                         </connections>
                     </collectionView>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="hasLeftSegue" value="YES"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="leftSegue" value="MainCollection"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="u8a-oT-EmV" kind="custom" identifier="swipeLeft" customClass="DraggableSegue" customModule="CTCalc" customModuleProvider="target" id="A0d-KB-Uod"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6h-pd-Lgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

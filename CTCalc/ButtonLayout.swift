@@ -8,18 +8,22 @@
 
 import UIKit
 
-let kButtonsPerRow:CGFloat = 4
-let kButtonsPerColumn:CGFloat = 8
+let kPortraitButtonsPerRow:CGFloat = 4
+let kPortraitButtonsPerColumn:CGFloat = 6
+let kLandscapeButtonsPerRow:CGFloat = 8
+let kLandscapeButtonsPerColumn:CGFloat = 6
 
 class ButtonLayout: UICollectionViewFlowLayout {
 
-	init(contentSize:CGSize)
+	init(contentSize:CGSize, landscape:Bool)
 	{
 		super.init()
 		
 		self.minimumLineSpacing = 0
 		self.minimumInteritemSpacing = 0
-		self.itemSize = CGSize(width: contentSize.width / kButtonsPerRow, height: contentSize.height / kButtonsPerColumn)
+		let pr = (landscape ? kLandscapeButtonsPerRow : kPortraitButtonsPerRow)
+		let pc = (landscape ? kLandscapeButtonsPerColumn : kPortraitButtonsPerColumn)
+		self.itemSize = CGSize(width: contentSize.width / pr, height: contentSize.height / pc)
 	}
 
 	required init?(coder aDecoder: NSCoder) {

@@ -13,20 +13,13 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        for _ in 0..<32
+        for i in 0..<Int(kPortraitButtonsPerRow*kPortraitButtonsPerColumn)
 		{
-			switch arc4random_uniform(8)
-			{
-			case 0: buttons.append(UIColor.redColor())
-			case 1: buttons.append(UIColor.blueColor())
-			case 2: buttons.append(UIColor.greenColor())
-			case 3: buttons.append(UIColor.brownColor())
-			case 4: buttons.append(UIColor.whiteColor())
-			case 5: buttons.append(UIColor.purpleColor())
-			case 6: buttons.append(UIColor.orangeColor())
-			case 7: buttons.append(UIColor.lightGrayColor())
-			default: buttons.append(UIColor.yellowColor())
-			}
+			buttonsPortrait.append(i)
+		}
+		for i in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
+		{
+			buttonsLandscape.append(i)
 		}
     }
 }
