@@ -58,14 +58,23 @@ class DraggableContainerViewController: UIViewController {
 		activeViewController = viewControllers[0]
 	}
 	
-	func segue(to:String)
+	func getControllerWithID(id:String) -> UIViewController?
 	{
 		for i in 0..<kViewControllerIDs.count
 		{
-			if kViewControllerIDs[i] == to
+			if kViewControllerIDs[i] == id
 			{
-				activeViewController = viewControllers[i]
+				return viewControllers[i]
 			}
+		}
+		return nil
+	}
+	
+	func segue(to:String)
+	{
+		if let vc = getControllerWithID(to)
+		{
+			activeViewController = vc
 		}
 	}
 	

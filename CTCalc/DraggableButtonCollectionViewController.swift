@@ -54,9 +54,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		if let pickedUp = pickedUp
 		{
-			if !pickedUp.appearance.isDescendantOfView(collectionView!)
+			if !pickedUp.appearance.isDescendantOfView(view)
 			{
-				collectionView?.addSubview(pickedUp.appearance)
+				view.addSubview(pickedUp.appearance)
 			}
 		}
 		
@@ -78,7 +78,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			//remove it from the superview, if that superview was you
 			if let old = oldValue
 			{
-				if old.appearance.superview == view
+				if old.appearance.isDescendantOfView(view)
 				{
 					old.appearance.removeFromSuperview()
 				}
@@ -144,11 +144,15 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					//pick something up
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
 					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
-					let pickedUpCellView = UIView(frame: CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height))
-					pickedUpCellView.backgroundColor = cell.backgroundColor
-					view.addSubview(pickedUpCellView)
 					
-					pickedUp = PickedUpCell(cellRow: path.row, appearance: pickedUpCellView, viewControllerFrom: self)
+					//load the cell from a nib
+					let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
+					loadedNib.frame = CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height)
+					loadedNib.label.text = "\(landscape ? buttonsLandscape[path.row] : buttonsPortrait[path.row])"
+					
+					view.addSubview(loadedNib)
+					
+					pickedUp = PickedUpCell(cellRow: path.row, appearance: loadedNib, viewControllerFrom: self)
 				}
 			case UIGestureRecognizerState.Changed:
 				if let pickedUp = pickedUp
@@ -188,18 +192,29 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		{
 			if drag.x < 0 && point.x < 40
 			{
-				if let leftSegue = leftSegue
-				{
-					(parentViewController as? DraggableContainerViewController)?.segue(leftSegue)
-				}
+				psuedoSegue(leftSegue)
 			}
 			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40
 			{
-				if let rightSegue = rightSegue
-				{
-					(parentViewController as? DraggableContainerViewController)?.segue(rightSegue)
-				}
+				psuedoSegue(rightSegue)
 			}
+		}
+	}
+	
+	private func psuedoSegue(id:String?)
+	{
+		if let id = id, let dcvc = parentViewController as? DraggableContainerViewController
+		{
+			if let dest = dcvc.getControllerWithID(id) as? DraggableButtonCollectionViewController
+			{
+				transferCell(dest)
+			}
+			else
+			{
+				editMode = false
+				pickedUp = nil
+			}
+			dcvc.segue(id)
 		}
 	}
 	
@@ -214,17 +229,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	private var landscape:Bool
 	{
-		if let dest = segue.destinationViewController as? DraggableButtonCollectionViewController
-		{
-			transferCell(dest)
-		}
-		else
-		{
-			editMode = false
-			pickedUp = nil
-		}
+		return UIApplication.sharedApplication().statusBarOrientation.isLandscape
 	}
 	
 	private func generateLayout()
@@ -237,11 +244,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
 	{
 		return 1
-	}
-	
-	private var landscape:Bool
-	{
-		return interfaceOrientation.isLandscape
 	}
 	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
