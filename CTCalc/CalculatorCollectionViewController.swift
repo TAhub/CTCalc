@@ -14,44 +14,51 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-
-		//add the default portrait buttons
 		
-		buttonsPortrait.append(kTokenBack)
-		buttonsPortrait.append(kTokenClear)
-		buttonsPortrait.append(kTokenSquare)
-		buttonsPortrait.append(kTokenSquareRoot)
-		
-		buttonsPortrait.append(kTokenOne)
-		buttonsPortrait.append(kTokenTwo)
-		buttonsPortrait.append(kTokenThree)
-		buttonsPortrait.append(kTokenPlus)
-		
-		buttonsPortrait.append(kTokenFour)
-		buttonsPortrait.append(kTokenFive)
-		buttonsPortrait.append(kTokenSix)
-		buttonsPortrait.append(kTokenMinus)
-		
-		buttonsPortrait.append(kTokenSeven)
-		buttonsPortrait.append(kTokenEight)
-		buttonsPortrait.append(kTokenNine)
-		buttonsPortrait.append(kTokenMult)
-		
-		buttonsPortrait.append(kTokenSParen)
-		buttonsPortrait.append(kTokenZero)
-		buttonsPortrait.append(kTokenEParen)
-		buttonsPortrait.append(kTokenDiv)
-		
-		for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
-		{
-			buttonsLandscape.append(kTokenPlus)
-		}
+		screenNum = 0
         
         let displayNib = UINib(nibName: "Display", bundle: nil)
         collectionView?.registerNib(displayNib, forCellWithReuseIdentifier: "Display")
         
         collectionView?.delegate = self
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(true)
+		
+		if !loadButtons()
+		{
+			buttonsPortrait.append(kTokenBack)
+			buttonsPortrait.append(kTokenClear)
+			buttonsPortrait.append(kTokenSquare)
+			buttonsPortrait.append(kTokenSquareRoot)
+			
+			buttonsPortrait.append(kTokenOne)
+			buttonsPortrait.append(kTokenTwo)
+			buttonsPortrait.append(kTokenThree)
+			buttonsPortrait.append(kTokenPlus)
+			
+			buttonsPortrait.append(kTokenFour)
+			buttonsPortrait.append(kTokenFive)
+			buttonsPortrait.append(kTokenSix)
+			buttonsPortrait.append(kTokenMinus)
+			
+			buttonsPortrait.append(kTokenSeven)
+			buttonsPortrait.append(kTokenEight)
+			buttonsPortrait.append(kTokenNine)
+			buttonsPortrait.append(kTokenMult)
+			
+			buttonsPortrait.append(kTokenSParen)
+			buttonsPortrait.append(kTokenZero)
+			buttonsPortrait.append(kTokenEParen)
+			buttonsPortrait.append(kTokenDiv)
+			
+			for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
+			{
+				buttonsLandscape.append(kTokenPlus)
+			}
+		}
+	}
 	
 	//press buttons
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -70,8 +77,19 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {   if section == 0 {return 1} else
-    {return readOnlyButtons.count}
+    {
+		if transitioning
+		{
+			return 0
+		}
+		else if section == 0
+		{
+			return 1
+		}
+		else
+		{
+			return readOnlyButtons.count
+		}
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

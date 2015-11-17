@@ -32,8 +32,73 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
+	var screenNum:Int = 0
 	@IBInspectable var rightSegue:String? = nil
 	@IBInspectable var leftSegue:String? = nil
+	
+	func loadButtons() -> Bool
+	{
+		let def = NSUserDefaults.standardUserDefaults()
+		
+		if def.objectForKey("\(screenNum)exists") == nil
+		{
+			//load the default buttons
+			return false
+		}
+		else
+		{
+			func loadButtons(prefix:String) -> [Token]
+			{
+				let symbols = def.stringArrayForKey("screen\(screenNum)\(prefix)symbols")!
+				let functions = def.stringArrayForKey("screen\(screenNum)\(prefix)functions")!
+				
+				var tokens = [Token]()
+				for i in 0..<symbols.count
+				{
+					let symbol = symbols[i]
+					let function = functions[i]
+					
+					//check the default ones
+					var isPreset = false
+					for preset in kDefaultTokens
+					{
+						if preset.symbol == symbol
+						{
+							tokens.append(preset)
+							isPreset = true
+							break
+						}
+					}
+					if !isPreset
+					{
+						//it must be custom
+						tokens.append(Token(symbol: symbol, order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
+					}
+				}
+				return tokens
+			}
+			
+			buttonsPortrait = loadButtons("portrait")
+			buttonsLandscape = loadButtons("landscape")
+		}
+		return true
+	}
+	
+	func saveButtons()
+	{
+		let def = NSUserDefaults.standardUserDefaults()
+		
+		def.setObject([], forKey: "\(screenNum)exists")
+		
+		func saveButtons(prefix:String, tokens:[Token])
+		{
+			def.setObject(tokens.map() { $0.symbol }, forKey: "screen\(screenNum)\(prefix)symbols")
+			def.setObject(tokens.map() { $0.functionReplace ?? "" }, forKey: "screen\(screenNum)\(prefix)functions")
+		}
+		
+		saveButtons("portrait", tokens: buttonsPortrait)
+		saveButtons("landscape", tokens: buttonsLandscape)
+	}
 	
 	override func viewDidLoad()
 	{
@@ -107,6 +172,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
+	private var psuedoSegueMode:Bool = false
+	
 	private var editMode:Bool = false
 	{
 		didSet
@@ -144,7 +211,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					pickedUp.appearance.frame.origin.x = point.x
 					pickedUp.appearance.frame.origin.y = point.y
 				}
-				else if let path = collectionView?.indexPathForItemAtPoint(point), let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: path.row, inSection: 0))
+				else if let path = collectionView?.indexPathForItemAtPoint(point), let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: path.row, inSection: path.section))
 				{
 					//pick something up
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
@@ -181,6 +248,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 						buttonsPortrait[path.row] = pickedUp.viewControllerFrom.buttonsPortrait[pickedUp.cellRow]
 						pickedUp.viewControllerFrom.buttonsPortrait[pickedUp.cellRow] = old
 					}
+					
+					//save the new layout
+					saveButtons()
+					if pickedUp.viewControllerFrom != self
+					{
+						pickedUp.viewControllerFrom.saveButtons()
+					}
 				}
 				
 				//remove picked up
@@ -195,14 +269,23 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		//I tried a swipe recognizer, but you can't do that while dragging
 		if sender.state == UIGestureRecognizerState.Changed
 		{
-			if drag.x < 0 && point.x < 40
+			if !psuedoSegueMode
 			{
-				psuedoSegue(leftSegue)
+				if drag.x < 0 && point.x < 40
+				{
+					psuedoSegueMode = true
+					psuedoSegue(leftSegue)
+				}
+				else if drag.x > 0 && point.x > collectionView!.bounds.width - 40
+				{
+					psuedoSegueMode = true
+					psuedoSegue(rightSegue)
+				}
 			}
-			else if drag.x > 0 && point.x > collectionView!.bounds.width - 40
-			{
-				psuedoSegue(rightSegue)
-			}
+		}
+		else
+		{
+			psuedoSegueMode = false
 		}
 	}
 	
@@ -212,6 +295,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		{
 			if let dest = dcvc.getControllerWithID(id) as? DraggableButtonCollectionViewController
 			{
+				dest.psuedoSegueMode = psuedoSegueMode
 				transferCell(dest)
 			}
 			else
@@ -223,7 +307,10 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
+	var transitioning:Bool = false
 	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+		transitioning = true
+		collectionView?.reloadData()
 		coordinator.animateAlongsideTransition(nil)
 		{ (success) in
 			self.generateLayout()
@@ -231,6 +318,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			//drop whatever you have picked up
 			//because we don't want to carry something from landscape to portrait
 			self.pickedUp = nil
+			
+			self.transitioning = false
 		}
 	}
 	
@@ -253,6 +342,10 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
+		if transitioning
+		{
+			return 0
+		}
         return readOnlyButtons.count
 	}
 	

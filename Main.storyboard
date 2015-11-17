@@ -235,10 +235,10 @@
             </objects>
             <point key="canvasLocation" x="1999" y="906"/>
         </scene>
-        <!--Calculator Collection View Controller-->
+        <!--Spare Button Collection View Controller-->
         <scene sceneID="WvX-9L-c0m">
             <objects>
-                <collectionViewController storyboardIdentifier="FirstContainerCollection" id="dlI-K1-xQ9" customClass="CalculatorCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="FirstContainerCollection" id="dlI-K1-xQ9" customClass="SpareButtonCollectionViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" id="eL8-v0-3zC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

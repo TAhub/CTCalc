@@ -33,6 +33,7 @@
 		3D19C1E51BFBA84800596252 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */; };
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
+		E40A950B1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */; };
 		E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C031BF6682E00F608F4 /* Assets.xcassets */; };
 		E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */; };
 		E4132F671BFBAB4200891D9A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4132F661BFBAB4200891D9A /* Bolts.framework */; };
@@ -78,6 +79,7 @@
 		3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		C13BADB01BFBBD6100694E94 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		C13BADB21BFBBDBC00694E94 /* Display.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Display.xib; sourceTree = "<group>"; };
+		E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpareButtonCollectionViewController.swift; sourceTree = "<group>"; };
 		E40C5BF91BF6682E00F608F4 /* CTCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40C5C031BF6682E00F608F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E40C5C061BF6682E00F608F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */,
 				C13BADB01BFBBD6100694E94 /* Display.swift */,
 				E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */,
+				E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */,
 				E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */,
 				E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */,
 			);
@@ -320,6 +323,7 @@
 				3D19C1BE1BFBA4F900596252 /* ButtonTableViewCell.swift in Sources */,
 				E418AA331BFA574600207878 /* ButtonLayout.swift in Sources */,
 				E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */,
+				E40A950B1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift in Sources */,
 				3D19C1C01BFBA4F900596252 /* ParseKeys.swift in Sources */,
 				E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */,
 				E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */,

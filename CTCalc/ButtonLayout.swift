@@ -12,6 +12,8 @@ let kPortraitButtonsPerRow:CGFloat = 4
 let kPortraitButtonsPerColumn:CGFloat = 6
 let kLandscapeButtonsPerRow:CGFloat = 8
 let kLandscapeButtonsPerColumn:CGFloat = 6
+let kPortraitButtons = Int(kPortraitButtonsPerRow*(kPortraitButtonsPerColumn - 1))
+let kLandscapeButtons = Int(kLandscapeButtonsPerRow*(kLandscapeButtonsPerColumn - 1))
 
 class ButtonLayout: UICollectionViewFlowLayout {
 
