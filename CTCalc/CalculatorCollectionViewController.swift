@@ -10,23 +10,51 @@ import UIKit
 
 class CalculatorCollectionViewController: DraggableButtonCollectionViewController {
 
+	let calculator = CalculatorModel()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        for _ in 0..<20
+		//add the default portrait buttons
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenOne)
+		buttonsPortrait.append(kTokenTwo)
+		buttonsPortrait.append(kTokenThree)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenFour)
+		buttonsPortrait.append(kTokenFive)
+		buttonsPortrait.append(kTokenSix)
+		buttonsPortrait.append(kTokenMinus)
+		buttonsPortrait.append(kTokenSeven)
+		buttonsPortrait.append(kTokenEight)
+		buttonsPortrait.append(kTokenNine)
+		buttonsPortrait.append(kTokenMult)
+		buttonsPortrait.append(kTokenSParen)
+		buttonsPortrait.append(kTokenZero)
+		buttonsPortrait.append(kTokenEParen)
+		buttonsPortrait.append(kTokenDiv)
+		buttonsPortrait.append(kSample)
+		buttonsPortrait.append(kTokenComma)
+		
+        while buttonsPortrait.count < Int(kPortraitButtonsPerRow*kPortraitButtonsPerColumn)
 		{
-			switch arc4random_uniform(8)
-			{
-			case 0: buttons.append(UIColor.redColor())
-			case 1: buttons.append(UIColor.blueColor())
-			case 2: buttons.append(UIColor.greenColor())
-			case 3: buttons.append(UIColor.brownColor())
-			case 4: buttons.append(UIColor.whiteColor())
-			case 5: buttons.append(UIColor.purpleColor())
-			case 6: buttons.append(UIColor.orangeColor())
-			case 7: buttons.append(UIColor.lightGrayColor())
-			default: buttons.append(UIColor.yellowColor())
-			}
+			buttonsPortrait.append(kTokenPlus)
+		}
+		for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
+		{
+			buttonsLandscape.append(kTokenPlus)
 		}
     }
+	
+	//press buttons
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		if !editing
+		{
+			calculator.applyToken(readOnlyButtons[indexPath.row])
+			print("\(calculator.tokenString) = \(calculator.result)")
+		}
+	}
 }

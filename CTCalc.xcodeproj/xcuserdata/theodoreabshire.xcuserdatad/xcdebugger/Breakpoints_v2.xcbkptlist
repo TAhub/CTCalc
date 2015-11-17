@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CTCalc/DraggableButtonCollectionViewController.swift"
-            timestampString = "469158202.351436"
+            filePath = "CTCalc/CalculatorModel.swift"
+            timestampString = "469472546.312573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "panned(_:)"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "collapseTokens(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
