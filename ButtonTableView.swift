@@ -11,6 +11,7 @@ import Parse
 
 class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var buttonTableView: UITableView!
     
     var buttonImages = [PFObject]() {
@@ -44,11 +45,11 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     func confirmDelete(planet: String) {
         let alert = UIAlertController(title: "Delete Button", message: "Are you sure you want to permanently delete \(buttonImages)?", preferredStyle: .ActionSheet)
         
-        let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeleteButton)
-        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeleteButton)
-        
-        alert.addAction(DeleteAction)
-        alert.addAction(CancelAction)
+//        let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeleteButton)
+//        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeleteButton)
+//        
+//        alert.addAction(DeleteAction)
+//        alert.addAction(CancelAction)
         
         // Support display in iPad
         alert.popoverPresentationController?.sourceView = self.view
@@ -58,7 +59,6 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     // ...
-}
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return buttonImages.count
@@ -68,21 +68,19 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as! ButtonTableViewCell
-    let buttonImage = self.buttonImages[indexPath.row]
-        if let imageFile = buttonImages["image"] as? PFFile {
-            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                if let data = data {
-                    let image = UIImage(data: data)
-                    cell.imageView.image = image
-                }
-            })
+//    let buttonImage = self.buttonImages[indexPath.row]
+//        if let imageFile = buttonImages["image"] as? PFFile {
+//            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                if let data = data {
+//                    let image = UIImage(data: data)
+//                    cell.imageView.image = image
+//                }
+//            })
+        return cell
+
         }
 
-
-
-
-
-
+}
 
 
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ButtonMakerViewController: UIViewController, UITextViewDelegate {
 
@@ -46,7 +47,7 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         let image = UIImage(named: "github")
-        ButtonTableView.uploadButton(image!, imageName: "Hey") { (success) -> () in
+        ButtonMakerViewController.uploadButton(image!, imageName: "Hey") { (success) -> () in
             
         }
 
