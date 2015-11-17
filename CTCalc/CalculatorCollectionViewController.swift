@@ -20,29 +20,32 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 		buttonsPortrait.append(kTokenPlus)
 		buttonsPortrait.append(kTokenPlus)
 		buttonsPortrait.append(kTokenPlus)
+		
+		buttonsPortrait.append(kTokenBack)
+		buttonsPortrait.append(kTokenClear)
+		buttonsPortrait.append(kTokenSquare)
+		buttonsPortrait.append(kTokenSquareRoot)
+		
 		buttonsPortrait.append(kTokenOne)
 		buttonsPortrait.append(kTokenTwo)
 		buttonsPortrait.append(kTokenThree)
 		buttonsPortrait.append(kTokenPlus)
+		
 		buttonsPortrait.append(kTokenFour)
 		buttonsPortrait.append(kTokenFive)
 		buttonsPortrait.append(kTokenSix)
 		buttonsPortrait.append(kTokenMinus)
+		
 		buttonsPortrait.append(kTokenSeven)
 		buttonsPortrait.append(kTokenEight)
 		buttonsPortrait.append(kTokenNine)
 		buttonsPortrait.append(kTokenMult)
+		
 		buttonsPortrait.append(kTokenSParen)
 		buttonsPortrait.append(kTokenZero)
 		buttonsPortrait.append(kTokenEParen)
 		buttonsPortrait.append(kTokenDiv)
-		buttonsPortrait.append(kSample)
-		buttonsPortrait.append(kTokenComma)
 		
-        while buttonsPortrait.count < Int(kPortraitButtonsPerRow*kPortraitButtonsPerColumn)
-		{
-			buttonsPortrait.append(kTokenPlus)
-		}
 		for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
 		{
 			buttonsLandscape.append(kTokenPlus)
