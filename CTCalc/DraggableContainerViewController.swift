@@ -13,7 +13,7 @@ protocol DraggableContainerViewControllerDelegate
 	func panned(sender: UIPanGestureRecognizer)
 }
 
-let kViewControllerIDs:[String] = ["MainCollection", "FirstContainerCollection"]
+let kViewControllerIDs:[String] = ["MainCollection", "FirstContainerCollection", "MakerNavigation"]
 
 class DraggableContainerViewController: UIViewController {
 	
