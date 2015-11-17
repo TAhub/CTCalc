@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E40C5BFD1BF6682E00F608F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40C5BFC1BF6682E00F608F4 /* AppDelegate.swift */; };
-		E40C5C021BF6682E00F608F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C001BF6682E00F608F4 /* Main.storyboard */; };
+		3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B31BFBA4F900596252 /* AppDelegate.swift */; };
+		3D19C1BB1BFBA4F900596252 /* ButtonMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */; };
+		3D19C1BD1BFBA4F900596252 /* ButtonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */; };
+		3D19C1BE1BFBA4F900596252 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B71BFBA4F900596252 /* ButtonTableViewCell.swift */; };
+		3D19C1BF1BFBA4F900596252 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D19C1B81BFBA4F900596252 /* Main.storyboard */; };
+		3D19C1C01BFBA4F900596252 /* ParseKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B91BFBA4F900596252 /* ParseKeys.swift */; };
 		E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C031BF6682E00F608F4 /* Assets.xcassets */; };
 		E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */; };
 		E418AA331BFA574600207878 /* ButtonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA321BFA574600207878 /* ButtonLayout.swift */; };
@@ -21,9 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D19C1B31BFBA4F900596252 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonMakerViewController.swift; path = ../ButtonMakerViewController.swift; sourceTree = "<group>"; };
+		3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableView.swift; path = ../ButtonTableView.swift; sourceTree = "<group>"; };
+		3D19C1B71BFBA4F900596252 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableViewCell.swift; path = ../ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		3D19C1B81BFBA4F900596252 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		3D19C1B91BFBA4F900596252 /* ParseKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseKeys.swift; path = ../ParseKeys.swift; sourceTree = "<group>"; };
 		E40C5BF91BF6682E00F608F4 /* CTCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E40C5BFC1BF6682E00F608F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E40C5C011BF6682E00F608F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E40C5C031BF6682E00F608F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E40C5C061BF6682E00F608F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E40C5C081BF6682E00F608F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,7 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				E40C5C031BF6682E00F608F4 /* Assets.xcassets */,
-				E40C5BFC1BF6682E00F608F4 /* AppDelegate.swift */,
+				3D19C1B31BFBA4F900596252 /* AppDelegate.swift */,
 				E40C5C081BF6682E00F608F4 /* Info.plist */,
 				E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */,
 			);
@@ -89,8 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				E418AA361BFA638600207878 /* CalculatorButton.xib */,
+				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
 				E418AA321BFA574600207878 /* ButtonLayout.swift */,
-				E40C5C001BF6682E00F608F4 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -98,6 +106,9 @@
 		E40C5C101BF668CB00F608F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */,
+				3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */,
+				3D19C1B71BFBA4F900596252 /* ButtonTableViewCell.swift */,
 				E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */,
 				E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */,
 				E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */,
@@ -110,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */,
+				3D19C1B91BFBA4F900596252 /* ParseKeys.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -173,8 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */,
+				3D19C1BF1BFBA4F900596252 /* Main.storyboard in Resources */,
 				E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */,
-				E40C5C021BF6682E00F608F4 /* Main.storyboard in Resources */,
 				E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,27 +198,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */,
 				E4EA281E1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift in Sources */,
-				E40C5BFD1BF6682E00F608F4 /* AppDelegate.swift in Sources */,
+				3D19C1BE1BFBA4F900596252 /* ButtonTableViewCell.swift in Sources */,
 				E418AA331BFA574600207878 /* ButtonLayout.swift in Sources */,
 				E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */,
+				3D19C1C01BFBA4F900596252 /* ParseKeys.swift in Sources */,
 				E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */,
 				E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */,
 				E418AA3B1BFA7EFE00207878 /* CalculatorModel.swift in Sources */,
+				3D19C1BD1BFBA4F900596252 /* ButtonTableView.swift in Sources */,
+				3D19C1BB1BFBA4F900596252 /* ButtonMakerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E40C5C001BF6682E00F608F4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E40C5C011BF6682E00F608F4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
