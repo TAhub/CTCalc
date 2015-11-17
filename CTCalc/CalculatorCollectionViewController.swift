@@ -28,6 +28,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 		
 		if !loadButtons()
 		{
+            //portrait
 			buttonsPortrait.append(kTokenBack)
 			buttonsPortrait.append(kTokenClear)
 			buttonsPortrait.append(kTokenSquare)
@@ -47,16 +48,71 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 			buttonsPortrait.append(kTokenEight)
 			buttonsPortrait.append(kTokenNine)
 			buttonsPortrait.append(kTokenMult)
-			
-			buttonsPortrait.append(kTokenSParen)
-			buttonsPortrait.append(kTokenZero)
-			buttonsPortrait.append(kTokenEParen)
-			buttonsPortrait.append(kTokenDiv)
-			
-			for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
-			{
-				buttonsLandscape.append(kTokenPlus)
-			}
+            
+            //landscape
+            buttonsLandscape.append(kTokenSin)
+            buttonsLandscape.append(kTokenTan)
+            buttonsLandscape.append(kTokenCos)
+            buttonsLandscape.append(kTokenPlus)
+            
+            buttonsLandscape.append(kTokenSParen)
+            buttonsLandscape.append(kTokenZero)
+            buttonsLandscape.append(kTokenEParen)
+            buttonsLandscape.append(kTokenDiv)
+            
+                //filler
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+                //filler
+            
+            buttonsLandscape.append(kTokenBack)
+            buttonsLandscape.append(kTokenClear)
+            buttonsLandscape.append(kTokenSquare)
+            buttonsLandscape.append(kTokenSquareRoot)
+            
+                //filler
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+                //filler
+            
+            buttonsLandscape.append(kTokenOne)
+            buttonsLandscape.append(kTokenTwo)
+            buttonsLandscape.append(kTokenThree)
+            buttonsLandscape.append(kTokenPlus)
+            
+                //filler
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+                //filler
+            
+            buttonsLandscape.append(kTokenFour)
+            buttonsLandscape.append(kTokenFive)
+            buttonsLandscape.append(kTokenSix)
+            buttonsLandscape.append(kTokenMinus)
+            
+                //filler
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenPlus)
+                //filler
+            
+            buttonsLandscape.append(kTokenSeven)
+            buttonsLandscape.append(kTokenEight)
+            buttonsLandscape.append(kTokenNine)
+            buttonsLandscape.append(kTokenMult)
+            
+            buttonsPortrait.append(kTokenSParen)
+            buttonsPortrait.append(kTokenZero)
+            buttonsPortrait.append(kTokenEParen)
+            buttonsPortrait.append(kTokenDiv)
+
 		}
 	}
 	
