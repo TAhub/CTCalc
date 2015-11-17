@@ -45,6 +45,7 @@ struct Token
 
 let kOrderEffectBack = -1
 let kOrderEffectClear = -2
+let kOrderEffectNothing = -3
 let kOrderFunc = 1
 let kOrderOperand = 2
 let kOrderLiteral = 3
@@ -66,6 +67,7 @@ let kTokenSquare = Token(symbol: "²", order: kOrderOperand, effect0: nil, effec
 let kTokenCube = Token(symbol: "³", order: kOrderOperand, effect0: nil, effect1: { pow($0, 3) })
 let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperand, effect0: nil, effect1: sqrt, effect2: nil, functionReplace: nil, before: true)
 let kTokenCubeRoot = Token(symbol: "∛", order: kOrderOperand, effect0: nil, effect1: { pow($0, 1.0 / 3) })
+let kTokenPi = Token(symbol: "π", order: kOrderOperand, effect0: { M_PI })
 
 //example function token
 let kSample = Token(symbol: "samp", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
@@ -84,17 +86,19 @@ let kTokenSix = Token(symbol: "6", order: 0)
 let kTokenSeven = Token(symbol: "7", order: 0)
 let kTokenEight = Token(symbol: "8", order: 0)
 let kTokenNine = Token(symbol: "9", order: 0)
-let kTokenA = Token(symbol: "A", order: kOrderFunc)
-let kTokenB = Token(symbol: "B", order: kOrderFunc)
-let kTokenC = Token(symbol: "C", order: kOrderFunc)
-let kTokenD = Token(symbol: "D", order: kOrderFunc)
-let kTokenE = Token(symbol: "E", order: kOrderFunc)
+let kTokenDot = Token(symbol: ".", order: 0)
+let kTokenA = Token(symbol: "A", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenB = Token(symbol: "B", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenC = Token(symbol: "C", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenD = Token(symbol: "D", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenE = Token(symbol: "E", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
 
 //effect tokens
 let kTokenBack = Token(symbol: "←", order: kOrderEffectBack)
 let kTokenClear = Token(symbol: "©", order: kOrderEffectClear)
+let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing)
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi]
 
 enum CalculatorError:ErrorType
 {
@@ -176,7 +180,7 @@ class CalculatorModel
 					tokens.removeRange(numStart!...i)
 					
 					//and add the number
-					let value = Double(number)!
+					guard let value = Double(number) else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
 					tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value }), atIndex: numStart!)
 					
 					//and start over
@@ -376,6 +380,7 @@ class CalculatorModel
 		case kOrderEffectClear:
 			tokens = [Token]()
 			return
+		case kOrderEffectNothing: return
 		default: break
 		}
 		
