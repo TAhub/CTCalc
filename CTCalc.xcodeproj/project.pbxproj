@@ -14,6 +14,7 @@
 		E418AA331BFA574600207878 /* ButtonLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA321BFA574600207878 /* ButtonLayout.swift */; };
 		E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E418AA361BFA638600207878 /* CalculatorButton.xib */; };
 		E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */; };
+		E418AA3B1BFA7EFE00207878 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */; };
 		E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */; };
 		E4EA281E1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */; };
 		E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */; };
@@ -29,6 +30,7 @@
 		E418AA321BFA574600207878 /* ButtonLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonLayout.swift; sourceTree = "<group>"; };
 		E418AA361BFA638600207878 /* CalculatorButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculatorButton.xib; sourceTree = "<group>"; };
 		E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableContainerViewController.swift; sourceTree = "<group>"; };
 		E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorCollectionViewController.swift; sourceTree = "<group>"; };
 		E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableButtonCollectionViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		E40C5C111BF668CF00F608F4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */,
 				E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */,
 				E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */,
+				E418AA3B1BFA7EFE00207878 /* CalculatorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,14 +18,14 @@ struct PickedUpCell
 }
 
 class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate {
-	var buttonsPortrait = [Int]()
+	var buttonsPortrait = [Token]()
 	{
 		didSet
 		{
 			collectionView?.reloadData()
 		}
 	}
-	var buttonsLandscape = [Int]()
+	var buttonsLandscape = [Token]()
 	{
 		didSet
 		{
@@ -68,6 +68,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		//the screen doesn't know about it's layout before here
 		generateLayout()
+	}
+	
+	var readOnlyButtons:[Token]
+	{
+		return (landscape ? buttonsLandscape : buttonsPortrait)
 	}
 	
 	//MARK: drag and drop stuff
@@ -148,7 +153,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					//load the cell from a nib
 					let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
 					loadedNib.frame = CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height)
-					loadedNib.label.text = "\(landscape ? buttonsLandscape[path.row] : buttonsPortrait[path.row])"
+					loadedNib.label.text = readOnlyButtons[path.row].symbol
 					
 					view.addSubview(loadedNib)
 					
@@ -248,13 +253,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
 	{
-		return (landscape ? buttonsLandscape : buttonsPortrait).count
+		return readOnlyButtons.count
 	}
 	
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
 		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ButtonCollectionViewCell
-		cell.label.text = "\((landscape ? buttonsLandscape : buttonsPortrait)[indexPath.row])"
+		cell.label.text = readOnlyButtons[indexPath.row].symbol
 		if editMode
 		{
 			cell.layer.cornerRadius = 0

@@ -10,16 +10,51 @@ import UIKit
 
 class CalculatorCollectionViewController: DraggableButtonCollectionViewController {
 
+	let calculator = CalculatorModel()
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 
-        for i in 0..<Int(kPortraitButtonsPerRow*kPortraitButtonsPerColumn)
+		//add the default portrait buttons
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenOne)
+		buttonsPortrait.append(kTokenTwo)
+		buttonsPortrait.append(kTokenThree)
+		buttonsPortrait.append(kTokenPlus)
+		buttonsPortrait.append(kTokenFour)
+		buttonsPortrait.append(kTokenFive)
+		buttonsPortrait.append(kTokenSix)
+		buttonsPortrait.append(kTokenMinus)
+		buttonsPortrait.append(kTokenSeven)
+		buttonsPortrait.append(kTokenEight)
+		buttonsPortrait.append(kTokenNine)
+		buttonsPortrait.append(kTokenMult)
+		buttonsPortrait.append(kTokenSParen)
+		buttonsPortrait.append(kTokenZero)
+		buttonsPortrait.append(kTokenEParen)
+		buttonsPortrait.append(kTokenDiv)
+		buttonsPortrait.append(kSample)
+		buttonsPortrait.append(kTokenComma)
+		
+        while buttonsPortrait.count < Int(kPortraitButtonsPerRow*kPortraitButtonsPerColumn)
 		{
-			buttonsPortrait.append(i)
+			buttonsPortrait.append(kTokenPlus)
 		}
-		for i in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
+		for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
 		{
-			buttonsLandscape.append(i)
+			buttonsLandscape.append(kTokenPlus)
 		}
     }
+	
+	//press buttons
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		if !editing
+		{
+			calculator.applyToken(readOnlyButtons[indexPath.row])
+			print("\(calculator.tokenString) = \(calculator.result)")
+		}
+	}
 }
