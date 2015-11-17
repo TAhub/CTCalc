@@ -10,21 +10,32 @@ import UIKit
 
 class SpareButtonCollectionViewController: DraggableButtonCollectionViewController
 {
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		loadMyStuff()
+	}
+	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		screenNum = 1
 		
+		loadMyStuff()
+	}
+	
+	private func loadMyStuff()
+	{
 		if !loadButtons()
 		{
 			for _ in 0..<Int(kPortraitButtonsPerColumn*kPortraitButtonsPerRow)
 			{
-				buttonsPortrait.append(kTokenPlus)
+				buttonsPortrait.append(kTokenBlank)
 			}
 			
 			for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
 			{
-				buttonsLandscape.append(kTokenPlus)
+				buttonsLandscape.append(kTokenBlank)
 			}
 		}
 	}
