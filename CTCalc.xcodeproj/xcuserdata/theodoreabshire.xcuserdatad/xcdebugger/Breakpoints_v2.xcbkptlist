@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CTCalc/CalculatorModel.swift"
-            timestampString = "469472546.312573"
+            timestampString = "469473111.379938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "collapseTokens(_:)"
             landmarkType = "5">
          </BreakpointContent>
