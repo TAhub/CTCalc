@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorCollectionViewController: DraggableButtonCollectionViewController {
+class CalculatorCollectionViewController: DraggableButtonCollectionViewController, UICollectionViewDelegateFlowLayout {
 
 	let calculator = CalculatorModel()
 	
@@ -47,14 +47,52 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 		{
 			buttonsLandscape.append(kTokenPlus)
 		}
+        
+        let displayNib = UINib(nibName: "Display", bundle: nil)
+        collectionView?.registerNib(displayNib, forCellWithReuseIdentifier: "Display")
+        
+        collectionView?.delegate = self
     }
 	
 	//press buttons
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		if !editing
+		if !editing && indexPath.section != 0
 		{
 			calculator.applyToken(readOnlyButtons[indexPath.row])
-			print("\(calculator.tokenString) = \(calculator.result)")
+            collectionView.reloadData()
 		}
 	}
+    
+    //MARK: overrides for display
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+    {
+        return 2
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {   if section == 0 {return 1} else
+    {return readOnlyButtons.count}
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            let displayCell = collectionView.dequeueReusableCellWithReuseIdentifier("Display", forIndexPath: indexPath) as! Display
+            displayCell.entryLabel.text = calculator.tokenString
+            displayCell.resultLabel.text = calculator.result
+            return displayCell
+        } else
+        {
+            return super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let defaultSize = (collectionViewLayout as! UICollectionViewFlowLayout).itemSize
+        if indexPath.section == 0
+        {
+            return CGSize(width: view.frame.width, height: defaultSize.height)
+        }
+        return defaultSize
+    }
 }

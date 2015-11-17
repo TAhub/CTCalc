@@ -8,7 +8,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "buttonCell"
 
 struct PickedUpCell
 {
@@ -46,6 +45,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		let nib = UINib(nibName: "CalculatorButton", bundle: nil)
 		collectionView?.registerNib(nib, forCellWithReuseIdentifier: "buttonCell")
+        
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -252,13 +252,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	}
 	
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-	{
-		return readOnlyButtons.count
+    {
+        return readOnlyButtons.count
 	}
 	
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ButtonCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("buttonCell", forIndexPath: indexPath) as! ButtonCollectionViewCell
 		cell.label.text = readOnlyButtons[indexPath.row].symbol
 		if editMode
 		{
@@ -270,5 +270,5 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
 		return cell
-	}
+    }
 }
