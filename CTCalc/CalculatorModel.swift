@@ -42,13 +42,17 @@ struct Token
 }
 
 //default functions
-let kTokenPlus = Token(symbol: "+", order: 4, effect0: nil, effect1: nil, effect2: +)
-let kTokenMinus = Token(symbol: "−", order: 5, effect0: nil, effect1: nil, effect2: -)
+//let kTokenPlus = Token(symbol: "+", order: 4, effect0: nil, effect1: nil, effect2: +)
+//let kTokenMinus = Token(symbol: "−", order: 5, effect0: nil, effect1: nil, effect2: -)
+//let kTokenMult = Token(symbol: "×", order: 2, effect0: nil, effect1: nil, effect2: *)
+//let kTokenDiv = Token(symbol: "÷", order: 3, effect0: nil, effect1: nil, effect2: /)
+let kTokenPlus = Token(symbol: "+", order: 2, effect0: nil, effect1: nil, effect2: +)
+let kTokenMinus = Token(symbol: "−", order: 2, effect0: nil, effect1: nil, effect2: -)
 let kTokenMult = Token(symbol: "×", order: 2, effect0: nil, effect1: nil, effect2: *)
-let kTokenDiv = Token(symbol: "÷", order: 3, effect0: nil, effect1: nil, effect2: /)
+let kTokenDiv = Token(symbol: "÷", order: 2, effect0: nil, effect1: nil, effect2: /)
 
 //example function token
-let kSample = Token(symbol: "samp", order: 1, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B * C")
+let kSample = Token(symbol: "samp", order: 1, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
 
 //special tokens
 let kTokenSParen = Token(symbol: "(", order: 0)
@@ -239,6 +243,7 @@ class CalculatorModel
 		//translate the pieces into tokens
 		let defaultTokenSymbols = kDefaultTokens.map() { $0.symbol }
 		let broken = functionString.componentsSeparatedByString(" ")
+		
 		for t in broken
 		{
 			if let defaultPos = defaultTokenSymbols.indexOf(t)
@@ -338,6 +343,7 @@ class CalculatorModel
 			{
 				let functionTokens = try tokensFromFunctionString(functionString)
 				let functionVariables = variablesFromTokens(functionTokens)
+				
 				if functionVariables.count > 0
 				{
 					//add a parenthesis
@@ -347,6 +353,7 @@ class CalculatorModel
 			catch _
 			{
 				//it's a bad function
+				print("ERROR: failed to read function")
 			}
 		}
 	}
