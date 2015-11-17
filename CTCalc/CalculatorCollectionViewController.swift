@@ -16,10 +16,6 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
         super.viewDidLoad()
 
 		//add the default portrait buttons
-		buttonsPortrait.append(kTokenPlus)
-		buttonsPortrait.append(kTokenPlus)
-		buttonsPortrait.append(kTokenPlus)
-		buttonsPortrait.append(kTokenPlus)
 		
 		buttonsPortrait.append(kTokenBack)
 		buttonsPortrait.append(kTokenClear)
