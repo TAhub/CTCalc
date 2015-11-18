@@ -58,19 +58,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenSin)
             buttonsLandscape.append(kTokenTan)
             buttonsLandscape.append(kTokenCos)
-            buttonsLandscape.append(kTokenBlank)
-            
-            buttonsLandscape.append(kTokenSParen)
-            buttonsLandscape.append(kTokenZero)
-            buttonsLandscape.append(kTokenEParen)
-            buttonsLandscape.append(kTokenDiv)
-            
-                //filler
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-                //filler
+            buttonsLandscape.append(kTokenCube)
             
             buttonsLandscape.append(kTokenBack)
             buttonsLandscape.append(kTokenClear)
@@ -78,9 +66,9 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenSquareRoot)
             
                 //filler
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenExp)
+            buttonsLandscape.append(kTokenCubeRoot)
+            buttonsLandscape.append(kTokenComma)
             buttonsLandscape.append(kTokenBlank)
                 //filler
             
@@ -112,6 +100,18 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenEight)
             buttonsLandscape.append(kTokenNine)
             buttonsLandscape.append(kTokenMult)
+            
+                //filler
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+                //filler
+            
+            buttonsLandscape.append(kTokenSParen)
+            buttonsLandscape.append(kTokenZero)
+            buttonsLandscape.append(kTokenEParen)
+            buttonsLandscape.append(kTokenDiv)
 		}
 	}
 	

@@ -28,15 +28,95 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	{
 		if !loadButtons()
 		{
-			for _ in 0..<Int(kPortraitButtonsPerColumn*kPortraitButtonsPerRow)
-			{
-				buttonsPortrait.append(kTokenBlank)
-			}
+            //portrait
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
 			
-			for _ in 0..<Int(kLandscapeButtonsPerRow*kLandscapeButtonsPerColumn)
-			{
-				buttonsLandscape.append(kTokenBlank)
-			}
+            //landscape
+            buttonsLandscape.append(kTokenA)
+            buttonsLandscape.append(kTokenB)
+            buttonsLandscape.append(kTokenC)
+            buttonsLandscape.append(kTokenD)
+            
+            buttonsLandscape.append(kTokenE)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            
 		}
 	}
 }
