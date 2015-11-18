@@ -115,6 +115,8 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenZero)
             buttonsLandscape.append(kTokenEParen)
             buttonsLandscape.append(kTokenDiv)
+            
+            saveButtons()
 		}
 	}
 	

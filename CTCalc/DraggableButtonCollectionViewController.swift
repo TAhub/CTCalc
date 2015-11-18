@@ -9,6 +9,8 @@
 import UIKit
 
 
+let kDragMargin:CGFloat = 20
+
 struct PickedUpCell
 {
 	var cellRow:Int
@@ -273,12 +275,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		{
 			if !psuedoSegueMode
 			{
-				if drag.x < 0 && point.x < 40
+				if drag.x < 0 && point.x < kDragMargin
 				{
 					psuedoSegueMode = true
 					psuedoSegue(leftSegue)
 				}
-				else if drag.x > 0 && point.x > collectionView!.bounds.width - 40
+				else if drag.x > 0 && point.x > collectionView!.bounds.width - kDragMargin
 				{
 					psuedoSegueMode = true
 					psuedoSegue(rightSegue)

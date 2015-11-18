@@ -28,7 +28,15 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	{
 		if !loadButtons()
 		{
+            buttonsPortrait = [Token]()
+            buttonsLandscape = [Token]()
+            
             //portrait
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenBlank)
+            
             buttonsPortrait.append(kTokenBlank)
             buttonsPortrait.append(kTokenBlank)
             buttonsPortrait.append(kTokenBlank)
@@ -115,8 +123,9 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
+
             
-            
+            saveButtons()
 		}
 	}
 }
