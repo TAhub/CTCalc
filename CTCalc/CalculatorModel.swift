@@ -433,6 +433,10 @@ class CalculatorModel
 	//MARK: output
 	var result:String
 	{
+		if tokens.count == 0
+		{
+			return ""
+		}
 		do
 		{
 			let r = try collapseTokens(tokens)
