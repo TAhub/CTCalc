@@ -68,49 +68,40 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenExp)
             buttonsLandscape.append(kTokenInverse)
             
-                //filler
-            buttonsLandscape.append(kTokenSquareRoot)
-            buttonsLandscape.append(kTokenCubeRoot)
-            
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenSinH)
+            buttonsLandscape.append(kTokenTanH)
+            buttonsLandscape.append(kTokenCosH)
             buttonsLandscape.append(kTokenCube)
-                //filler
             
             buttonsLandscape.append(kTokenOne)
             buttonsLandscape.append(kTokenTwo)
             buttonsLandscape.append(kTokenThree)
             buttonsLandscape.append(kTokenPlus)
             
-                //filler
-            buttonsLandscape.append(kTokenSParen)
-            buttonsLandscape.append(kTokenEParen)
-            buttonsLandscape.append(kTokenComma)
+            buttonsLandscape.append(kTokenSquareRoot)
+            buttonsLandscape.append(kTokenCubeRoot)
+            buttonsLandscape.append(kTokenOneOver)
             buttonsLandscape.append(kTokenEuler)
-                //filler
             
             buttonsLandscape.append(kTokenFour)
             buttonsLandscape.append(kTokenFive)
             buttonsLandscape.append(kTokenSix)
             buttonsLandscape.append(kTokenMinus)
             
-                //filler
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenSParen)
+            buttonsLandscape.append(kTokenEParen)
+            buttonsLandscape.append(kTokenComma)
             buttonsLandscape.append(kTokenLog)
-                //filler
             
             buttonsLandscape.append(kTokenSeven)
             buttonsLandscape.append(kTokenEight)
             buttonsLandscape.append(kTokenNine)
             buttonsLandscape.append(kTokenMult)
             
-                //filler
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenHelp)
+            buttonsLandscape.append(kTokenRandom)
+            buttonsLandscape.append(kTokenRound)
             buttonsLandscape.append(kTokenNaturalLog)
-                //filler
             
             buttonsLandscape.append(kTokenPi)
             buttonsLandscape.append(kTokenZero)

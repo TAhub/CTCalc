@@ -32,44 +32,41 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape = [Token]()
             
             //portrait
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenSin)
+            buttonsPortrait.append(kTokenTan)
+            buttonsPortrait.append(kTokenCos)
+            buttonsPortrait.append(kTokenSquare)
             
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenSinH)
+            buttonsPortrait.append(kTokenTanH)
+            buttonsPortrait.append(kTokenCosH)
+            buttonsPortrait.append(kTokenCube)
             
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenSquareRoot)
+            buttonsPortrait.append(kTokenCubeRoot)
+            buttonsPortrait.append(kTokenOneOver)
+            buttonsPortrait.append(kTokenEuler)
             
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenSParen)
+            buttonsPortrait.append(kTokenEParen)
+            buttonsPortrait.append(kTokenComma)
+            buttonsPortrait.append(kTokenLog)
             
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
-            buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenHelp)
+            buttonsPortrait.append(kTokenRandom)
+            buttonsPortrait.append(kTokenRound)
+            buttonsPortrait.append(kTokenNaturalLog)
+
             
 			
             //landscape
-            buttonsLandscape.append(kTokenA)
-            buttonsLandscape.append(kTokenB)
-            buttonsLandscape.append(kTokenC)
-            buttonsLandscape.append(kTokenD)
             
-            buttonsLandscape.append(kTokenE)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            
+            buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
@@ -124,6 +121,7 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
 
+            
             
             saveButtons()
 		}
