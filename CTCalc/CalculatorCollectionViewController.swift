@@ -49,6 +49,11 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 			buttonsPortrait.append(kTokenNine)
 			buttonsPortrait.append(kTokenMult)
             
+            buttonsPortrait.append(kTokenPi)
+            buttonsPortrait.append(kTokenZero)
+            buttonsPortrait.append(kTokenDot)
+            buttonsPortrait.append(kTokenDiv)
+            
             //landscape
             buttonsLandscape.append(kTokenSin)
             buttonsLandscape.append(kTokenTan)
@@ -107,12 +112,6 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenEight)
             buttonsLandscape.append(kTokenNine)
             buttonsLandscape.append(kTokenMult)
-            
-            buttonsPortrait.append(kTokenSParen)
-            buttonsPortrait.append(kTokenZero)
-            buttonsPortrait.append(kTokenEParen)
-            buttonsPortrait.append(kTokenDiv)
-
 		}
 	}
 	
