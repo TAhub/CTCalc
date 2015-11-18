@@ -129,7 +129,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			}
 		}
 		
-		(self.parentViewController as? DraggableContainerViewController)?.dragDelegate = self
+		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -278,12 +278,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				if drag.x < 0 && point.x < kDragMargin
 				{
 					psuedoSegueMode = true
-					psuedoSegue(leftSegue)
+					psuedoSegue(leftSegue, left: true)
 				}
 				else if drag.x > 0 && point.x > collectionView!.bounds.width - kDragMargin
 				{
 					psuedoSegueMode = true
-					psuedoSegue(rightSegue)
+					psuedoSegue(rightSegue, left: false)
 				}
 			}
 		}
@@ -293,7 +293,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	private func psuedoSegue(id:String?)
+	private func psuedoSegue(id:String?, left: Bool)
 	{
 		if let id = id, let dcvc = parentViewController as? DraggableContainerViewController
 		{
@@ -307,7 +307,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				editMode = false
 				pickedUp = nil
 			}
-			dcvc.segue(id)
+			dcvc.segue(id, left: left)
 		}
 	}
 	
@@ -315,7 +315,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
 		transitioning = true
 		collectionView?.reloadData()
-		coordinator.animateAlongsideTransition(nil)
+		view.alpha = 1
+		coordinator.animateAlongsideTransition(
+		{ (coordinator) in
+			//animation
+			self.view.alpha = 0
+		})
 		{ (success) in
 			self.generateLayout()
 		
@@ -324,6 +329,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			self.pickedUp = nil
 			
 			self.transitioning = false
+			
+			UIView.animateWithDuration(0.1, animations: { self.view.alpha = 1 })
 		}
 	}
 	
