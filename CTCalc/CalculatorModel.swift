@@ -16,9 +16,8 @@ struct Token
 	var effect1:((Double)->(Double))?
 	var effect2:((Double, Double)->(Double))?
 	var functionReplace:String?
-	var before:Bool
 	
-	init(symbol:String, order:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil, before:Bool = false)
+	init(symbol:String, order:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil)
 	{
 		self.symbol = symbol
 		self.order = order
@@ -26,7 +25,11 @@ struct Token
 		self.effect1 = effect1
 		self.effect2 = effect2
 		self.functionReplace = functionReplace
-		self.before = before
+	}
+	
+	var before:Bool
+	{
+		return self.order == kOrderOperandBefore
 	}
 	
 	var variables:Int
@@ -47,8 +50,9 @@ let kOrderEffectBack = -1
 let kOrderEffectClear = -2
 let kOrderEffectNothing = -3
 let kOrderFunc = 1
-let kOrderOperand = 2
-let kOrderLiteral = 3
+let kOrderOperandBefore = 2
+let kOrderOperand = 3
+let kOrderLiteral = 4
 
 //default functions
 //let kTokenPlus = Token(symbol: "+", order: 4, effect0: nil, effect1: nil, effect2: +)
@@ -65,7 +69,7 @@ let kTokenTan = Token(symbol: "tan", order: kOrderOperand, effect0: nil, effect1
 let kTokenExp = Token(symbol: "^", order: kOrderOperand, effect0: nil, effect1: nil, effect2: { pow($0, $1) })
 let kTokenSquare = Token(symbol: "²", order: kOrderOperand, effect0: nil, effect1: { pow($0, 2) })
 let kTokenCube = Token(symbol: "³", order: kOrderOperand, effect0: nil, effect1: { pow($0, 3) })
-let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperand, effect0: nil, effect1: sqrt, effect2: nil, functionReplace: nil, before: true)
+let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperandBefore, effect0: nil, effect1: sqrt, effect2: nil, functionReplace: nil)
 let kTokenCubeRoot = Token(symbol: "∛", order: kOrderOperand, effect0: nil, effect1: { pow($0, 1.0 / 3) })
 let kTokenPi = Token(symbol: "π", order: kOrderOperand, effect0: { M_PI })
 
@@ -98,7 +102,7 @@ let kTokenBack = Token(symbol: "←", order: kOrderEffectBack)
 let kTokenClear = Token(symbol: "©", order: kOrderEffectClear)
 let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing)
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear]
 
 enum CalculatorError:ErrorType
 {
@@ -413,17 +417,29 @@ class CalculatorModel
 		do
 		{
 			let r = try collapseTokens(tokens)
+			if Double(Int(r)) == r
+			{
+				return "\(Int(r))"
+			}
 			return "\(r)"
 		}
-		catch let error
+		catch CalculatorError.WhyDoINeedMultipleCases(let name)
 		{
-			return "\(error)"
+			return name
+		}
+		catch _
+		{
+			return "STUPID ERROR QUESTION"
 		}
 	}
 	
 	var functionString:String
 	{
-		var s = ""
+		if tokens.count == 0
+		{
+			return ""
+		}
+		var s = "( "
 		for (i, token) in tokens.enumerate()
 		{
 			s += token.symbol
@@ -432,7 +448,7 @@ class CalculatorModel
 				s += " "
 			}
 		}
-		return s
+		return "\(s) )"
 	}
 	
 	var tokenString:String

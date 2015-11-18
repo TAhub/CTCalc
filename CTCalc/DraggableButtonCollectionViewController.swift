@@ -32,7 +32,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	var screenNum:Int = 0
+	var screenNum:Int!
 	@IBInspectable var rightSegue:String? = nil
 	@IBInspectable var leftSegue:String? = nil
 	
@@ -72,6 +72,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					if !isPreset
 					{
 						//it must be custom
+						print("custom token \"\(symbol)\"")
 						tokens.append(Token(symbol: symbol, order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
 					}
 				}

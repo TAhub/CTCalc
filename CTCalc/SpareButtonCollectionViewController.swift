@@ -13,13 +13,13 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		screenNum = 1
+		
 		loadMyStuff()
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		screenNum = 1
 		
 		loadMyStuff()
 	}
