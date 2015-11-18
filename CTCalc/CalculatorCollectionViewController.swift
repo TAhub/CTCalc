@@ -28,6 +28,9 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 		
 		if !loadButtons()
 		{
+			buttonsPortrait = [Token]()
+			buttonsLandscape = [Token]()
+			
             //portrait
 			buttonsPortrait.append(kTokenBack)
 			buttonsPortrait.append(kTokenClear)

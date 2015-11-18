@@ -97,4 +97,9 @@ class DraggableContainerViewController: UIViewController {
 	{
 		dragDelegate?.panned(sender)
 	}
+	
+	//MARK: supported orientations
+	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+		return UIInterfaceOrientationMask.All
+	}
 }
