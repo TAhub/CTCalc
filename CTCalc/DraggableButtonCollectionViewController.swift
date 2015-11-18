@@ -315,7 +315,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
 		transitioning = true
 		collectionView?.reloadData()
-		coordinator.animateAlongsideTransition(nil)
+		view.alpha = 1
+		coordinator.animateAlongsideTransition(
+		{ (coordinator) in
+			//animation
+			self.view.alpha = 0
+		})
 		{ (success) in
 			self.generateLayout()
 		
@@ -324,6 +329,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			self.pickedUp = nil
 			
 			self.transitioning = false
+			
+			UIView.animateWithDuration(0.1, animations: { self.view.alpha = 1 })
 		}
 	}
 	
