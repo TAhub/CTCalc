@@ -58,7 +58,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenSin)
             buttonsLandscape.append(kTokenTan)
             buttonsLandscape.append(kTokenCos)
-            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenBlank)
             
             buttonsLandscape.append(kTokenSParen)
             buttonsLandscape.append(kTokenZero)
@@ -66,10 +66,10 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenDiv)
             
                 //filler
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
                 //filler
             
             buttonsLandscape.append(kTokenBack)
@@ -78,10 +78,10 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenSquareRoot)
             
                 //filler
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
                 //filler
             
             buttonsLandscape.append(kTokenOne)
@@ -90,10 +90,10 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenPlus)
             
                 //filler
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
                 //filler
             
             buttonsLandscape.append(kTokenFour)
@@ -102,10 +102,10 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenMinus)
             
                 //filler
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
-            buttonsLandscape.append(kTokenPlus)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenBlank)
                 //filler
             
             buttonsLandscape.append(kTokenSeven)
