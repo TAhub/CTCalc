@@ -34,7 +34,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             //portrait
 			buttonsPortrait.append(kTokenBack)
 			buttonsPortrait.append(kTokenClear)
-			buttonsPortrait.append(kTokenSquare)
+			buttonsPortrait.append(kTokenExp)
 			buttonsPortrait.append(kTokenSquareRoot)
 			
 			buttonsPortrait.append(kTokenOne)
@@ -61,18 +61,19 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenSin)
             buttonsLandscape.append(kTokenTan)
             buttonsLandscape.append(kTokenCos)
-            buttonsLandscape.append(kTokenCube)
+            buttonsLandscape.append(kTokenSquare)
             
             buttonsLandscape.append(kTokenBack)
             buttonsLandscape.append(kTokenClear)
-            buttonsLandscape.append(kTokenSquare)
+            buttonsLandscape.append(kTokenExp)
             buttonsLandscape.append(kTokenSquareRoot)
             
                 //filler
             buttonsLandscape.append(kTokenExp)
             buttonsLandscape.append(kTokenCubeRoot)
-            buttonsLandscape.append(kTokenComma)
+            
             buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenCube)
                 //filler
             
             buttonsLandscape.append(kTokenOne)
@@ -81,9 +82,9 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenPlus)
             
                 //filler
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenSParen)
+            buttonsLandscape.append(kTokenEParen)
+            buttonsLandscape.append(kTokenComma)
             buttonsLandscape.append(kTokenBlank)
                 //filler
             
@@ -111,9 +112,9 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenBlank)
                 //filler
             
-            buttonsLandscape.append(kTokenSParen)
+            buttonsLandscape.append(kTokenPi)
             buttonsLandscape.append(kTokenZero)
-            buttonsLandscape.append(kTokenEParen)
+            buttonsLandscape.append(kTokenDot)
             buttonsLandscape.append(kTokenDiv)
             
             saveButtons()
