@@ -47,7 +47,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		else
 		{
-			func loadButtons(prefix:String) -> [Token]
+			func loadButtonsInner(prefix:String) -> [Token]
 			{
 				let symbols = def.stringArrayForKey("screen\(screenNum)\(prefix)symbols")!
 				let functions = def.stringArrayForKey("screen\(screenNum)\(prefix)functions")!
@@ -79,10 +79,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				return tokens
 			}
 			
-			buttonsPortrait = loadButtons("portrait")
-			buttonsLandscape = loadButtons("landscape")
+			buttonsPortrait = loadButtonsInner("portrait")
+			buttonsLandscape = loadButtonsInner("landscape")
+			
+			return true
 		}
-		return true
 	}
 	
 	func saveButtons()
@@ -91,14 +92,14 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		def.setObject([], forKey: "\(screenNum)exists")
 		
-		func saveButtons(prefix:String, tokens:[Token])
+		func saveButtonsInner(prefix:String, tokens:[Token])
 		{
 			def.setObject(tokens.map() { $0.symbol }, forKey: "screen\(screenNum)\(prefix)symbols")
 			def.setObject(tokens.map() { $0.functionReplace ?? "" }, forKey: "screen\(screenNum)\(prefix)functions")
 		}
 		
-		saveButtons("portrait", tokens: buttonsPortrait)
-		saveButtons("landscape", tokens: buttonsLandscape)
+		saveButtonsInner("portrait", tokens: buttonsPortrait)
+		saveButtonsInner("landscape", tokens: buttonsLandscape)
 	}
 	
 	override func viewDidLoad()
@@ -353,7 +354,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("buttonCell", forIndexPath: indexPath) as! ButtonCollectionViewCell
+		
+//		print("screen: \(screenNum), landscape: \(landscape), size: \(cell.frame.size), row: \(indexPath.row)     landscape size: \(buttonsLandscape.count), portrait size: \(buttonsPortrait.count)")
+		
 		cell.label.text = readOnlyButtons[indexPath.row].symbol
+		
 		if editMode
 		{
 			cell.layer.cornerRadius = 0

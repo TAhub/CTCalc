@@ -429,7 +429,7 @@ class CalculatorModel
 		}
 		catch _
 		{
-			return "STUPID ERROR QUESTION"
+			return "SWIFT ERROR"
 		}
 	}
 	
@@ -439,6 +439,8 @@ class CalculatorModel
 		{
 			return ""
 		}
+		
+		//automatically appends parentheses, to make sure that the function executes as a single block
 		var s = "( "
 		for (i, token) in tokens.enumerate()
 		{
