@@ -72,6 +72,9 @@ let kTokenCube = Token(symbol: "³", order: kOrderOperand, effect0: nil, effect1
 let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperandBefore, effect0: nil, effect1: sqrt, effect2: nil, functionReplace: nil)
 let kTokenCubeRoot = Token(symbol: "∛", order: kOrderOperand, effect0: nil, effect1: { pow($0, 1.0 / 3) })
 let kTokenPi = Token(symbol: "π", order: kOrderOperand, effect0: { M_PI })
+let kTokenNaturalLog = Token(symbol: "ln", order: kOrderOperand, effect0: nil, effect1: { log($0) })
+let kTokenLog = Token(symbol: "log", order: kOrderOperand, effect0: nil, effect1: { log10($0) })
+let kTokenEuler = Token(symbol: "e", order: kOrderOperand, effect0: { M_E })
 
 //example function token
 let kSample = Token(symbol: "samp", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
@@ -91,6 +94,7 @@ let kTokenSeven = Token(symbol: "7", order: 0)
 let kTokenEight = Token(symbol: "8", order: 0)
 let kTokenNine = Token(symbol: "9", order: 0)
 let kTokenDot = Token(symbol: ".", order: 0)
+let kTokenInverse = Token(symbol: "⁻", order: 0)
 let kTokenA = Token(symbol: "A", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
 let kTokenB = Token(symbol: "B", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
 let kTokenC = Token(symbol: "C", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
@@ -102,7 +106,7 @@ let kTokenBack = Token(symbol: "←", order: kOrderEffectBack)
 let kTokenClear = Token(symbol: "©", order: kOrderEffectClear)
 let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing)
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse]
 
 enum CalculatorError:ErrorType
 {
