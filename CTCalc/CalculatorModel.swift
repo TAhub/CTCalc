@@ -196,10 +196,11 @@ class CalculatorModel
 					tokens.removeRange(numStart!...i)
 					
 					//and add the number
-					var mult:Int = 1
+					var mult:Double = 1
 					if number.characters.first == "⁻"
 					{
 						number = number.substringFromIndex(number.startIndex.advancedBy(1))
+						mult *= -1
 					}
 					guard let value = Double(number) else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
 					tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value * mult }), atIndex: numStart!)
