@@ -129,7 +129,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			}
 		}
 		
-		(self.parentViewController as? DraggableContainerViewController)?.dragDelegate = self
+		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -278,12 +278,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				if drag.x < 0 && point.x < kDragMargin
 				{
 					psuedoSegueMode = true
-					psuedoSegue(leftSegue)
+					psuedoSegue(leftSegue, left: true)
 				}
 				else if drag.x > 0 && point.x > collectionView!.bounds.width - kDragMargin
 				{
 					psuedoSegueMode = true
-					psuedoSegue(rightSegue)
+					psuedoSegue(rightSegue, left: false)
 				}
 			}
 		}
@@ -293,7 +293,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	private func psuedoSegue(id:String?)
+	private func psuedoSegue(id:String?, left: Bool)
 	{
 		if let id = id, let dcvc = parentViewController as? DraggableContainerViewController
 		{
@@ -307,7 +307,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				editMode = false
 				pickedUp = nil
 			}
-			dcvc.segue(id)
+			dcvc.segue(id, left: left)
 		}
 	}
 	

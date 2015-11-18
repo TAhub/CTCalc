@@ -24,16 +24,35 @@ class DraggableContainerViewController: UIViewController {
 	
 	var viewControllers = [UIViewController]()
 	weak var activeViewController:UIViewController?
+	
+	private func transition(from:UIViewController, to:UIViewController, direction:(CGFloat, CGFloat))
 	{
-		didSet
+		activeViewController = to
+
+
+		self.addChildViewController(to)
+		to.view.frame = view.bounds
+		view.addSubview(to.view)
+		
+		to.view.bounds.origin.x = direction.0 * view.bounds.width * -1
+		to.view.bounds.origin.y = direction.1 * view.bounds.height * -1
+		
+		UIView.animateWithDuration(0.1, animations:
 		{
-			if let oldValue = oldValue
+			from.view.bounds.origin.x = direction.0 * self.view.bounds.width
+			from.view.bounds.origin.y = direction.1 * self.view.bounds.height
+		})
+		{ (success) in
+			from.view.removeFromSuperview()
+			from.removeFromParentViewController()
+			
+			UIView.animateWithDuration(0.1, animations:
 			{
-				removeView(oldValue)
-			}
-			if let activeViewController = activeViewController
-			{
-				addView(activeViewController)
+				to.view.bounds.origin.x = 0
+				to.view.bounds.origin.y = 0
+			})
+			{ (success) in
+				to.didMoveToParentViewController(self)
 			}
 		}
 	}
@@ -55,7 +74,17 @@ class DraggableContainerViewController: UIViewController {
 			viewControllers.append(vc)
 		}
 		assert(viewControllers.count > 0)
+		
+		
+		//set the initial view controller
 		activeViewController = viewControllers[0]
+		if let newValue = activeViewController
+		{
+			addChildViewController(newValue)
+			newValue.view.frame = view.bounds
+			view.addSubview(newValue.view)
+			newValue.didMoveToParentViewController(self)
+		}
 	}
 	
 	func getControllerWithID(id:String) -> UIViewController?
@@ -70,27 +99,12 @@ class DraggableContainerViewController: UIViewController {
 		return nil
 	}
 	
-	func segue(to:String)
+	func segue(to:String, left:Bool)
 	{
 		if let vc = getControllerWithID(to)
 		{
-			activeViewController = vc
+			transition(activeViewController!, to: vc, direction: (left ? -1 : 1, 0))
 		}
-	}
-	
-	private func removeView(oldValue:UIViewController)
-	{
-		oldValue.willMoveToParentViewController(nil)
-		oldValue.view.removeFromSuperview()
-		oldValue.removeFromParentViewController()
-	}
-	
-	private func addView(newValue:UIViewController)
-	{
-		addChildViewController(newValue)
-		newValue.view.frame = view.bounds
-		view.addSubview(newValue.view)
-		newValue.didMoveToParentViewController(self)
 	}
 	
 	func panned(sender:UIPanGestureRecognizer)
