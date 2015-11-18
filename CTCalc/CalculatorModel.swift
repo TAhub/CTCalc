@@ -49,6 +49,7 @@ struct Token
 let kOrderEffectBack = -1
 let kOrderEffectClear = -2
 let kOrderEffectNothing = -3
+let kOrderEffectHelp = -4
 let kOrderFunc = 1
 let kOrderOperandBefore = 2
 let kOrderOperand = 3
@@ -66,15 +67,21 @@ let kTokenDiv = Token(symbol: "÷", order: kOrderOperand, effect0: nil, effect1:
 let kTokenSin = Token(symbol: "sin", order: kOrderOperand, effect0: nil, effect1: sin)
 let kTokenCos = Token(symbol: "cos", order: kOrderOperand, effect0: nil, effect1: cos)
 let kTokenTan = Token(symbol: "tan", order: kOrderOperand, effect0: nil, effect1: tan)
+let kTokenSinH = Token(symbol: "sinh", order: kOrderOperand, effect0: nil, effect1: sinh)
+let kTokenCosH = Token(symbol: "cosh", order: kOrderOperand, effect0: nil, effect1: cosh)
+let kTokenTanH = Token(symbol: "tanh", order: kOrderOperand, effect0: nil, effect1: tanh)
 let kTokenExp = Token(symbol: "^", order: kOrderOperand, effect0: nil, effect1: nil, effect2: { pow($0, $1) })
 let kTokenSquare = Token(symbol: "²", order: kOrderOperand, effect0: nil, effect1: { pow($0, 2) })
 let kTokenCube = Token(symbol: "³", order: kOrderOperand, effect0: nil, effect1: { pow($0, 3) })
-let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperandBefore, effect0: nil, effect1: sqrt, effect2: nil, functionReplace: nil)
-let kTokenCubeRoot = Token(symbol: "∛", order: kOrderOperand, effect0: nil, effect1: { pow($0, 1.0 / 3) })
+let kTokenSquareRoot = Token(symbol: "√", order: kOrderOperandBefore, effect0: nil, effect1: sqrt)
+let kTokenCubeRoot = Token(symbol: "∛", order: kOrderOperandBefore, effect0: nil, effect1: { pow($0, 1.0 / 3) })
 let kTokenPi = Token(symbol: "π", order: kOrderOperand, effect0: { M_PI })
 let kTokenNaturalLog = Token(symbol: "ln", order: kOrderOperand, effect0: nil, effect1: { log($0) })
 let kTokenLog = Token(symbol: "log", order: kOrderOperand, effect0: nil, effect1: { log10($0) })
 let kTokenEuler = Token(symbol: "e", order: kOrderOperand, effect0: { M_E })
+let kTokenRandom = Token(symbol: "d6", order: kOrderOperand, effect0: { Double(arc4random_uniform(6)) + 1 })
+let kTokenOneOver = Token(symbol: "⅟", order: kOrderOperand, effect0: nil, effect1: { 1/$0 })
+let kTokenRound = Token(symbol: "round", order: kOrderOperand, effect0: nil, effect1: { round($0) })
 
 //example function token
 let kSample = Token(symbol: "samp", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
@@ -105,8 +112,9 @@ let kTokenE = Token(symbol: "E", order: kOrderFunc, effect0: nil, effect1: nil, 
 let kTokenBack = Token(symbol: "←", order: kOrderEffectBack)
 let kTokenClear = Token(symbol: "©", order: kOrderEffectClear)
 let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing)
+let kTokenHelp = Token(symbol: "help", order: kOrderEffectHelp)
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp]
 
 enum CalculatorError:ErrorType
 {
@@ -389,6 +397,7 @@ class CalculatorModel
 			tokens = [Token]()
 			return
 		case kOrderEffectNothing: return
+		case kOrderEffectHelp: return //TODO: this should open the help panel again
 		default: break
 		}
 		
