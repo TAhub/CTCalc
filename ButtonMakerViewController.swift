@@ -14,7 +14,11 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     var blueWhitebutton : UIImageView?
 
     @IBOutlet weak var buttonFunction: UITextField!
-    @IBOutlet weak var symbolTextView: UITextField!
+    @IBOutlet weak var symbolTextView: UITextField! {
+        didSet {
+            symbolTextView.text = function
+        }
+    }
     @IBOutlet weak var buttonView: UIImageView!
     
     @IBAction func blueButtonPressed(sender: AnyObject) {
@@ -111,16 +115,3 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
         
     }
 }
-
-//        let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
-
-
-//        loadedNib.frame = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
-//        loadedNib.label.text = readOnlyButtons[path.row].symbol
-//        self.addSubview(self.view)
-
-//   Select the background color you want.  That changes the color of the UIView.   Add up to 5 letters of text/symbols to describe the custom button function.  This will be the "symbol (name)" of the button.
-//to add this to the buttons list
-//let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-//dcvc.addToken(token:Token)
-//returns a bool; true if it worked, false if you are out of space
