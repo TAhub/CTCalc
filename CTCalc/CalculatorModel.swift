@@ -7,20 +7,25 @@
 //
 
 import Foundation
+import UIKit
+
+let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png")]
 
 struct Token
 {
 	var symbol:String
 	var order:Int
+	var imageNumber:Int
 	var effect0:(()->(Double))?
 	var effect1:((Double)->(Double))?
 	var effect2:((Double, Double)->(Double))?
 	var functionReplace:String?
 	
-	init(symbol:String, order:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil)
+	init(symbol:String, order:Int, imageNumber:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil)
 	{
 		self.symbol = symbol
 		self.order = order
+		self.imageNumber = imageNumber
 		self.effect0 = effect0
 		self.effect1 = effect1
 		self.effect2 = effect2
@@ -30,6 +35,11 @@ struct Token
 	var before:Bool
 	{
 		return self.order == kOrderOperandBefore
+	}
+	
+	var image:UIImage
+	{
+		return kImages[imageNumber]!
 	}
 	
 	var variables:Int
@@ -84,35 +94,35 @@ let kTokenOneOver = Token(symbol: "⅟", order: kOrderOperandBefore, effect0: ni
 let kTokenRound = Token(symbol: "round", order: kOrderOperand, effect0: nil, effect1: { round($0) })
 
 //example function token
-let kSample = Token(symbol: "samp", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
+let kSample = Token(symbol: "samp", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "A + B × C")
 
 //special tokens
-let kTokenSParen = Token(symbol: "(", order: 0)
-let kTokenEParen = Token(symbol: ")", order: 0)
-let kTokenComma = Token(symbol: ",", order: 0)
-let kTokenZero = Token(symbol: "0", order: 0)
-let kTokenOne = Token(symbol: "1", order: 0)
-let kTokenTwo = Token(symbol: "2", order: 0)
-let kTokenThree = Token(symbol: "3", order: 0)
-let kTokenFour = Token(symbol: "4", order: 0)
-let kTokenFive = Token(symbol: "5", order: 0)
-let kTokenSix = Token(symbol: "6", order: 0)
-let kTokenSeven = Token(symbol: "7", order: 0)
-let kTokenEight = Token(symbol: "8", order: 0)
-let kTokenNine = Token(symbol: "9", order: 0)
-let kTokenDot = Token(symbol: ".", order: 0)
-let kTokenInverse = Token(symbol: "⁻", order: 0)
-let kTokenA = Token(symbol: "A", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
-let kTokenB = Token(symbol: "B", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
-let kTokenC = Token(symbol: "C", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
-let kTokenD = Token(symbol: "D", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
-let kTokenE = Token(symbol: "E", order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenSParen = Token(symbol: "(", order: 0, imageNumber: 0)
+let kTokenEParen = Token(symbol: ")", order: 0, imageNumber: 0)
+let kTokenComma = Token(symbol: ",", order: 0, imageNumber: 0)
+let kTokenZero = Token(symbol: "0", order: 0, imageNumber: 0)
+let kTokenOne = Token(symbol: "1", order: 0, imageNumber: 0)
+let kTokenTwo = Token(symbol: "2", order: 0, imageNumber: 0)
+let kTokenThree = Token(symbol: "3", order: 0, imageNumber: 0)
+let kTokenFour = Token(symbol: "4", order: 0, imageNumber: 0)
+let kTokenFive = Token(symbol: "5", order: 0, imageNumber: 0)
+let kTokenSix = Token(symbol: "6", order: 0, imageNumber: 0)
+let kTokenSeven = Token(symbol: "7", order: 0, imageNumber: 0)
+let kTokenEight = Token(symbol: "8", order: 0, imageNumber: 0)
+let kTokenNine = Token(symbol: "9", order: 0, imageNumber: 0)
+let kTokenDot = Token(symbol: ".", order: 0, imageNumber: 0)
+let kTokenInverse = Token(symbol: "⁻", order: 0, imageNumber: 0)
+let kTokenA = Token(symbol: "A", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenB = Token(symbol: "B", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenC = Token(symbol: "C", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenD = Token(symbol: "D", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
+let kTokenE = Token(symbol: "E", order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: "1")
 
 //effect tokens
-let kTokenBack = Token(symbol: "←", order: kOrderEffectBack)
-let kTokenClear = Token(symbol: "©", order: kOrderEffectClear)
-let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing)
-let kTokenHelp = Token(symbol: "help", order: kOrderEffectHelp)
+let kTokenBack = Token(symbol: "←", order: kOrderEffectBack, imageNumber: 3)
+let kTokenClear = Token(symbol: "©", order: kOrderEffectClear, imageNumber: 3)
+let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing, imageNumber: 3)
+let kTokenHelp = Token(symbol: "help", order: kOrderEffectHelp, imageNumber: 3)
 
 let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp]
 
@@ -157,7 +167,7 @@ class CalculatorModel
 					
 					//insert the value
 					tokens.removeRange(parenStart...i)
-					tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value }, effect1: nil, effect2: nil, functionReplace: nil), atIndex: parenStart)
+					tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value }, effect1: nil, effect2: nil, functionReplace: nil), atIndex: parenStart)
 					
 					if token.symbol == ","
 					{
@@ -203,7 +213,7 @@ class CalculatorModel
 						mult *= -1
 					}
 					guard let value = Double(number) else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
-					tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value * mult }), atIndex: numStart!)
+					tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value * mult }), atIndex: numStart!)
 					
 					//and start over
 					return try collapseTokens(tokens)
@@ -345,7 +355,7 @@ class CalculatorModel
 
 					//remove the subtring
 					tokens.removeRange((i-1)...(i+1))
-					tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value }), atIndex: i - 1)
+					tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value }), atIndex: i - 1)
 					return try collapseTokensInner(tokens, order: order)
 				case 1:
 					//get the value
@@ -366,12 +376,12 @@ class CalculatorModel
 					if token.before
 					{
 						tokens.removeRange(i...(i+1))
-						tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value }), atIndex: i)
+						tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value }), atIndex: i)
 					}
 					else
 					{
 						tokens.removeRange((i-1)...i)
-						tokens.insert(Token(symbol: "num", order: kOrderLiteral, effect0: { value }), atIndex: i - 1)
+						tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value }), atIndex: i - 1)
 					}
 					return try collapseTokensInner(tokens, order: order)
 				case 0: break //nothing happens

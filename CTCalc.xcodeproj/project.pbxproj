@@ -31,6 +31,13 @@
 		3D19C1E11BFBA83600596252 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E01BFBA83600596252 /* SystemConfiguration.framework */; };
 		3D19C1E31BFBA83E00596252 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */; };
 		3D19C1E51BFBA84800596252 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */; };
+		3D6E7E481BFE436100140B19 /* custombutton7.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E7E471BFE436100140B19 /* custombutton7.png */; };
+		3D971D021BFD849B008AB82A /* custombutton1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D011BFD849B008AB82A /* custombutton1.png */; };
+		3D971D041BFD84AF008AB82A /* custombutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D031BFD84AF008AB82A /* custombutton2.png */; };
+		3D971D061BFD84B8008AB82A /* custombutton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D051BFD84B8008AB82A /* custombutton3.png */; };
+		3D971D081BFD84C2008AB82A /* custombutton4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D071BFD84C2008AB82A /* custombutton4.png */; };
+		3D971D0A1BFD84C9008AB82A /* custombutton5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D091BFD84C9008AB82A /* custombutton5.png */; };
+		3D971D0C1BFD84D1008AB82A /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D0B1BFD84D1008AB82A /* custombutton6.png */; };
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
 		C18A8A731BFE408600343C9C /* TutorialDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */; };
@@ -49,6 +56,7 @@
 		E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E418AA361BFA638600207878 /* CalculatorButton.xib */; };
 		E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */; };
 		E418AA3B1BFA7EFE00207878 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */; };
+		E46FC2F01BFE4B0C00F5DB90 /* SemiDraggableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46FC2EF1BFE4B0C00F5DB90 /* SemiDraggableViewController.swift */; };
 		E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */; };
 		E4EA281E1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */; };
 		E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */; };
@@ -79,6 +87,13 @@
 		3D19C1E01BFBA83600596252 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3D6E7E471BFE436100140B19 /* custombutton7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton7.png; sourceTree = "<group>"; };
+		3D971D011BFD849B008AB82A /* custombutton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton1.png; sourceTree = "<group>"; };
+		3D971D031BFD84AF008AB82A /* custombutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton2.png; sourceTree = "<group>"; };
+		3D971D051BFD84B8008AB82A /* custombutton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton3.png; sourceTree = "<group>"; };
+		3D971D071BFD84C2008AB82A /* custombutton4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton4.png; sourceTree = "<group>"; };
+		3D971D091BFD84C9008AB82A /* custombutton5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton5.png; sourceTree = "<group>"; };
+		3D971D0B1BFD84D1008AB82A /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
 		C13BADB01BFBBD6100694E94 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		C13BADB21BFBBDBC00694E94 /* Display.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Display.xib; sourceTree = "<group>"; };
 		C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialDisplayViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +114,7 @@
 		E418AA361BFA638600207878 /* CalculatorButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculatorButton.xib; sourceTree = "<group>"; };
 		E418AA381BFA63C300207878 /* ButtonCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		E418AA3A1BFA7EFE00207878 /* CalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
+		E46FC2EF1BFE4B0C00F5DB90 /* SemiDraggableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SemiDraggableViewController.swift; sourceTree = "<group>"; };
 		E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableContainerViewController.swift; sourceTree = "<group>"; };
 		E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorCollectionViewController.swift; sourceTree = "<group>"; };
 		E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DraggableButtonCollectionViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +205,13 @@
 				3D19C1CF1BFBA6A100596252 /* Frameworks */,
 				E40C5C0E1BF668A300F608F4 /* Supporting Files */,
 				E40C5BFA1BF6682E00F608F4 /* Products */,
+				3D971D011BFD849B008AB82A /* custombutton1.png */,
+				3D971D031BFD84AF008AB82A /* custombutton2.png */,
+				3D971D051BFD84B8008AB82A /* custombutton3.png */,
+				3D971D071BFD84C2008AB82A /* custombutton4.png */,
+				3D971D091BFD84C9008AB82A /* custombutton5.png */,
+				3D971D0B1BFD84D1008AB82A /* custombutton6.png */,
+				3D6E7E471BFE436100140B19 /* custombutton7.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,6 +268,7 @@
 				E4E0C7781BFA4EF000F80A33 /* DraggableContainerViewController.swift */,
 				E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */,
 				E4EA281D1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift */,
+				E46FC2EF1BFE4B0C00F5DB90 /* SemiDraggableViewController.swift */,
 				E4EA28211BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift */,
 			);
 			name = Controller;
@@ -319,8 +343,15 @@
 			files = (
 				E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */,
 				3D19C1BF1BFBA4F900596252 /* Main.storyboard in Resources */,
+				3D6E7E481BFE436100140B19 /* custombutton7.png in Resources */,
+				3D971D081BFD84C2008AB82A /* custombutton4.png in Resources */,
+				3D971D041BFD84AF008AB82A /* custombutton2.png in Resources */,
+				3D971D0C1BFD84D1008AB82A /* custombutton6.png in Resources */,
+				3D971D021BFD849B008AB82A /* custombutton1.png in Resources */,
 				E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */,
+				3D971D0A1BFD84C9008AB82A /* custombutton5.png in Resources */,
 				C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */,
+				3D971D061BFD84B8008AB82A /* custombutton3.png in Resources */,
 				E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

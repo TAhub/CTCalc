@@ -116,4 +116,47 @@ class DraggableContainerViewController: UIViewController {
 	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
 		return UIInterfaceOrientationMask.All
 	}
+	
+	//MARK: slightly entangled helper function zone
+	func removeToken(token:Token)
+	{
+		func removeTokenInner(token:Token, from:DraggableButtonCollectionViewController)
+		{
+			for (i, t) in from.buttonsLandscape.enumerate()
+			{
+				if t.symbol == token.symbol
+				{
+					from.buttonsLandscape[i] = kTokenBlank
+					from.saveButtons()
+					return
+				}
+			}
+		}
+		
+		removeTokenInner(token, from: viewControllers[0] as! DraggableButtonCollectionViewController)
+		removeTokenInner(token, from: viewControllers[1] as! DraggableButtonCollectionViewController)
+	}
+	
+	func addToken(token:Token)->Bool
+	{
+		func addTokenInner(token:Token, to:DraggableButtonCollectionViewController) -> Bool
+		{
+			for (i, t) in to.buttonsLandscape.enumerate()
+			{
+				if t.symbol == " "
+				{
+					to.buttonsLandscape[i] = token
+					to.saveButtons()
+					return true
+				}
+			}
+			return false
+		}
+		
+		if addTokenInner(token, to: viewControllers[0] as! DraggableButtonCollectionViewController)
+		{
+			return true
+		}
+		return addTokenInner(token, to: viewControllers[1] as! DraggableButtonCollectionViewController)
+	}
 }
