@@ -55,6 +55,7 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         if let searchTerm = searchTerm {
             query.whereKey("function", containsString: searchTerm.lowercaseString)
+            query.whereKey("symbol", containsString: searchTerm.lowercaseString)
         }
         
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
