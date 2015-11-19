@@ -40,6 +40,8 @@
 		3D971D0C1BFD84D1008AB82A /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D0B1BFD84D1008AB82A /* custombutton6.png */; };
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
+		C18A8A731BFE408600343C9C /* TutorialDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */; };
+		C18A8A771BFE5F9E00343C9C /* ParentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A741BFE423C00343C9C /* ParentPageViewController.swift */; };
 		E40A950B1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */; };
 		E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C031BF6682E00F608F4 /* Assets.xcassets */; };
 		E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */; };
@@ -94,6 +96,8 @@
 		3D971D0B1BFD84D1008AB82A /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
 		C13BADB01BFBBD6100694E94 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		C13BADB21BFBBDBC00694E94 /* Display.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Display.xib; sourceTree = "<group>"; };
+		C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialDisplayViewController.swift; sourceTree = "<group>"; };
+		C18A8A741BFE423C00343C9C /* ParentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentPageViewController.swift; sourceTree = "<group>"; };
 		E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpareButtonCollectionViewController.swift; sourceTree = "<group>"; };
 		E40C5BF91BF6682E00F608F4 /* CTCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40C5C031BF6682E00F608F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,6 +189,15 @@
 			path = CTCalc;
 			sourceTree = "<group>";
 		};
+		C18A8A761BFE424400343C9C /* TutorialPageView */ = {
+			isa = PBXGroup;
+			children = (
+				C18A8A741BFE423C00343C9C /* ParentPageViewController.swift */,
+				C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */,
+			);
+			name = TutorialPageView;
+			sourceTree = "<group>";
+		};
 		E40C5BF01BF6682E00F608F4 = {
 			isa = PBXGroup;
 			children = (
@@ -213,7 +226,6 @@
 		E40C5BFB1BF6682E00F608F4 /* CTCalc */ = {
 			isa = PBXGroup;
 			children = (
-				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
 				E40C5C111BF668CF00F608F4 /* Model */,
 				E40C5C101BF668CB00F608F4 /* Controller */,
 				E40C5C0F1BF668BB00F608F4 /* View */,
@@ -239,6 +251,8 @@
 				E418AA361BFA638600207878 /* CalculatorButton.xib */,
 				C13BADB21BFBBDBC00694E94 /* Display.xib */,
 				E418AA321BFA574600207878 /* ButtonLayout.swift */,
+				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
+				C18A8A761BFE424400343C9C /* TutorialPageView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -349,12 +363,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18A8A771BFE5F9E00343C9C /* ParentPageViewController.swift in Sources */,
 				E46FC2F01BFE4B0C00F5DB90 /* SemiDraggableViewController.swift in Sources */,
 				3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */,
 				E4EA281E1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift in Sources */,
 				3D19C1BE1BFBA4F900596252 /* ButtonTableViewCell.swift in Sources */,
 				E418AA331BFA574600207878 /* ButtonLayout.swift in Sources */,
 				E4EA28221BF6741700CC4B0F /* DraggableButtonCollectionViewController.swift in Sources */,
+				C18A8A731BFE408600343C9C /* TutorialDisplayViewController.swift in Sources */,
 				E40A950B1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift in Sources */,
 				3D19C1C01BFBA4F900596252 /* ParseKeys.swift in Sources */,
 				E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */,

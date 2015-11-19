@@ -111,6 +111,16 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             saveButtons()
 		}
 	}
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !NSUserDefaults.standardUserDefaults().boolForKey("shownTutorial")
+        {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownTutorial")
+            showTutorial()
+        }
+    }
 	
 	//press buttons
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -118,8 +128,19 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 		{
 			calculator.applyToken(readOnlyButtons[indexPath.row])
             collectionView.reloadData()
+            
+            if readOnlyButtons[indexPath.row].symbol == "help"
+            {
+                showTutorial()
+            }
 		}
 	}
+    
+    private func showTutorial()
+    {
+        let dcvc = parentViewController! as! DraggableContainerViewController
+        dcvc.performSegueWithIdentifier("showTutorial", sender: self)
+    }
     
     //MARK: overrides for display
     
