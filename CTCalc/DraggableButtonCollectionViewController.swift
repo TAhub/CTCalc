@@ -121,7 +121,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	}
 	
 	//to make sure the edit mode animation appears
-	private var firstEditMode = true
+	var firstEditMode = false
 	
 	override func viewWillAppear(animated: Bool)
 	{
@@ -136,11 +136,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		
 		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
-		
-		if !editMode
-		{
-			firstEditMode = false
-		}
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -175,7 +170,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	func transferCell(to:DraggableButtonCollectionViewController)
 	{
+		var fEM = false
+		if !to.editMode && editMode
+		{
+			fEM = true
+		}
 		to.editMode = editMode
+		to.firstEditMode = fEM
 		if let pickedUp = pickedUp
 		{
 			//give them your pickedUp
@@ -185,6 +186,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			//remove it from yourself
 			self.pickedUp = nil
 		}
+		firstEditMode = false
 	}
 	
 	var psuedoSegueMode:Bool = false
@@ -440,6 +442,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 //		print("screen: \(screenNum), landscape: \(landscape), size: \(cell.frame.size), row: \(indexPath.row)     landscape size: \(buttonsLandscape.count), portrait size: \(buttonsPortrait.count)")
 		
 		cell.token = readOnlyButtons[indexPath.row]
+		
+		if firstEditMode
+		{
+			firstEditMode = true
+			shakePart(cell)
+		}
 		
 //		cell.layer.cornerRadius = 10
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
