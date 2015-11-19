@@ -143,6 +143,7 @@ class DraggableContainerViewController: UIViewController {
 		{
 			for (i, t) in to.buttonsLandscape.enumerate()
 			{
+				print(t.symbol)
 				if t.symbol == " "
 				{
 					to.buttonsLandscape[i] = token
