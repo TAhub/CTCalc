@@ -185,7 +185,30 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	{
 		didSet
 		{
-			collectionView?.reloadData()
+			if !oldValue && editMode
+			{
+				//turn on the shake animation
+				for i in 0..<readOnlyButtons.count
+				{
+					let cell:UICollectionViewCell?
+					if let cellS1 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1))
+					{
+						cell = cellS1
+					}
+					else if let cellS0 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 0))
+					{
+						cell = cellS0
+					}
+					else
+					{
+						cell = nil
+					}
+					if let cell = cell
+					{
+						shakePart(cell)
+					}
+				}
+			}
 		}
 	}
 	
@@ -401,11 +424,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 //		print("screen: \(screenNum), landscape: \(landscape), size: \(cell.frame.size), row: \(indexPath.row)     landscape size: \(buttonsLandscape.count), portrait size: \(buttonsPortrait.count)")
 		
 		cell.token = readOnlyButtons[indexPath.row]
-		
-		if editMode
-		{
-			shakePart(cell)
-		}
 		
 //		cell.layer.cornerRadius = 10
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
