@@ -120,9 +120,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
         
 	}
 	
-	//to make sure the edit mode animation appears
-	var firstEditMode = false
-	
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
@@ -170,13 +167,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	func transferCell(to:DraggableButtonCollectionViewController)
 	{
-		var fEM = false
-		if !to.editMode && editMode
-		{
-			fEM = true
-		}
 		to.editMode = editMode
-		to.firstEditMode = fEM
 		if let pickedUp = pickedUp
 		{
 			//give them your pickedUp
@@ -186,42 +177,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			//remove it from yourself
 			self.pickedUp = nil
 		}
-		firstEditMode = false
 	}
 	
 	var psuedoSegueMode:Bool = false
 	
 	private var editMode:Bool = false
-	{
-		didSet
-		{
-			if !oldValue && editMode
-			{
-				//turn on the shake animation
-				for i in 0..<readOnlyButtons.count
-				{
-					let cell:UICollectionViewCell?
-					if let cellS1 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1))
-					{
-						cell = cellS1
-					}
-					else if let cellS0 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 0))
-					{
-						cell = cellS0
-					}
-					else
-					{
-						cell = nil
-					}
-					if let cell = cell
-					{
-						shakePart(cell)
-					}
-				}
-			}
-		}
-	}
 	
+	private var lastEditMode = false
 	func toggleEditMode(sender: UILongPressGestureRecognizer)
 	{
 		if sender.state == UIGestureRecognizerState.Began
@@ -231,6 +193,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			{
 				pickedUp = nil
 			}
+			collectionView?.reloadData()
+			collectionView?.layoutIfNeeded()
+			lastEditMode = editMode
 		}
 	}
 	
@@ -411,6 +376,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		let shakeXMag = 2 * xMult
 		let shakeYMag = 2 * yMult
 		let shakeInter = 0.12 * Double(arc4random_uniform(100) + 50) / 100
+		
+		
 		UIView.animateWithDuration(shakeInter, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations:
 		{
 			view.frame.origin.x += shakeXMag
@@ -443,9 +410,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		cell.token = readOnlyButtons[indexPath.row]
 		
-		if firstEditMode
+		//cancel the cell's shake
+		if editMode && !lastEditMode
 		{
-			firstEditMode = true
 			shakePart(cell)
 		}
 		
