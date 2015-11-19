@@ -179,16 +179,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	private var psuedoSegueMode:Bool = false
+	var psuedoSegueMode:Bool = false
 	
 	private var editMode:Bool = false
-	{
-		didSet
-		{
-			collectionView?.reloadData()
-		}
-	}
 	
+	private var lastEditMode = false
 	func toggleEditMode(sender: UILongPressGestureRecognizer)
 	{
 		if sender.state == UIGestureRecognizerState.Began
@@ -198,6 +193,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			{
 				pickedUp = nil
 			}
+			collectionView?.reloadData()
+			collectionView?.layoutIfNeeded()
+			lastEditMode = editMode
 		}
 	}
 	
@@ -224,14 +222,21 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
 					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
 					
+					//load the container edges
+					let containerMargin:CGFloat = 6
+					let containerView = UIView(frame: CGRect(x: startX - containerMargin, y: startY - containerMargin, width: cell.bounds.width + 2 * containerMargin, height: cell.bounds.height + 2 * containerMargin))
+					containerView.layer.cornerRadius = 10
+					containerView.backgroundColor = UIColor.whiteColor()
+					
 					//load the cell from a nib
 					let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
-					loadedNib.frame = CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height)
+					loadedNib.frame = CGRect(x: containerMargin, y: containerMargin, width: cell.bounds.width, height: cell.bounds.height)
 					loadedNib.token = readOnlyButtons[path.row]
+					containerView.addSubview(loadedNib)
 					
-					view.addSubview(loadedNib)
+					view.addSubview(containerView)
 					
-					pickedUp = PickedUpCell(cellRow: path.row, appearance: loadedNib, viewControllerFrom: self)
+					pickedUp = PickedUpCell(cellRow: path.row, appearance: containerView, viewControllerFrom: self)
 				}
 			case UIGestureRecognizerState.Changed:
 				if let pickedUp = pickedUp
@@ -305,8 +310,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				dest.psuedoSegueMode = psuedoSegueMode
 				transferCell(dest)
 			}
-			else
+			else if let dest = dcvc.getControllerWithID(id) as? SemiDraggableViewController
 			{
+				dest.psuedoSegueMode = psuedoSegueMode
 				editMode = false
 				pickedUp = nil
 			}
@@ -370,6 +376,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		let shakeXMag = 2 * xMult
 		let shakeYMag = 2 * yMult
 		let shakeInter = 0.12 * Double(arc4random_uniform(100) + 50) / 100
+		
+		
 		UIView.animateWithDuration(shakeInter, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations:
 		{
 			view.frame.origin.x += shakeXMag
@@ -402,7 +410,8 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		cell.token = readOnlyButtons[indexPath.row]
 		
-		if editMode
+		//cancel the cell's shake
+		if editMode && !lastEditMode
 		{
 			shakePart(cell)
 		}
