@@ -179,7 +179,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	private var psuedoSegueMode:Bool = false
+	var psuedoSegueMode:Bool = false
 	
 	private var editMode:Bool = false
 	{
@@ -328,8 +328,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				dest.psuedoSegueMode = psuedoSegueMode
 				transferCell(dest)
 			}
-			else
+			else if let dest = dcvc.getControllerWithID(id) as? SemiDraggableViewController
 			{
+				dest.psuedoSegueMode = psuedoSegueMode
 				editMode = false
 				pickedUp = nil
 			}

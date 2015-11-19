@@ -332,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="1324" y="225"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Semi Draggable View Controller-->
         <scene sceneID="DDV-fc-JLR">
             <objects>
-                <navigationController storyboardIdentifier="MakerNavigation" automaticallyAdjustsScrollViewInsets="NO" id="lmt-rP-Kel" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MakerNavigation" automaticallyAdjustsScrollViewInsets="NO" id="lmt-rP-Kel" customClass="SemiDraggableViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eVU-aq-CAt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -343,6 +343,9 @@
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="rightSegue" value="MainCollection"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="2F2-so-7WV" kind="relationship" relationship="rootViewController" id="akm-8M-j7c"/>
                     </connections>
