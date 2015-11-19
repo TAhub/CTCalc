@@ -185,35 +185,68 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ButtonTableViewCell" rowHeight="75" id="JS3-T3-glM" customClass="ButtonTableViewCell" customModule="CTCalc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JS3-T3-glM" id="dml-yp-aLz">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="JS3-T3-glM" id="dml-yp-aLz">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-dk-oRR">
-                                                    <rect key="frame" x="18" y="12" width="55" height="55"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wed-dk-oRR">
+                                                    <rect key="frame" x="8" y="8" width="55" height="55"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="55" id="Woa-my-J16"/>
+                                                        <constraint firstAttribute="height" constant="55" id="Xpi-Pi-AZU"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Button Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4S-4b-tXU">
-                                                    <rect key="frame" x="92" y="12" width="423" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Button Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4S-4b-tXU">
+                                                    <rect key="frame" x="71" y="12" width="101" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Button Function" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-sH-a0j">
-                                                    <rect key="frame" x="92" y="42" width="409" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Button Function" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-sH-a0j">
+                                                    <rect key="frame" x="71" y="42" width="122" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a85-hx-QdT">
+                                                    <rect key="frame" x="562" y="8" width="30" height="30"/>
+                                                    <state key="normal" title="Add"/>
+                                                    <connections>
+                                                        <action selector="addAction" destination="JS3-T3-glM" eventType="touchUpInside" id="4XS-PB-icT"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g39-iD-bjk">
+                                                    <rect key="frame" x="537" y="38" width="55" height="30"/>
+                                                    <state key="normal" title="Remove"/>
+                                                    <connections>
+                                                        <action selector="removeAction" destination="JS3-T3-glM" eventType="touchUpInside" id="q9o-dK-3OE"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="K4S-4b-tXU" firstAttribute="leading" secondItem="Wed-dk-oRR" secondAttribute="trailing" constant="8" symbolic="YES" id="64H-Xg-TVg"/>
+                                                <constraint firstItem="Wed-dk-oRR" firstAttribute="top" secondItem="dml-yp-aLz" secondAttribute="topMargin" id="7yK-4u-9cO"/>
+                                                <constraint firstItem="g39-iD-bjk" firstAttribute="centerY" secondItem="Hoc-sH-a0j" secondAttribute="centerY" id="Gke-Fg-Y2m"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wed-dk-oRR" secondAttribute="bottom" id="JFx-Kg-0c1"/>
+                                                <constraint firstItem="a85-hx-QdT" firstAttribute="centerY" secondItem="K4S-4b-tXU" secondAttribute="centerY" id="Kym-pk-std"/>
+                                                <constraint firstItem="K4S-4b-tXU" firstAttribute="top" secondItem="dml-yp-aLz" secondAttribute="topMargin" constant="4" id="O71-ia-vOz"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a85-hx-QdT" secondAttribute="trailing" id="O8z-PP-zrr"/>
+                                                <constraint firstItem="Wed-dk-oRR" firstAttribute="leading" secondItem="dml-yp-aLz" secondAttribute="leadingMargin" id="V1W-En-rHT"/>
+                                                <constraint firstItem="Hoc-sH-a0j" firstAttribute="top" secondItem="K4S-4b-tXU" secondAttribute="bottom" constant="9" id="agK-r1-Aeu"/>
+                                                <constraint firstItem="Hoc-sH-a0j" firstAttribute="leading" secondItem="Wed-dk-oRR" secondAttribute="trailing" constant="8" symbolic="YES" id="nXm-8n-t2L"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="g39-iD-bjk" secondAttribute="trailing" id="yED-zR-Uv3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
+                                            <outlet property="addButton" destination="a85-hx-QdT" id="oS1-WM-6ln"/>
                                             <outlet property="buttonImage" destination="Wed-dk-oRR" id="dMc-ka-cfL"/>
                                             <outlet property="function" destination="Hoc-sH-a0j" id="KzX-bh-yza"/>
+                                            <outlet property="removeButton" destination="g39-iD-bjk" id="Dsx-7V-2rk"/>
                                             <outlet property="symbol" destination="K4S-4b-tXU" id="9i7-MR-lOK"/>
                                         </connections>
                                     </tableViewCell>

@@ -141,18 +141,32 @@ class DraggableContainerViewController: UIViewController {
 		removeTokenInner(token, from: spc)
 	}
 	
-	func addToken(token:Token)->Bool
+	func hasToken(token:Token)->Bool
 	{
-		func canAddToken(token:Token, to:DraggableButtonCollectionViewController) -> Bool
+		func hasToken(token:Token, to:DraggableButtonCollectionViewController) -> Bool
 		{
 			for t in to.buttonsLandscape
 			{
 				if t.symbol == token.symbol
 				{
-					return false
+					return true
 				}
 			}
-			return true
+			return false
+		}
+		
+		let cpc = viewControllers[0] as! CalculatorCollectionViewController
+		let spc = viewControllers[1] as! SpareButtonCollectionViewController
+		spc.loadMyStuff()
+		
+		return hasToken(token, to: cpc) || hasToken(token, to: spc)
+	}
+	
+	func addToken(token:Token)->Bool
+	{
+		if hasToken(token)
+		{
+			return false
 		}
 		
 		func addTokenInner(token:Token, to:DraggableButtonCollectionViewController) -> Bool
@@ -173,12 +187,6 @@ class DraggableContainerViewController: UIViewController {
 		let cpc = viewControllers[0] as! CalculatorCollectionViewController
 		let spc = viewControllers[1] as! SpareButtonCollectionViewController
 		spc.loadMyStuff()
-		
-		if !canAddToken(token, to: cpc) || !canAddToken(token, to: spc)
-		{
-			//there's already a function with that name, so you can't add it
-			return false
-		}
 		
 		if addTokenInner(token, to: cpc)
 		{
