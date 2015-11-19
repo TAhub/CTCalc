@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eXA-O2-h7m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lmt-rP-Kel">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Draggable Container View Controller-->
@@ -128,8 +129,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="gsa-th-S2V">
                         <barButtonItem key="rightBarButtonItem" title="Add Custom Button" id="crG-k1-Ov5">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="B6U-49-jr6" kind="show" id="Pio-jU-Fkh"/>
+                                <segue destination="B6U-49-jr6" kind="show" identifier="ButtonMakerViewController" id="D3s-HI-VHb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -154,10 +156,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmB-NX-PD0">
-                                <rect key="frame" x="246" y="401" width="109" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFf-Lf-UYv" userLabel="Green Button">
+                                <rect key="frame" x="313" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="1Ze-gp-6E6"/>
+                                    <constraint firstAttribute="height" constant="30" id="SkH-Xm-sVS"/>
+                                </constraints>
+                                <state key="normal" image="custombutton3.png"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="76" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="greenButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="dIr-Eq-NkN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-32-qPp" userLabel="Orange Button">
+                                <rect key="frame" x="275" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KTh-TT-zHx"/>
+                                    <constraint firstAttribute="width" constant="30" id="vjL-7g-CAt"/>
+                                </constraints>
+                                <state key="normal" image="custombutton2.png"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="114" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="orangeButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="DmV-sV-slU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-eR-Veh" userLabel="Gray Button">
+                                <rect key="frame" x="393" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="2HL-gg-UFC"/>
+                                    <constraint firstAttribute="height" constant="30" id="Bgb-De-H32"/>
+                                </constraints>
+                                <state key="normal" image="custombutton5.png"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="152" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="grayButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="hiq-E3-Gdi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ew-Dto" userLabel="Orange Red Button">
+                                <rect key="frame" x="354" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EcG-DL-1gf"/>
+                                    <constraint firstAttribute="width" constant="30" id="Q3o-rC-Rq3"/>
+                                </constraints>
+                                <state key="normal" image="custombutton4.png"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="38" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="yellowOrangeButton:" destination="B6U-49-jr6" eventType="touchUpInside" id="pZS-CA-4Mj"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIF-9V-on9">
+                                <rect key="frame" x="132" y="222" width="80" height="80"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="EJj-v6-nO1"/>
+                                    <constraint firstAttribute="width" constant="80" id="ac0-qI-qoT"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="32" y="129" width="79" height="80"/>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmB-NX-PD0">
+                                <rect key="frame" x="245" y="401" width="68" height="45"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -168,84 +238,59 @@
                                     <action selector="saveCustomButton:" destination="B6U-49-jr6" eventType="touchUpInside" id="Pmn-TM-le0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ew-Dto" userLabel="Orange Color">
-                                <rect key="frame" x="382" y="272" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="38" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="orangeButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="Oxk-8V-ETg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFf-Lf-UYv" userLabel="Yellow Color">
-                                <rect key="frame" x="333" y="272" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="76" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="yellowButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="9OW-C9-9K4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-eR-Veh" userLabel="Purple Color">
-                                <rect key="frame" x="430" y="272" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="152" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="purpleButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="USk-dZ-2fF"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIF-9V-on9">
-                                <rect key="frame" x="132" y="222" width="80" height="80"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="32" y="129" width="79" height="80"/>
-                                </variation>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Button Name - 5 letters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SoE-0d-enR">
-                                <rect key="frame" x="231" y="222" width="238" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="131" y="129" width="173" height="30"/>
-                                </variation>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-zd-dWj" userLabel="Red Color">
-                                <rect key="frame" x="239" y="272" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-zd-dWj" userLabel="Blue Button">
+                                <rect key="frame" x="237" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ISp-g5-yIs"/>
+                                    <constraint firstAttribute="height" constant="30" id="zbj-Te-SHd"/>
+                                </constraints>
+                                <state key="normal" image="custombutton1.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="redButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="zZ6-JI-K2I"/>
+                                    <action selector="blueButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="NhQ-hu-fD3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-32-qPp" userLabel="Green Color">
-                                <rect key="frame" x="284" y="272" width="30" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-lF-fOP" userLabel="blueWhiteButton">
+                                <rect key="frame" x="431" y="272" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CYT-ff-YdY"/>
+                                    <constraint firstAttribute="width" constant="30" id="Vug-Y3-XbF"/>
+                                </constraints>
+                                <state key="normal" image="custombutton6.png"/>
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="114" y="0.0" width="30" height="30"/>
                                 </variation>
                                 <connections>
-                                    <action selector="greenButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="rdi-hJ-kRC"/>
+                                    <action selector="blueWhiteButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="ZMT-gk-10B"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FF7-32-qPp" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="0cu-0W-n57"/>
+                            <constraint firstItem="JFf-Lf-UYv" firstAttribute="leading" secondItem="FF7-32-qPp" secondAttribute="trailing" constant="8" id="1qD-VQ-BbG"/>
+                            <constraint firstItem="NF2-ew-Dto" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="7Bs-Jc-PM7"/>
+                            <constraint firstItem="GHH-lF-fOP" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Aa8-zR-6r1"/>
+                            <constraint firstItem="ENF-eR-Veh" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Ewu-iI-Cwu"/>
+                            <constraint firstItem="hEh-zd-dWj" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="JOL-gj-g7I"/>
+                            <constraint firstItem="GHH-lF-fOP" firstAttribute="baseline" secondItem="mIF-9V-on9" secondAttribute="baseline" id="QEQ-at-NjO"/>
+                            <constraint firstItem="JFf-Lf-UYv" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="YU1-Nn-5K9"/>
+                            <constraint firstItem="LmB-NX-PD0" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="337" id="Z9h-4N-niU"/>
+                            <constraint firstItem="NF2-ew-Dto" firstAttribute="leading" secondItem="GHH-lF-fOP" secondAttribute="trailing" constant="-107" id="c4M-VQ-eUw"/>
+                            <constraint firstItem="mIF-9V-on9" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="ctn-Hy-4qN"/>
+                            <constraint firstItem="mIF-9V-on9" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="dhh-2b-Ll3"/>
+                            <constraint firstItem="FF7-32-qPp" firstAttribute="leading" secondItem="NF2-ew-Dto" secondAttribute="trailing" constant="-109" id="e9H-b2-SOf"/>
+                            <constraint firstItem="ENF-eR-Veh" firstAttribute="leading" secondItem="hEh-zd-dWj" secondAttribute="trailing" constant="126" id="hny-xu-cBK"/>
+                            <constraint firstItem="hEh-zd-dWj" firstAttribute="leading" secondItem="JFf-Lf-UYv" secondAttribute="trailing" constant="-106" id="mp9-tW-fcS"/>
+                            <constraint firstItem="GHH-lF-fOP" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="219" id="nDf-Vt-AtE"/>
+                            <constraint firstItem="LmB-NX-PD0" firstAttribute="leading" secondItem="wAO-3h-ZyJ" secondAttribute="leadingMargin" constant="225" id="xnb-Oh-WZa"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonView" destination="mIF-9V-on9" id="XBo-Ig-b0j"/>
-                        <outlet property="customButton" destination="mIF-9V-on9" id="4uo-K9-GNv"/>
-                        <outlet property="customButtonName" destination="SoE-0d-enR" id="lsS-2Y-teH"/>
+                        <outlet property="buttonView" destination="mIF-9V-on9" id="sme-Ca-cgl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yW8-s3-aqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -301,4 +346,12 @@
             <point key="canvasLocation" x="626" y="906"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="custombutton1.png" width="120" height="120"/>
+        <image name="custombutton2.png" width="120" height="120"/>
+        <image name="custombutton3.png" width="120" height="120"/>
+        <image name="custombutton4.png" width="120" height="120"/>
+        <image name="custombutton5.png" width="120" height="120"/>
+        <image name="custombutton6.png" width="120" height="120"/>
+    </resources>
 </document>
