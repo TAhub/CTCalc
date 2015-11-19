@@ -190,7 +190,6 @@
 		E40C5BFB1BF6682E00F608F4 /* CTCalc */ = {
 			isa = PBXGroup;
 			children = (
-				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
 				E40C5C111BF668CF00F608F4 /* Model */,
 				E40C5C101BF668CB00F608F4 /* Controller */,
 				E40C5C0F1BF668BB00F608F4 /* View */,
@@ -216,6 +215,7 @@
 				E418AA361BFA638600207878 /* CalculatorButton.xib */,
 				C13BADB21BFBBDBC00694E94 /* Display.xib */,
 				E418AA321BFA574600207878 /* ButtonLayout.swift */,
+				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
