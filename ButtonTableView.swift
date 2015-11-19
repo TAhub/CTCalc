@@ -41,7 +41,7 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func getParseData(searchTerm: String? = nil) {
         let query = PFQuery(className: "ButtomImages")
-        query.selectKeys(["Image", "symbol", "function"])
+        query.selectKeys(["imageNumber", "symbol", "function"])
         
         if let searchTerm = searchTerm {
             query.whereKey("function", containsString: searchTerm.lowercaseString)
@@ -100,12 +100,16 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         cell.symbol.text = symbol
         
-        if let imageFile = buttonImage["Image"] as? PFFile {
-            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                guard let data = data else {return}
-                cell.buttonImage.image = UIImage(data: data)
-            })
-        }
+//        if let imageFile = buttonImage["Image"] as? PFFile {
+//            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                guard let data = data else {return}
+//                cell.buttonImage.image = UIImage(data: data)
+//            })
+//	}
+		if let imageNumber = buttonImage["imageNumber"] as? Int
+		{
+			cell.buttonImage.image = kImages[imageNumber]
+		}
         return cell
     }
     
