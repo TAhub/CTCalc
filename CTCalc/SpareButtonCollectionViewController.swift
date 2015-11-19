@@ -13,8 +13,6 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		screenNum = 1
-		
 		loadMyStuff()
 	}
 	
@@ -26,6 +24,8 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	
 	func loadMyStuff()
 	{
+		screenNum = 1
+		
 		if !loadButtons()
 		{
             buttonsPortrait = [Token]()

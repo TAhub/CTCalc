@@ -133,12 +133,28 @@ class DraggableContainerViewController: UIViewController {
 			}
 		}
 		
-		removeTokenInner(token, from: viewControllers[0] as! DraggableButtonCollectionViewController)
-		removeTokenInner(token, from: viewControllers[1] as! DraggableButtonCollectionViewController)
+		let cpc = viewControllers[0] as! CalculatorCollectionViewController
+		let spc = viewControllers[1] as! SpareButtonCollectionViewController
+		spc.loadMyStuff()
+		
+		removeTokenInner(token, from: cpc)
+		removeTokenInner(token, from: spc)
 	}
 	
 	func addToken(token:Token)->Bool
 	{
+		func canAddToken(token:Token, to:DraggableButtonCollectionViewController) -> Bool
+		{
+			for t in to.buttonsLandscape
+			{
+				if t.symbol == token.symbol
+				{
+					return false
+				}
+			}
+			return true
+		}
+		
 		func addTokenInner(token:Token, to:DraggableButtonCollectionViewController) -> Bool
 		{
 			for (i, t) in to.buttonsLandscape.enumerate()
@@ -153,16 +169,20 @@ class DraggableContainerViewController: UIViewController {
 			return false
 		}
 		
-		if addTokenInner(token, to: viewControllers[0] as! DraggableButtonCollectionViewController)
+		
+		let cpc = viewControllers[0] as! CalculatorCollectionViewController
+		let spc = viewControllers[1] as! SpareButtonCollectionViewController
+		spc.loadMyStuff()
+		
+		if !canAddToken(token, to: cpc) || !canAddToken(token, to: spc)
 		{
-			return true
+			//there's already a function with that name, so you can't add it
+			return false
 		}
 		
-		let spc = viewControllers[1] as! SpareButtonCollectionViewController
-		if spc.screenNum == nil
+		if addTokenInner(token, to: cpc)
 		{
-			spc.screenNum = 1
-			spc.loadMyStuff()
+			return true
 		}
 		return addTokenInner(token, to: spc)
 	}
