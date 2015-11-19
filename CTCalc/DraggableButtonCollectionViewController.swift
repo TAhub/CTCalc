@@ -76,7 +76,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					if !isPreset
 					{
 						//it must be custom
-						print("custom token \"\(symbol)\"")
 						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
 					}
 				}

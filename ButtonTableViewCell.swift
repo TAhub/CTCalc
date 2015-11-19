@@ -13,8 +13,8 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var function: UILabel!
     @IBOutlet weak var symbol: UILabel!
     @IBOutlet weak var buttonImage: UIImageView!
-    
-    class func identifier() -> String {
+	
+	class func identifier() -> String {
         return "ButtonTableViewCell"
     }
     
@@ -27,4 +27,44 @@ class ButtonTableViewCell: UITableViewCell {
 
     }
 
+	var reloadClosure:(()->())!
+	var dcvc:DraggableContainerViewController!
+	var token:Token?
+	{
+		didSet
+		{
+			reloadNames()
+		}
+	}
+
+	private func reloadNames()
+	{
+		if let token = token
+		{
+			function.text = token.functionReplace ?? ""
+			symbol.text = token.symbol
+			buttonImage.image = kImages[token.imageNumber]
+			
+			let hasToken = dcvc.hasToken(token)
+			addButton.hidden = hasToken
+			removeButton.hidden = !hasToken
+		}
+	}
+
+	@IBOutlet weak var addButton: UIButton!
+	@IBOutlet weak var removeButton: UIButton!
+	
+	
+	@IBAction func addAction()
+	{
+		dcvc.addToken(token!)
+		reloadClosure()
+	}
+	
+	@IBAction func removeAction()
+	{
+		dcvc.removeToken(token!)
+		reloadClosure()
+	}
+	
 }
