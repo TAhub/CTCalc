@@ -367,13 +367,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		let shakeXMag = 2 * xMult
 		let shakeYMag = 2 * yMult
 		let shakeInter = 0.12 * Double(arc4random_uniform(100) + 50) / 100
-		UIView.animateWithDuration(shakeInter, animations:
+		UIView.animateWithDuration(shakeInter, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations:
 		{
 			view.frame.origin.x += shakeXMag
 			view.frame.origin.y += shakeYMag
 		})
 		{ (success) in
-			UIView.animateWithDuration(shakeInter, animations:
+			UIView.animateWithDuration(shakeInter, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations:
 			{
 				view.frame.origin.x -= shakeXMag
 				view.frame.origin.y -= shakeYMag
@@ -382,6 +382,10 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				if self.editMode
 				{
 					self.shakePart(view)
+				}
+				else
+				{
+					self.collectionView?.reloadData()
 				}
 			}
 		}
