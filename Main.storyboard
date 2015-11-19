@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lmt-rP-Kel">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eXA-O2-h7m">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -238,6 +238,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                             <rect key="frame" x="141" y="274" width="30" height="30"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="blueButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="asV-Co-2j3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-lF-fOP" userLabel="blueWhiteButton">
                                         <rect key="frame" x="127" y="97" width="30" height="30"/>
@@ -253,14 +256,6 @@
                                             <action selector="blueWhiteButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="ZMT-gk-10B"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Function" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KI6-mi-ExN">
-                                        <rect key="frame" x="266" y="48" width="108" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="257" y="224" width="77.5" height="30"/>
-                                        </variation>
-                                    </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Button Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-Ge-nCY">
                                         <rect key="frame" x="127" y="48" width="117.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -281,6 +276,12 @@
                                             <rect key="frame" x="36" y="224" width="80" height="80"/>
                                         </variation>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2a-ee-25f">
+                                        <rect key="frame" x="261" y="48" width="113" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -288,13 +289,13 @@
                                     <constraint firstItem="JFf-Lf-UYv" firstAttribute="leading" secondItem="FF7-32-qPp" secondAttribute="trailing" constant="8" id="3fS-lZ-OgQ"/>
                                     <constraint firstItem="hEh-zd-dWj" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="9o4-ez-Eqm"/>
                                     <constraint firstItem="JFf-Lf-UYv" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="A88-Aj-Rxm"/>
+                                    <constraint firstItem="M2a-ee-25f" firstAttribute="leading" secondItem="4LV-Ge-nCY" secondAttribute="trailing" constant="16.5" id="AoU-WD-kFt"/>
                                     <constraint firstItem="FF7-32-qPp" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="GO1-sU-jbF"/>
                                     <constraint firstItem="GHH-lF-fOP" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="INI-D4-ueb"/>
                                     <constraint firstItem="GHH-lF-fOP" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="19" id="YsV-eJ-NJL"/>
                                     <constraint firstItem="NF2-ew-Dto" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Yw4-ug-6pL"/>
                                     <constraint firstItem="ENF-eR-Veh" firstAttribute="leading" secondItem="NF2-ew-Dto" secondAttribute="trailing" constant="16" id="anA-ql-mxi"/>
                                     <constraint firstItem="NF2-ew-Dto" firstAttribute="leading" secondItem="GHH-lF-fOP" secondAttribute="trailing" constant="20" id="f22-dp-Twr"/>
-                                    <constraint firstItem="KI6-mi-ExN" firstAttribute="leading" secondItem="4LV-Ge-nCY" secondAttribute="trailing" constant="21.5" id="g5E-7S-mNT"/>
                                     <constraint firstItem="hEh-zd-dWj" firstAttribute="leading" secondItem="JFf-Lf-UYv" secondAttribute="trailing" constant="15" id="kLG-ZT-HiO"/>
                                     <constraint firstItem="4LV-Ge-nCY" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="19" id="nTq-X7-PKh"/>
                                     <constraint firstItem="ENF-eR-Veh" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="tO1-Xd-aBM"/>
@@ -309,7 +310,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonFunction" destination="KI6-mi-ExN" id="dVB-ut-lWF"/>
+                        <outlet property="buttonFunctionLabel" destination="M2a-ee-25f" id="DkD-u0-a9B"/>
                         <outlet property="buttonView" destination="mIF-9V-on9" id="sme-Ca-cgl"/>
                         <outlet property="symbolTextView" destination="4LV-Ge-nCY" id="kgW-h4-6j4"/>
                     </connections>

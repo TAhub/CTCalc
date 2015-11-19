@@ -13,10 +13,10 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     
     var blueWhitebutton : UIImageView?
 
-    @IBOutlet weak var buttonFunction: UITextField!
+    @IBOutlet weak var buttonFunctionLabel: UILabel!
     @IBOutlet weak var symbolTextView: UITextField! {
         didSet {
-            symbolTextView.text = function
+            buttonFunctionLabel.text = function
         }
     }
     @IBOutlet weak var buttonView: UIImageView!
@@ -53,12 +53,11 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 
     
             //           SAVES BUTTONS TO PARSE
-    func uploadButton(image: UIImage, imageName: String, buttonFunction:String, symbol:String, completion: (success: Bool) -> ()) {
+    func uploadButton(image: UIImage, imageName: String, symbol:String, completion: (success: Bool) -> ()) {
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             let imageFile = PFFile(name: imageName, data: imageData)
             let status = PFObject(className: "ButtomImages")
             status["Image"] = imageFile
-            status["function"] = buttonFunction
             status["symbol"] = symbol
             
             status.saveInBackgroundWithBlock( { (success, error) -> Void in
@@ -78,14 +77,14 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     @IBAction func saveCustomButton(sender: AnyObject) {
-        if buttonFunction.text == "" || symbolTextView.text == "" {
+        if symbolTextView.text == "" {
             let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
                 message: "" as String, preferredStyle:.Alert)
             let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
         } else{
-            uploadButton(buttonView.image!, imageName: "image", buttonFunction: buttonFunction.text!, symbol: symbolTextView.text!) { (success) -> () in
+            uploadButton(buttonView.image!, imageName: "image", symbol: symbolTextView.text!) { (success) -> () in
                 if success {
                     print("yay")
                 }else {
@@ -97,7 +96,6 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonFunction.delegate = self
         symbolTextView.delegate = self
         
     }
