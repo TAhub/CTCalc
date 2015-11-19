@@ -21,27 +21,32 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     var buttonImages = [PFObject]() {
         didSet {
             self.buttonTableView.reloadData()
+            self.searchBar.resignFirstResponder()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonTableView.dataSource = self
-        buttonTableView.delegate = self
-        self.buttonTableView.reloadData()
-
+        self.buttonTableView.dataSource = self
+        self.buttonTableView.delegate = self
+        
+        self.searchBar.showsCancelButton = true
+        self.searchBar.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.getParseData()
-        self.buttonTableView.reloadData()
-
     }
     
-    func getParseData() {
+    func getParseData(searchTerm: String? = nil) {
         let query = PFQuery(className: "ButtomImages")
         query.selectKeys(["Image", "symbol", "function"])
+        
+        if let searchTerm = searchTerm {
+            query.whereKey("function", containsString: searchTerm.lowercaseString)
+        }
+        
         query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             guard let objects = objects else {return}
             self.buttonImages = objects
@@ -88,56 +93,30 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
                 /// GET THE IMAGE FROM PARSE AND LOAD IT INTO THE TABLEVIEW
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as? ButtonTableViewCell else {
-            let emptycell = UITableViewCell()
-            return emptycell
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as! ButtonTableViewCell
         
         let buttonImage = self.buttonImages[indexPath.row]
         let symbol = buttonImage["symbol"] as? String
-        let function = buttonImage["function"] as? String
-        
         
         cell.symbol.text = symbol
-        cell.function.text = function
         
         if let imageFile = buttonImage["Image"] as? PFFile {
             imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                
                 guard let data = data else {return}
-                cell.imageView?.image = UIImage(data: data)                
-                self.buttonTableView.reloadData()
-
+                cell.buttonImage.image = UIImage(data: data)
             })
         }
         return cell
     }
     
     // MARK:   SEARCH BAR
-
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.searchBar.endEditing(true)
-    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if shouldShowSearchResults {
-            shouldShowSearchResults = true
-            buttonTableView.reloadData()
-        
-        
-        searchController.searchBar.resignFirstResponder()
-        self.searchBar.endEditing(true)
-        }}
-    
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        shouldShowSearchResults = true
-        buttonTableView.reloadData()
-        }
+        guard let searchText = searchBar.text else {return}
+        self.getParseData(searchText)
+    }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        shouldShowSearchResults = false
-        buttonTableView.reloadData()
-        }
+        self.getParseData()
+    }
 }

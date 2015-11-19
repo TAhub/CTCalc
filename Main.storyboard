@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Draggable Container View Controller-->
@@ -156,155 +155,162 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFf-Lf-UYv" userLabel="Green Button">
-                                <rect key="frame" x="313" y="272" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="1Ze-gp-6E6"/>
-                                    <constraint firstAttribute="height" constant="30" id="SkH-Xm-sVS"/>
-                                </constraints>
-                                <state key="normal" image="custombutton3.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="76" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="greenButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="dIr-Eq-NkN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-32-qPp" userLabel="Orange Button">
-                                <rect key="frame" x="275" y="272" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="KTh-TT-zHx"/>
-                                    <constraint firstAttribute="width" constant="30" id="vjL-7g-CAt"/>
-                                </constraints>
-                                <state key="normal" image="custombutton2.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="114" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="orangeButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="DmV-sV-slU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-eR-Veh" userLabel="Gray Button">
-                                <rect key="frame" x="393" y="272" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="2HL-gg-UFC"/>
-                                    <constraint firstAttribute="height" constant="30" id="Bgb-De-H32"/>
-                                </constraints>
-                                <state key="normal" image="custombutton5.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="152" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="grayButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="hiq-E3-Gdi"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ew-Dto" userLabel="Orange Red Button">
-                                <rect key="frame" x="354" y="272" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="EcG-DL-1gf"/>
-                                    <constraint firstAttribute="width" constant="30" id="Q3o-rC-Rq3"/>
-                                </constraints>
-                                <state key="normal" image="custombutton4.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="38" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="yellowOrangeButton:" destination="B6U-49-jr6" eventType="touchUpInside" id="pZS-CA-4Mj"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mIF-9V-on9">
-                                <rect key="frame" x="132" y="222" width="80" height="80"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="EJj-v6-nO1"/>
-                                    <constraint firstAttribute="width" constant="80" id="ac0-qI-qoT"/>
-                                </constraints>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="32" y="129" width="79" height="80"/>
-                                </variation>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmB-NX-PD0">
-                                <rect key="frame" x="245" y="401" width="68" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmB-NX-PD0">
+                                <rect key="frame" x="270" y="362" width="68" height="45"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="256" width="400" height="47"/>
+                                    <rect key="frame" x="177" y="354" width="68" height="45"/>
                                 </variation>
                                 <connections>
                                     <action selector="saveCustomButton:" destination="B6U-49-jr6" eventType="touchUpInside" id="Pmn-TM-le0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-zd-dWj" userLabel="Blue Button">
-                                <rect key="frame" x="237" y="272" width="30" height="30"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUl-ST-lqD">
+                                <rect key="frame" x="103" y="178" width="403" height="176"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFf-Lf-UYv" userLabel="Green Button">
+                                        <rect key="frame" x="299" y="97" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="a7E-on-LpO"/>
+                                            <constraint firstAttribute="height" constant="30" id="rMN-an-PCz"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton3.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="217" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="greenButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="dIr-Eq-NkN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-32-qPp" userLabel="Orange Button">
+                                        <rect key="frame" x="261" y="98" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5bx-yZ-FpX"/>
+                                            <constraint firstAttribute="width" constant="30" id="weh-fV-5yI"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton2.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="179" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="orangeButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="DmV-sV-slU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-eR-Veh" userLabel="Gray Button">
+                                        <rect key="frame" x="223" y="97" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="O1t-ef-cdV"/>
+                                            <constraint firstAttribute="width" constant="30" id="YXm-O5-5RM"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton5.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="297" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="grayButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="hiq-E3-Gdi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF2-ew-Dto" userLabel="Orange Red Button">
+                                        <rect key="frame" x="177" y="97" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="iOe-Qo-mMS"/>
+                                            <constraint firstAttribute="height" constant="30" id="zVz-b8-hW7"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton4.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="258" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="yellowOrangeButton:" destination="B6U-49-jr6" eventType="touchUpInside" id="pZS-CA-4Mj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-zd-dWj" userLabel="Blue Button">
+                                        <rect key="frame" x="344" y="97" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="WJ7-e4-wyP"/>
+                                            <constraint firstAttribute="height" constant="30" id="gAy-G1-7Gv"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton1.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="141" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="blueButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="asV-Co-2j3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-lF-fOP" userLabel="blueWhiteButton">
+                                        <rect key="frame" x="127" y="97" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="MMz-2c-oCi"/>
+                                            <constraint firstAttribute="height" constant="30" id="vkM-LA-PKM"/>
+                                        </constraints>
+                                        <state key="normal" image="custombutton6.png"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="335" y="274" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="blueWhiteButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="ZMT-gk-10B"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Button Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-Ge-nCY">
+                                        <rect key="frame" x="127" y="48" width="117.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="141" y="224" width="105.5" height="30"/>
+                                        </variation>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIF-9V-on9">
+                                        <rect key="frame" x="28" y="48" width="80" height="80"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="2KC-FD-adU"/>
+                                            <constraint firstAttribute="height" constant="80" id="k6b-gi-5y6"/>
+                                        </constraints>
+                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="36" y="224" width="80" height="80"/>
+                                        </variation>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2a-ee-25f">
+                                        <rect key="frame" x="261" y="48" width="113" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="ISp-g5-yIs"/>
-                                    <constraint firstAttribute="height" constant="30" id="zbj-Te-SHd"/>
+                                    <constraint firstItem="FF7-32-qPp" firstAttribute="leading" secondItem="ENF-eR-Veh" secondAttribute="trailing" constant="8" id="3VP-jL-tWF"/>
+                                    <constraint firstItem="JFf-Lf-UYv" firstAttribute="leading" secondItem="FF7-32-qPp" secondAttribute="trailing" constant="8" id="3fS-lZ-OgQ"/>
+                                    <constraint firstItem="hEh-zd-dWj" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="9o4-ez-Eqm"/>
+                                    <constraint firstItem="JFf-Lf-UYv" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="A88-Aj-Rxm"/>
+                                    <constraint firstItem="M2a-ee-25f" firstAttribute="leading" secondItem="4LV-Ge-nCY" secondAttribute="trailing" constant="16.5" id="AoU-WD-kFt"/>
+                                    <constraint firstItem="FF7-32-qPp" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="GO1-sU-jbF"/>
+                                    <constraint firstItem="GHH-lF-fOP" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="INI-D4-ueb"/>
+                                    <constraint firstItem="GHH-lF-fOP" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="19" id="YsV-eJ-NJL"/>
+                                    <constraint firstItem="NF2-ew-Dto" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Yw4-ug-6pL"/>
+                                    <constraint firstItem="ENF-eR-Veh" firstAttribute="leading" secondItem="NF2-ew-Dto" secondAttribute="trailing" constant="16" id="anA-ql-mxi"/>
+                                    <constraint firstItem="NF2-ew-Dto" firstAttribute="leading" secondItem="GHH-lF-fOP" secondAttribute="trailing" constant="20" id="f22-dp-Twr"/>
+                                    <constraint firstItem="hEh-zd-dWj" firstAttribute="leading" secondItem="JFf-Lf-UYv" secondAttribute="trailing" constant="15" id="kLG-ZT-HiO"/>
+                                    <constraint firstItem="4LV-Ge-nCY" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="19" id="nTq-X7-PKh"/>
+                                    <constraint firstItem="ENF-eR-Veh" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="tO1-Xd-aBM"/>
                                 </constraints>
-                                <state key="normal" image="custombutton1.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="blueButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="NhQ-hu-fD3"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Button Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-Ge-nCY">
-                                <rect key="frame" x="237" y="222" width="105.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHH-lF-fOP" userLabel="blueWhiteButton">
-                                <rect key="frame" x="431" y="272" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="CYT-ff-YdY"/>
-                                    <constraint firstAttribute="width" constant="30" id="Vug-Y3-XbF"/>
-                                </constraints>
-                                <state key="normal" image="custombutton6.png"/>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="114" y="0.0" width="30" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="blueWhiteButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="ZMT-gk-10B"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Function" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KI6-mi-ExN">
-                                <rect key="frame" x="353.5" y="222" width="77.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FF7-32-qPp" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="0cu-0W-n57"/>
-                            <constraint firstItem="JFf-Lf-UYv" firstAttribute="leading" secondItem="FF7-32-qPp" secondAttribute="trailing" constant="8" id="1qD-VQ-BbG"/>
-                            <constraint firstItem="NF2-ew-Dto" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="7Bs-Jc-PM7"/>
-                            <constraint firstItem="GHH-lF-fOP" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Aa8-zR-6r1"/>
-                            <constraint firstItem="ENF-eR-Veh" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="Ewu-iI-Cwu"/>
-                            <constraint firstItem="mIF-9V-on9" firstAttribute="leading" secondItem="wAO-3h-ZyJ" secondAttribute="leadingMargin" constant="112" id="GND-35-vDS"/>
-                            <constraint firstItem="hEh-zd-dWj" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="JOL-gj-g7I"/>
-                            <constraint firstItem="GHH-lF-fOP" firstAttribute="baseline" secondItem="mIF-9V-on9" secondAttribute="baseline" id="QEQ-at-NjO"/>
-                            <constraint firstItem="4LV-Ge-nCY" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="Qya-lv-mcr"/>
-                            <constraint firstItem="JFf-Lf-UYv" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="YU1-Nn-5K9"/>
-                            <constraint firstItem="LmB-NX-PD0" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="337" id="Z9h-4N-niU"/>
-                            <constraint firstItem="NF2-ew-Dto" firstAttribute="leading" secondItem="GHH-lF-fOP" secondAttribute="trailing" constant="-107" id="c4M-VQ-eUw"/>
-                            <constraint firstItem="mIF-9V-on9" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="ctn-Hy-4qN"/>
-                            <constraint firstItem="FF7-32-qPp" firstAttribute="leading" secondItem="NF2-ew-Dto" secondAttribute="trailing" constant="-109" id="e9H-b2-SOf"/>
-                            <constraint firstItem="ENF-eR-Veh" firstAttribute="leading" secondItem="hEh-zd-dWj" secondAttribute="trailing" constant="126" id="hny-xu-cBK"/>
-                            <constraint firstItem="4LV-Ge-nCY" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="25" id="mIu-Y8-iw2"/>
-                            <constraint firstItem="hEh-zd-dWj" firstAttribute="leading" secondItem="JFf-Lf-UYv" secondAttribute="trailing" constant="-106" id="mp9-tW-fcS"/>
-                            <constraint firstItem="GHH-lF-fOP" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="219" id="nDf-Vt-AtE"/>
-                            <constraint firstItem="KI6-mi-ExN" firstAttribute="leading" secondItem="4LV-Ge-nCY" secondAttribute="trailing" constant="11" id="t2P-vL-7Zw"/>
-                            <constraint firstItem="KI6-mi-ExN" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="tDH-1Z-KS4"/>
-                            <constraint firstItem="LmB-NX-PD0" firstAttribute="leading" secondItem="wAO-3h-ZyJ" secondAttribute="leadingMargin" constant="225" id="xnb-Oh-WZa"/>
+                            <constraint firstItem="LmB-NX-PD0" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="Ob5-Rd-LJb"/>
+                            <constraint firstItem="UUl-ST-lqD" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="Yi2-Lt-fRF"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonFunction" destination="KI6-mi-ExN" id="dVB-ut-lWF"/>
+                        <outlet property="buttonFunctionLabel" destination="M2a-ee-25f" id="DkD-u0-a9B"/>
                         <outlet property="buttonView" destination="mIF-9V-on9" id="sme-Ca-cgl"/>
                         <outlet property="symbolTextView" destination="4LV-Ge-nCY" id="kgW-h4-6j4"/>
                     </connections>
