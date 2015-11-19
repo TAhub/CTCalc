@@ -85,7 +85,11 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as! ButtonTableViewCell
+        guard let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as? ButtonTableViewCell else {
+            let emptycell = UITableViewCell()
+            return emptycell
+        }
+        
         let buttonImage = self.buttonImages[indexPath.row]
         
         let symbol = buttonImage["symbol"] as? String

@@ -15,7 +15,7 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonImage: UIImageView!
     
     class func identifier() -> String {
-        return "cell"
+        return "ButtonTableViewCell"
     }
     
     override func awakeFromNib() {
