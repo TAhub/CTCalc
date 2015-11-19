@@ -252,8 +252,8 @@
                                     <action selector="blueButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="NhQ-hu-fD3"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-Ge-nCY">
-                                <rect key="frame" x="237" y="222" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Button Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4LV-Ge-nCY">
+                                <rect key="frame" x="237" y="222" width="105.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -271,6 +271,11 @@
                                     <action selector="blueWhiteButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="ZMT-gk-10B"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Function" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KI6-mi-ExN">
+                                <rect key="frame" x="353.5" y="222" width="77.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -283,18 +288,23 @@
                             <constraint firstItem="mIF-9V-on9" firstAttribute="leading" secondItem="wAO-3h-ZyJ" secondAttribute="leadingMargin" constant="112" id="GND-35-vDS"/>
                             <constraint firstItem="hEh-zd-dWj" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="JOL-gj-g7I"/>
                             <constraint firstItem="GHH-lF-fOP" firstAttribute="baseline" secondItem="mIF-9V-on9" secondAttribute="baseline" id="QEQ-at-NjO"/>
+                            <constraint firstItem="4LV-Ge-nCY" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="Qya-lv-mcr"/>
                             <constraint firstItem="JFf-Lf-UYv" firstAttribute="bottom" secondItem="mIF-9V-on9" secondAttribute="bottom" id="YU1-Nn-5K9"/>
                             <constraint firstItem="LmB-NX-PD0" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="337" id="Z9h-4N-niU"/>
                             <constraint firstItem="NF2-ew-Dto" firstAttribute="leading" secondItem="GHH-lF-fOP" secondAttribute="trailing" constant="-107" id="c4M-VQ-eUw"/>
                             <constraint firstItem="mIF-9V-on9" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="ctn-Hy-4qN"/>
                             <constraint firstItem="FF7-32-qPp" firstAttribute="leading" secondItem="NF2-ew-Dto" secondAttribute="trailing" constant="-109" id="e9H-b2-SOf"/>
                             <constraint firstItem="ENF-eR-Veh" firstAttribute="leading" secondItem="hEh-zd-dWj" secondAttribute="trailing" constant="126" id="hny-xu-cBK"/>
+                            <constraint firstItem="4LV-Ge-nCY" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="25" id="mIu-Y8-iw2"/>
                             <constraint firstItem="hEh-zd-dWj" firstAttribute="leading" secondItem="JFf-Lf-UYv" secondAttribute="trailing" constant="-106" id="mp9-tW-fcS"/>
                             <constraint firstItem="GHH-lF-fOP" firstAttribute="leading" secondItem="mIF-9V-on9" secondAttribute="trailing" constant="219" id="nDf-Vt-AtE"/>
+                            <constraint firstItem="KI6-mi-ExN" firstAttribute="leading" secondItem="4LV-Ge-nCY" secondAttribute="trailing" constant="11" id="t2P-vL-7Zw"/>
+                            <constraint firstItem="KI6-mi-ExN" firstAttribute="top" secondItem="3Sc-gs-bF3" secondAttribute="bottom" constant="158" id="tDH-1Z-KS4"/>
                             <constraint firstItem="LmB-NX-PD0" firstAttribute="leading" secondItem="wAO-3h-ZyJ" secondAttribute="leadingMargin" constant="225" id="xnb-Oh-WZa"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonFunction" destination="KI6-mi-ExN" id="dVB-ut-lWF"/>
                         <outlet property="buttonView" destination="mIF-9V-on9" id="sme-Ca-cgl"/>
                         <outlet property="symbolTextView" destination="4LV-Ge-nCY" id="kgW-h4-6j4"/>
                     </connections>
