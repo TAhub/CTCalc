@@ -44,7 +44,7 @@ class ParentPageViewController: UIViewController, UIPageViewControllerDataSource
     }
     
     @IBAction func dismissButtonPressed(sender: AnyObject) {
-        
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func viewControllerAtIndex(index: Int) -> TutorialDisplayViewController {
