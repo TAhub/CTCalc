@@ -53,12 +53,14 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			{
 				let symbols = def.stringArrayForKey("screen\(screenNum)\(prefix)symbols")!
 				let functions = def.stringArrayForKey("screen\(screenNum)\(prefix)functions")!
+				let imageNumbers = def.stringArrayForKey("screen\(screenNum)\(prefix)images")!
 				
 				var tokens = [Token]()
 				for i in 0..<symbols.count
 				{
 					let symbol = symbols[i]
 					let function = functions[i]
+					let imageNumber = Int(imageNumbers[i])!
 					
 					//check the default ones
 					var isPreset = false
@@ -75,7 +77,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					{
 						//it must be custom
 						print("custom token \"\(symbol)\"")
-						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
+						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
 					}
 				}
 				return tokens
@@ -98,6 +100,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		{
 			def.setObject(tokens.map() { $0.symbol }, forKey: "screen\(screenNum)\(prefix)symbols")
 			def.setObject(tokens.map() { $0.functionReplace ?? "" }, forKey: "screen\(screenNum)\(prefix)functions")
+			def.setObject(tokens.map() { "\($0.imageNumber)" }, forKey: "screen\(screenNum)\(prefix)images")
 		}
 		
 		saveButtonsInner("portrait", tokens: buttonsPortrait)
