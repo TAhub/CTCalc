@@ -24,7 +24,7 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 		loadMyStuff()
 	}
 	
-	private func loadMyStuff()
+	func loadMyStuff()
 	{
 		if !loadButtons()
 		{

@@ -10,78 +10,107 @@ import UIKit
 import Parse
 
 class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-    
-    var blueWhitebutton : UIImageView?
+	
+	private var imageNumber:Int = 0
+	{
+		didSet
+		{
+			reloadToken()
+		}
+	}
+	
+	private var token:Token?
+	private var tokenView:UIView?
+	private func reloadToken()
+	{
+		token = Token(symbol: symbolTextView.text!, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function)
+		
+		tokenView?.removeFromSuperview()
+		
+		//and set the button nib
+		let loaded = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
+		loaded.frame = CGRect(x: 0, y: 0, width: buttonView.bounds.width, height: buttonView.bounds.height)
+		loaded.token = token!
+		buttonView.addSubview(loaded)
+		tokenView = loaded
+	}
 
-    @IBOutlet weak var buttonFunction: UITextField!
+    @IBOutlet weak var buttonFunctionLabel: UILabel!
+	{
+		didSet
+		{
+			buttonFunctionLabel.text = function
+		}
+	}
     @IBOutlet weak var symbolTextView: UITextField!
     @IBOutlet weak var buttonView: UIImageView!
     
     @IBAction func blueButtonPressed(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton1")
-        buttonView.image = blueWhiteButton
+        imageNumber = 0
     }
     
     @IBAction func orangeButtonPressed(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton2")
-        buttonView.image = blueWhiteButton
+        imageNumber = 1
     }
     
     @IBAction func greenButtonPressed(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton3")
-        buttonView.image = blueWhiteButton
+        imageNumber = 2
     }
-   
+	
     @IBAction func yellowOrangeButton(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton4")
-        buttonView.image = blueWhiteButton
+        imageNumber = 3
     }
     
     @IBAction func grayButtonPressed(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton5")
-        buttonView.image = blueWhiteButton
+        imageNumber = 4
     }
     
     @IBAction func blueWhiteButtonPressed(sender: UIButton) {
-        let blueWhiteButton = UIImage(named: "custombutton6")
-        buttonView.image = blueWhiteButton
+        imageNumber = 5
     }
 
     
             //           SAVES BUTTONS TO PARSE
-    func uploadButton(image: UIImage, imageName: String, buttonFunction:String, symbol:String, completion: (success: Bool) -> ()) {
-        if let imageData = UIImageJPEGRepresentation(image, 0.7) {
-            let imageFile = PFFile(name: imageName, data: imageData)
-            let status = PFObject(className: "ButtomImages")
-            status["Image"] = imageFile
-            status["function"] = buttonFunction
-            status["symbol"] = symbol
-            
-            status.saveInBackgroundWithBlock( { (success, error) -> Void in
-                if success {
-                    completion(success: success)
-                } else {
-                    completion(success: false)
-                }
-            })
-        }
+    func uploadButton(completion: (success: Bool) -> ()) {
+		
+		//add it to your list
+		if let token = token
+		{
+			let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
+			print(dcvc.addToken(token))
+			
+			
+			let status = PFObject(className: "ButtomImages")
+			status["imageNumber"] = token.imageNumber
+			status["symbol"] = token.symbol
+			status["function"] = token.functionReplace ?? ""
+			
+			status.saveInBackgroundWithBlock( { (success, error) -> Void in
+				if success {
+					completion(success: success)
+				} else {
+					completion(success: false)
+				}
+			})
+		}
     }
     
-    var function:String {
+    var function:String
+	{
         let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-            let calc = dcvc.viewControllers[0] as! CalculatorCollectionViewController
-            return calc.calculator.functionString
+		let calc = dcvc.viewControllers[0] as! CalculatorCollectionViewController
+		return calc.calculator.functionString
     }
     
     @IBAction func saveCustomButton(sender: AnyObject) {
-        if buttonFunction.text == "" || symbolTextView.text == "" {
+        if symbolTextView.text == "" {
             let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
                 message: "" as String, preferredStyle:.Alert)
             let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
         } else{
-            uploadButton(buttonView.image!, imageName: "image", buttonFunction: buttonFunction.text!, symbol: symbolTextView.text!) { (success) -> () in
+            uploadButton() { (success) -> () in
                 if success {
                     print("yay")
                 }else {
@@ -93,7 +122,6 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonFunction.delegate = self
         symbolTextView.delegate = self
         
     }
@@ -105,22 +133,10 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
+		reloadToken()
         //        symbolTextView.resignFirstResponder()
         
         return true;
         
     }
 }
-
-//        let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
-
-
-//        loadedNib.frame = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
-//        loadedNib.label.text = readOnlyButtons[path.row].symbol
-//        self.addSubview(self.view)
-
-//   Select the background color you want.  That changes the color of the UIView.   Add up to 5 letters of text/symbols to describe the custom button function.  This will be the "symbol (name)" of the button.
-//to add this to the buttons list
-//let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-//dcvc.addToken(token:Token)
-//returns a bool; true if it worked, false if you are out of space

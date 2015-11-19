@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png")]
+let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png"), UIImage(named: "custombutton7.png")]
 
 struct Token
 {
