@@ -49,11 +49,13 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 
     
             //           SAVES BUTTONS TO PARSE
-    func uploadButton(image: UIImage, imageName: String, completion: (success: Bool) -> ()) {
+    func uploadButton(image: UIImage, imageName: String, buttonFunction:String, symbol:String, completion: (success: Bool) -> ()) {
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             let imageFile = PFFile(name: imageName, data: imageData)
             let status = PFObject(className: "ButtomImages")
             status["Image"] = imageFile
+            status["function"] = buttonFunction
+            status["symbol"] = symbol
             
             status.saveInBackgroundWithBlock( { (success, error) -> Void in
                 if success {
@@ -72,11 +74,19 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     }
     
     @IBAction func saveCustomButton(sender: AnyObject) {
-        uploadButton(buttonView.image!, imageName: "image") { (success) -> () in
-            if success {
-                print("yay")
-            }else {
-                print("boo")
+        if buttonFunction.text == "" || symbolTextView.text == "" {
+            let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
+                message: "" as String, preferredStyle:.Alert)
+            let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
+            alertView.addAction(okAction)
+            self.presentViewController(alertView, animated: true, completion: nil)
+        } else{
+            uploadButton(buttonView.image!, imageName: "image", buttonFunction: buttonFunction.text!, symbol: symbolTextView.text!) { (success) -> () in
+                if success {
+                    print("yay")
+                }else {
+                    print("boo")
+                }
             }
         }
     }
@@ -91,41 +101,16 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    func textFieldDidBeginEditing(textField: UITextField) {
-        var buttonName = buttonFunction.text
-        var symbolName = symbolTextView.text
-        
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-            
-        buttonFunction.resignFirstResponder()
-        symbolTextView.resignFirstResponder()
-        
-            return true;
-            
-        }
-    }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        if buttonFunction.text == "" {
-            let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
-            message: "" as String, preferredStyle:.Alert)
-            let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
-            alertView.addAction(okAction)
-            self.presentViewController(alertView, animated: true, completion: nil)
+        textField.resignFirstResponder()
+        //        symbolTextView.resignFirstResponder()
+        
+        return true;
+        
     }
-
-
-        
 }
-}
-
-
-
-
-
-
 
 //        let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
 
