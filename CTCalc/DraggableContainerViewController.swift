@@ -143,7 +143,6 @@ class DraggableContainerViewController: UIViewController {
 		{
 			for (i, t) in to.buttonsLandscape.enumerate()
 			{
-				print(t.symbol)
 				if t.symbol == " "
 				{
 					to.buttonsLandscape[i] = token
@@ -158,6 +157,13 @@ class DraggableContainerViewController: UIViewController {
 		{
 			return true
 		}
-		return addTokenInner(token, to: viewControllers[1] as! DraggableButtonCollectionViewController)
+		
+		let spc = viewControllers[1] as! SpareButtonCollectionViewController
+		if spc.screenNum == nil
+		{
+			spc.screenNum = 1
+			spc.loadMyStuff()
+		}
+		return addTokenInner(token, to: spc)
 	}
 }
