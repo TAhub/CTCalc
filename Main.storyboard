@@ -76,7 +76,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="75" id="JS3-T3-glM" customClass="ButtonTableViewCell" customModule="CTCalc" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ButtonTableViewCell" rowHeight="75" id="JS3-T3-glM" customClass="ButtonTableViewCell" customModule="CTCalc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JS3-T3-glM" id="dml-yp-aLz">
@@ -106,9 +106,9 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <outlet property="buttomImage" destination="dml-yp-aLz" id="Q6E-0W-PKA"/>
-                                            <outlet property="buttonFunction" destination="Hoc-sH-a0j" id="QTH-un-d4Z"/>
-                                            <outlet property="buttonName" destination="K4S-4b-tXU" id="sIM-0l-D89"/>
+                                            <outlet property="buttonImage" destination="Wed-dk-oRR" id="dMc-ka-cfL"/>
+                                            <outlet property="function" destination="Hoc-sH-a0j" id="KzX-bh-yza"/>
+                                            <outlet property="symbol" destination="K4S-4b-tXU" id="9i7-MR-lOK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -219,7 +219,20 @@
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="131" y="179" width="182" height="30"/>
                                 </variation>
-                            </stackView>
+                                <connections>
+                                    <action selector="yellowButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="9OW-C9-9K4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENF-eR-Veh" userLabel="Purple Color">
+                                <rect key="frame" x="430" y="272" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="152" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="purpleButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="USk-dZ-2fF"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIF-9V-on9">
                                 <rect key="frame" x="132" y="222" width="80" height="80"/>
                                 <animations/>
@@ -237,18 +250,37 @@
                                     <rect key="frame" x="131" y="129" width="173" height="30"/>
                                 </variation>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEh-zd-dWj" userLabel="Red Color">
+                                <rect key="frame" x="239" y="272" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="redButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="zZ6-JI-K2I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FF7-32-qPp" userLabel="Green Color">
+                                <rect key="frame" x="284" y="272" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="114" y="0.0" width="30" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="greenButtonPressed:" destination="B6U-49-jr6" eventType="touchUpInside" id="rdi-hJ-kRC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="buttonView" destination="mIF-9V-on9" id="XBo-Ig-b0j"/>
                         <outlet property="customButton" destination="mIF-9V-on9" id="4uo-K9-GNv"/>
                         <outlet property="customButtonName" destination="SoE-0d-enR" id="lsS-2Y-teH"/>
-                        <outlet property="greenColor" destination="FF7-32-qPp" id="TC9-HX-ea4"/>
-                        <outlet property="orangeColor" destination="NF2-ew-Dto" id="mrg-wV-yud"/>
-                        <outlet property="pinkColor" destination="ENF-eR-Veh" id="DdJ-AN-cDf"/>
-                        <outlet property="redColor" destination="hEh-zd-dWj" id="K9s-NY-pH3"/>
-                        <outlet property="yellowColor" destination="JFf-Lf-UYv" id="gju-lt-zUy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yW8-s3-aqE" userLabel="First Responder" sceneMemberID="firstResponder"/>

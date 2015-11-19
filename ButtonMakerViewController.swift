@@ -10,17 +10,36 @@ import UIKit
 import Parse
 
 class ButtonMakerViewController: UIViewController, UITextViewDelegate {
-
-    @IBOutlet weak var pinkColor: UIButton!
-    @IBOutlet weak var greenColor: UIButton!
-    @IBOutlet weak var yellowColor: UIButton!
-    @IBOutlet weak var orangeColor: UIButton!
-    @IBOutlet weak var redColor: UIButton!
     
+    var pressed = false
+    
+    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var customButtonName: UITextField!
-    @IBOutlet weak var customButton: UIImageView!
     
-    /////           SAVES BUTTONS TO PARSE
+    
+    @IBAction func redButtonPressed(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func orangeButtonPressed(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func yellowButtonPressed(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func greenButtonPressed(sender: AnyObject) {
+    }
+    
+    
+    @IBAction func purpleButtonPressed(sender: AnyObject) {
+    }
+    
+    
+
+    
+    //           SAVES BUTTONS TO PARSE
     class func uploadButton(image: UIImage, imageName: String, completion: (success: Bool) -> ()) {
         
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
@@ -38,6 +57,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    var function:String {
+        let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
+            let calc = dcvc.viewControllers[0] as! CalculatorCollectionViewController
+            return calc.calculator.functionString
+    }
+    
     @IBAction func saveCustomButton(sender: AnyObject) {
         
         
@@ -46,11 +71,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = UIImage(named: "github")
-        ButtonMakerViewController.uploadButton(image!, imageName: "Hey") { (success) -> () in
-            
-        }
+        let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
+//        loadedNib.frame = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
+//        loadedNib.label.text = readOnlyButtons[path.row].symbol
+//        self.addSubview(self.view)
 
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,13 +10,12 @@ import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var buttonFunction: UILabel!
-    @IBOutlet weak var buttonName: UILabel!
-    @IBOutlet weak var buttomImage: UIView!
-    
+    @IBOutlet weak var function: UILabel!
+    @IBOutlet weak var symbol: UILabel!
+    @IBOutlet weak var buttonImage: UIImageView!
     
     class func identifier() -> String {
-        return "cell"
+        return "ButtonTableViewCell"
     }
     
     override func awakeFromNib() {
