@@ -41,7 +41,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
     
     //           SAVES BUTTONS TO PARSE
     class func uploadButton(image: UIImage, imageName: String, completion: (success: Bool) -> ()) {
-        
+		
+		//to add this to the buttons list
+		//let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
+		//dcvc.addToken(token:Token)
+		//returns a bool; true if it worked, false if you are out of space
+		
         if let imageData = UIImageJPEGRepresentation(image, 0.7) {
             let imageFile = PFFile(name: imageName, data: imageData)
             let status = PFObject(className: "ButtomImages")

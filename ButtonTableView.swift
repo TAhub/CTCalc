@@ -64,6 +64,11 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) -> Void in
                 self.buttonImages.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+				
+				
+				//to delete from the calculator
+				//let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
+				//dcvc.removeToken(token:Token)
             })
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             
