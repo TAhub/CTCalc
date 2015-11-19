@@ -132,7 +132,10 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			}
 		}
 		
+		collectionView?.backgroundColor = UIColor.whiteColor()
+		
 		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
+		lastEditMode = false
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -168,6 +171,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	func transferCell(to:DraggableButtonCollectionViewController)
 	{
 		to.editMode = editMode
+		editMode = false
 		if let pickedUp = pickedUp
 		{
 			//give them your pickedUp
