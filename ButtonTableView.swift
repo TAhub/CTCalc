@@ -14,6 +14,8 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var buttonTableView: UITableView!
     
+    private var token:Token?
+
     var dataArray = [PFObject]()
     var filteredArray = [PFObject]()
     var searchController = UISearchController()
@@ -32,6 +34,14 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         self.searchBar.showsCancelButton = true
         self.searchBar.delegate = self
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "setButtonTableViewEditing:")
+    }
+    
+    func setButtonTableViewEditing(editing: Bool) {
+        
+        self.buttonTableView.editing = !self.buttonTableView.editing
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -70,8 +80,9 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         let myAlert = UIAlertController(title: "Delete", message: "Are you sure you want to permanently delete this button?", preferredStyle: UIAlertControllerStyle.Alert)
             
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) -> Void in
-                self.buttonImages.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//                self.buttonImages.removeAtIndex(indexPath.row)
+//                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                
             })
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -81,8 +92,30 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             
         self.presentViewController(myAlert, animated: true, completion: nil)
        
-        } else {
+        }
+ 
+        func deleteButton(completion: (success: Bool) -> ()) {
+            
+            if let token = token
+            {
+                let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
+                print(dcvc.addToken(token))
                 
+                
+                let status = PFObject(className: "ButtomImages")
+                status["imageNumber"] = token.imageNumber
+                status["symbol"] = token.symbol
+                status["function"] = token.functionReplace ?? ""
+                
+                status.deleteInBackgroundWithBlock( { (success, error) -> Void in
+                    if success {
+                        completion(success: success)
+                        
+                    } else {
+                        completion(success: false)
+                    }
+                })
+            }
         }
     }
     
