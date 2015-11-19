@@ -75,7 +75,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					{
 						//it must be custom
 						print("custom token \"\(symbol)\"")
-						tokens.append(Token(symbol: symbol, order: kOrderFunc, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
+						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: 0, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
 					}
 				}
 				return tokens
@@ -224,7 +224,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					//load the cell from a nib
 					let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
 					loadedNib.frame = CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height)
-					loadedNib.label.text = readOnlyButtons[path.row].symbol
+					loadedNib.token = readOnlyButtons[path.row]
 					
 					view.addSubview(loadedNib)
 					
@@ -360,22 +360,47 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
         return readOnlyButtons.count
 	}
 	
+	private func shakePart(view:UIView)
+	{
+		let xMult = (CGFloat(arc4random_uniform(100)) - 50) / 50
+		let yMult = (CGFloat(arc4random_uniform(100)) - 50) / 50
+		let shakeXMag = 2 * xMult
+		let shakeYMag = 2 * yMult
+		let shakeInter = 0.12 * Double(arc4random_uniform(100) + 50) / 100
+		UIView.animateWithDuration(shakeInter, animations:
+		{
+			view.frame.origin.x += shakeXMag
+			view.frame.origin.y += shakeYMag
+		})
+		{ (success) in
+			UIView.animateWithDuration(shakeInter, animations:
+			{
+				view.frame.origin.x -= shakeXMag
+				view.frame.origin.y -= shakeYMag
+			})
+			{ (success) in
+				if self.editMode
+				{
+					self.shakePart(view)
+				}
+			}
+		}
+	}
+	
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("buttonCell", forIndexPath: indexPath) as! ButtonCollectionViewCell
 		
 //		print("screen: \(screenNum), landscape: \(landscape), size: \(cell.frame.size), row: \(indexPath.row)     landscape size: \(buttonsLandscape.count), portrait size: \(buttonsPortrait.count)")
 		
-		cell.label.text = readOnlyButtons[indexPath.row].symbol
+		cell.token = readOnlyButtons[indexPath.row]
 		
 		if editMode
 		{
-			cell.layer.cornerRadius = 0
+			shakePart(cell)
 		}
-		else
-		{
-			cell.layer.cornerRadius = 10
-		}
+		
+//		cell.layer.cornerRadius = 10
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
 		return cell
     }
