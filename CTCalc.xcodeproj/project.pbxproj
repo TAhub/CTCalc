@@ -41,7 +41,7 @@
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
 		C18A8A731BFE408600343C9C /* TutorialDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */; };
-		C18A8A751BFE423C00343C9C /* ParentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A741BFE423C00343C9C /* ParentPageViewController.swift */; };
+		C18A8A771BFE5F9E00343C9C /* ParentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A741BFE423C00343C9C /* ParentPageViewController.swift */; };
 		E40A950B1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40A950A1BFBCEF900E43C31 /* SpareButtonCollectionViewController.swift */; };
 		E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C031BF6682E00F608F4 /* Assets.xcassets */; };
 		E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40C5C051BF6682E00F608F4 /* LaunchScreen.storyboard */; };
@@ -363,7 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18A8A751BFE423C00343C9C /* ParentPageViewController.swift in Sources */,
+				C18A8A771BFE5F9E00343C9C /* ParentPageViewController.swift in Sources */,
+				E46FC2F01BFE4B0C00F5DB90 /* SemiDraggableViewController.swift in Sources */,
 				3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */,
 				E4EA281E1BF66B0C00CC4B0F /* CalculatorCollectionViewController.swift in Sources */,
 				3D19C1BE1BFBA4F900596252 /* ButtonTableViewCell.swift in Sources */,
