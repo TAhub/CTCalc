@@ -120,6 +120,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
         
 	}
 	
+	//to make sure the edit mode animation appears
+	private var firstEditMode = true
+	
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
@@ -133,6 +136,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		
 		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
+		
+		if !editMode
+		{
+			firstEditMode = false
+		}
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -179,13 +187,36 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
-	private var psuedoSegueMode:Bool = false
+	var psuedoSegueMode:Bool = false
 	
 	private var editMode:Bool = false
 	{
 		didSet
 		{
-			collectionView?.reloadData()
+			if !oldValue && editMode
+			{
+				//turn on the shake animation
+				for i in 0..<readOnlyButtons.count
+				{
+					let cell:UICollectionViewCell?
+					if let cellS1 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1))
+					{
+						cell = cellS1
+					}
+					else if let cellS0 = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 0))
+					{
+						cell = cellS0
+					}
+					else
+					{
+						cell = nil
+					}
+					if let cell = cell
+					{
+						shakePart(cell)
+					}
+				}
+			}
 		}
 	}
 	
@@ -224,14 +255,21 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
 					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
 					
+					//load the container edges
+					let containerMargin:CGFloat = 6
+					let containerView = UIView(frame: CGRect(x: startX - containerMargin, y: startY - containerMargin, width: cell.bounds.width + 2 * containerMargin, height: cell.bounds.height + 2 * containerMargin))
+					containerView.layer.cornerRadius = 10
+					containerView.backgroundColor = UIColor.whiteColor()
+					
 					//load the cell from a nib
 					let loadedNib = NSBundle.mainBundle().loadNibNamed("CalculatorButton", owner: self, options: nil)[0] as! ButtonCollectionViewCell
-					loadedNib.frame = CGRect(x: startX, y: startY, width: cell.bounds.width, height: cell.bounds.height)
+					loadedNib.frame = CGRect(x: containerMargin, y: containerMargin, width: cell.bounds.width, height: cell.bounds.height)
 					loadedNib.token = readOnlyButtons[path.row]
+					containerView.addSubview(loadedNib)
 					
-					view.addSubview(loadedNib)
+					view.addSubview(containerView)
 					
-					pickedUp = PickedUpCell(cellRow: path.row, appearance: loadedNib, viewControllerFrom: self)
+					pickedUp = PickedUpCell(cellRow: path.row, appearance: containerView, viewControllerFrom: self)
 				}
 			case UIGestureRecognizerState.Changed:
 				if let pickedUp = pickedUp
@@ -305,8 +343,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				dest.psuedoSegueMode = psuedoSegueMode
 				transferCell(dest)
 			}
-			else
+			else if let dest = dcvc.getControllerWithID(id) as? SemiDraggableViewController
 			{
+				dest.psuedoSegueMode = psuedoSegueMode
 				editMode = false
 				pickedUp = nil
 			}
@@ -401,11 +440,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 //		print("screen: \(screenNum), landscape: \(landscape), size: \(cell.frame.size), row: \(indexPath.row)     landscape size: \(buttonsLandscape.count), portrait size: \(buttonsPortrait.count)")
 		
 		cell.token = readOnlyButtons[indexPath.row]
-		
-		if editMode
-		{
-			shakePart(cell)
-		}
 		
 //		cell.layer.cornerRadius = 10
 		cell.hidden = pickedUp != nil && pickedUp!.cellRow == indexPath.row && pickedUp!.viewControllerFrom === self
