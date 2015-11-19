@@ -9,19 +9,14 @@
 import UIKit
 import Parse
 
-class ButtonMakerViewController: UIViewController, UITextViewDelegate {
+class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     var blueWhitebutton : UIImageView?
-    
-    @IBOutlet weak var buttonView: UIImageView!
-    
-    @IBAction func blueWhiteButtonPressed(sender: UIButton) {
-        let blueWhiteButton = UIImage(named: "custombutton6")
-        buttonView.image = blueWhiteButton
-    }
-   
-    @IBAction func yellowOrangeButton(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton4")
+
+    @IBOutlet weak var symbolTextView: UITextField!
+    @IBOutlet weak var buttonView: UIImageView!    
+    @IBAction func blueButtonPressed(sender: AnyObject) {
+        let blueWhiteButton = UIImage(named: "custombutton1")
         buttonView.image = blueWhiteButton
     }
     
@@ -34,9 +29,9 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
         let blueWhiteButton = UIImage(named: "custombutton3")
         buttonView.image = blueWhiteButton
     }
-    
-    @IBAction func blueButtonPressed(sender: AnyObject) {
-        let blueWhiteButton = UIImage(named: "custombutton1")
+   
+    @IBAction func yellowOrangeButton(sender: AnyObject) {
+        let blueWhiteButton = UIImage(named: "custombutton4")
         buttonView.image = blueWhiteButton
     }
     
@@ -45,6 +40,10 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate {
         buttonView.image = blueWhiteButton
     }
     
+    @IBAction func blueWhiteButtonPressed(sender: UIButton) {
+        let blueWhiteButton = UIImage(named: "custombutton6")
+        buttonView.image = blueWhiteButton
+    }
 
     
             //           SAVES BUTTONS TO PARSE
