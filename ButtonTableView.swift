@@ -28,12 +28,15 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         buttonTableView.dataSource = self
         buttonTableView.delegate = self
+        self.buttonTableView.reloadData()
 
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.getParseData()
+        self.buttonTableView.reloadData()
+
     }
     
     func getParseData() {
@@ -64,12 +67,8 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) -> Void in
                 self.buttonImages.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-				
-				
-				//to delete from the calculator
-				//let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-				//dcvc.removeToken(token:Token)
             })
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             
         myAlert.addAction(okAction)
@@ -96,7 +95,6 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         let buttonImage = self.buttonImages[indexPath.row]
-        
         let symbol = buttonImage["symbol"] as? String
         let function = buttonImage["function"] as? String
         
@@ -109,7 +107,8 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
                 
                 guard let data = data else {return}
                 cell.imageView?.image = UIImage(data: data)                
-                
+                self.buttonTableView.reloadData()
+
             })
         }
         return cell
