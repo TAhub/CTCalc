@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D1304DE1BFF8D5C00C463B3 /* custombutton1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304D81BFF8D5C00C463B3 /* custombutton1.png */; };
+		3D1304DF1BFF8D5C00C463B3 /* custombutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304D91BFF8D5C00C463B3 /* custombutton2.png */; };
+		3D1304E01BFF8D5C00C463B3 /* custombutton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */; };
+		3D1304E11BFF8D5C00C463B3 /* custombutton4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */; };
+		3D1304E21BFF8D5C00C463B3 /* custombutton5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */; };
+		3D1304E31BFF8D5C00C463B3 /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */; };
 		3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B31BFBA4F900596252 /* AppDelegate.swift */; };
 		3D19C1BB1BFBA4F900596252 /* ButtonMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */; };
 		3D19C1BD1BFBA4F900596252 /* ButtonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */; };
@@ -31,13 +37,6 @@
 		3D19C1E11BFBA83600596252 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E01BFBA83600596252 /* SystemConfiguration.framework */; };
 		3D19C1E31BFBA83E00596252 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */; };
 		3D19C1E51BFBA84800596252 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */; };
-		3D6E7E481BFE436100140B19 /* custombutton7.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D6E7E471BFE436100140B19 /* custombutton7.png */; };
-		3D971D021BFD849B008AB82A /* custombutton1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D011BFD849B008AB82A /* custombutton1.png */; };
-		3D971D041BFD84AF008AB82A /* custombutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D031BFD84AF008AB82A /* custombutton2.png */; };
-		3D971D061BFD84B8008AB82A /* custombutton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D051BFD84B8008AB82A /* custombutton3.png */; };
-		3D971D081BFD84C2008AB82A /* custombutton4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D071BFD84C2008AB82A /* custombutton4.png */; };
-		3D971D0A1BFD84C9008AB82A /* custombutton5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D091BFD84C9008AB82A /* custombutton5.png */; };
-		3D971D0C1BFD84D1008AB82A /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D971D0B1BFD84D1008AB82A /* custombutton6.png */; };
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
 		C18A8A731BFE408600343C9C /* TutorialDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */; };
@@ -63,6 +62,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D1304D81BFF8D5C00C463B3 /* custombutton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton1.png; sourceTree = "<group>"; };
+		3D1304D91BFF8D5C00C463B3 /* custombutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton2.png; sourceTree = "<group>"; };
+		3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton3.png; sourceTree = "<group>"; };
+		3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton4.png; sourceTree = "<group>"; };
+		3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton5.png; sourceTree = "<group>"; };
+		3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
 		3D19C1B31BFBA4F900596252 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonMakerViewController.swift; path = ../ButtonMakerViewController.swift; sourceTree = "<group>"; };
 		3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableView.swift; path = ../ButtonTableView.swift; sourceTree = "<group>"; };
@@ -87,13 +92,6 @@
 		3D19C1E01BFBA83600596252 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
-		3D6E7E471BFE436100140B19 /* custombutton7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton7.png; sourceTree = "<group>"; };
-		3D971D011BFD849B008AB82A /* custombutton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton1.png; sourceTree = "<group>"; };
-		3D971D031BFD84AF008AB82A /* custombutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton2.png; sourceTree = "<group>"; };
-		3D971D051BFD84B8008AB82A /* custombutton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton3.png; sourceTree = "<group>"; };
-		3D971D071BFD84C2008AB82A /* custombutton4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton4.png; sourceTree = "<group>"; };
-		3D971D091BFD84C9008AB82A /* custombutton5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton5.png; sourceTree = "<group>"; };
-		3D971D0B1BFD84D1008AB82A /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
 		C13BADB01BFBBD6100694E94 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		C13BADB21BFBBDBC00694E94 /* Display.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Display.xib; sourceTree = "<group>"; };
 		C18A8A721BFE408600343C9C /* TutorialDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialDisplayViewController.swift; sourceTree = "<group>"; };
@@ -205,13 +203,12 @@
 				3D19C1CF1BFBA6A100596252 /* Frameworks */,
 				E40C5C0E1BF668A300F608F4 /* Supporting Files */,
 				E40C5BFA1BF6682E00F608F4 /* Products */,
-				3D971D011BFD849B008AB82A /* custombutton1.png */,
-				3D971D031BFD84AF008AB82A /* custombutton2.png */,
-				3D971D051BFD84B8008AB82A /* custombutton3.png */,
-				3D971D071BFD84C2008AB82A /* custombutton4.png */,
-				3D971D091BFD84C9008AB82A /* custombutton5.png */,
-				3D971D0B1BFD84D1008AB82A /* custombutton6.png */,
-				3D6E7E471BFE436100140B19 /* custombutton7.png */,
+				3D1304D81BFF8D5C00C463B3 /* custombutton1.png */,
+				3D1304D91BFF8D5C00C463B3 /* custombutton2.png */,
+				3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */,
+				3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */,
+				3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */,
+				3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -343,15 +340,14 @@
 			files = (
 				E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */,
 				3D19C1BF1BFBA4F900596252 /* Main.storyboard in Resources */,
-				3D6E7E481BFE436100140B19 /* custombutton7.png in Resources */,
-				3D971D081BFD84C2008AB82A /* custombutton4.png in Resources */,
-				3D971D041BFD84AF008AB82A /* custombutton2.png in Resources */,
-				3D971D0C1BFD84D1008AB82A /* custombutton6.png in Resources */,
-				3D971D021BFD849B008AB82A /* custombutton1.png in Resources */,
+				3D1304E11BFF8D5C00C463B3 /* custombutton4.png in Resources */,
+				3D1304DF1BFF8D5C00C463B3 /* custombutton2.png in Resources */,
+				3D1304E31BFF8D5C00C463B3 /* custombutton6.png in Resources */,
+				3D1304DE1BFF8D5C00C463B3 /* custombutton1.png in Resources */,
 				E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */,
-				3D971D0A1BFD84C9008AB82A /* custombutton5.png in Resources */,
+				3D1304E21BFF8D5C00C463B3 /* custombutton5.png in Resources */,
 				C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */,
-				3D971D061BFD84B8008AB82A /* custombutton3.png in Resources */,
+				3D1304E01BFF8D5C00C463B3 /* custombutton3.png in Resources */,
 				E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
