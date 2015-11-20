@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D1304DE1BFF8D5C00C463B3 /* custombutton1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304D81BFF8D5C00C463B3 /* custombutton1.png */; };
-		3D1304DF1BFF8D5C00C463B3 /* custombutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304D91BFF8D5C00C463B3 /* custombutton2.png */; };
-		3D1304E01BFF8D5C00C463B3 /* custombutton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */; };
-		3D1304E11BFF8D5C00C463B3 /* custombutton4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */; };
-		3D1304E21BFF8D5C00C463B3 /* custombutton5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */; };
-		3D1304E31BFF8D5C00C463B3 /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */; };
+		3D1304EE1BFF906E00C463B3 /* custombutton1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304E81BFF906E00C463B3 /* custombutton1.png */; };
+		3D1304EF1BFF906E00C463B3 /* custombutton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304E91BFF906E00C463B3 /* custombutton2.png */; };
+		3D1304F01BFF906E00C463B3 /* custombutton3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304EA1BFF906E00C463B3 /* custombutton3.png */; };
+		3D1304F11BFF906E00C463B3 /* custombutton4.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304EB1BFF906E00C463B3 /* custombutton4.png */; };
+		3D1304F21BFF906E00C463B3 /* custombutton5.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304EC1BFF906E00C463B3 /* custombutton5.png */; };
+		3D1304F31BFF906E00C463B3 /* custombutton6.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D1304ED1BFF906E00C463B3 /* custombutton6.png */; };
 		3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B31BFBA4F900596252 /* AppDelegate.swift */; };
 		3D19C1BB1BFBA4F900596252 /* ButtonMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */; };
 		3D19C1BD1BFBA4F900596252 /* ButtonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */; };
@@ -62,12 +62,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D1304D81BFF8D5C00C463B3 /* custombutton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton1.png; sourceTree = "<group>"; };
-		3D1304D91BFF8D5C00C463B3 /* custombutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton2.png; sourceTree = "<group>"; };
-		3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton3.png; sourceTree = "<group>"; };
-		3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton4.png; sourceTree = "<group>"; };
-		3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton5.png; sourceTree = "<group>"; };
-		3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
+		3D1304E81BFF906E00C463B3 /* custombutton1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton1.png; sourceTree = "<group>"; };
+		3D1304E91BFF906E00C463B3 /* custombutton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton2.png; sourceTree = "<group>"; };
+		3D1304EA1BFF906E00C463B3 /* custombutton3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton3.png; sourceTree = "<group>"; };
+		3D1304EB1BFF906E00C463B3 /* custombutton4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton4.png; sourceTree = "<group>"; };
+		3D1304EC1BFF906E00C463B3 /* custombutton5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton5.png; sourceTree = "<group>"; };
+		3D1304ED1BFF906E00C463B3 /* custombutton6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custombutton6.png; sourceTree = "<group>"; };
 		3D19C1B31BFBA4F900596252 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
 		3D19C1B41BFBA4F900596252 /* ButtonMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonMakerViewController.swift; path = ../ButtonMakerViewController.swift; sourceTree = "<group>"; };
 		3D19C1B61BFBA4F900596252 /* ButtonTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonTableView.swift; path = ../ButtonTableView.swift; sourceTree = "<group>"; };
@@ -203,12 +203,12 @@
 				3D19C1CF1BFBA6A100596252 /* Frameworks */,
 				E40C5C0E1BF668A300F608F4 /* Supporting Files */,
 				E40C5BFA1BF6682E00F608F4 /* Products */,
-				3D1304D81BFF8D5C00C463B3 /* custombutton1.png */,
-				3D1304D91BFF8D5C00C463B3 /* custombutton2.png */,
-				3D1304DA1BFF8D5C00C463B3 /* custombutton3.png */,
-				3D1304DB1BFF8D5C00C463B3 /* custombutton4.png */,
-				3D1304DC1BFF8D5C00C463B3 /* custombutton5.png */,
-				3D1304DD1BFF8D5C00C463B3 /* custombutton6.png */,
+				3D1304E81BFF906E00C463B3 /* custombutton1.png */,
+				3D1304E91BFF906E00C463B3 /* custombutton2.png */,
+				3D1304EA1BFF906E00C463B3 /* custombutton3.png */,
+				3D1304EB1BFF906E00C463B3 /* custombutton4.png */,
+				3D1304EC1BFF906E00C463B3 /* custombutton5.png */,
+				3D1304ED1BFF906E00C463B3 /* custombutton6.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -340,14 +340,14 @@
 			files = (
 				E40C5C071BF6682E00F608F4 /* LaunchScreen.storyboard in Resources */,
 				3D19C1BF1BFBA4F900596252 /* Main.storyboard in Resources */,
-				3D1304E11BFF8D5C00C463B3 /* custombutton4.png in Resources */,
-				3D1304DF1BFF8D5C00C463B3 /* custombutton2.png in Resources */,
-				3D1304E31BFF8D5C00C463B3 /* custombutton6.png in Resources */,
-				3D1304DE1BFF8D5C00C463B3 /* custombutton1.png in Resources */,
+				3D1304F11BFF906E00C463B3 /* custombutton4.png in Resources */,
+				3D1304EF1BFF906E00C463B3 /* custombutton2.png in Resources */,
+				3D1304F31BFF906E00C463B3 /* custombutton6.png in Resources */,
+				3D1304EE1BFF906E00C463B3 /* custombutton1.png in Resources */,
 				E40C5C041BF6682E00F608F4 /* Assets.xcassets in Resources */,
-				3D1304E21BFF8D5C00C463B3 /* custombutton5.png in Resources */,
+				3D1304F21BFF906E00C463B3 /* custombutton5.png in Resources */,
 				C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */,
-				3D1304E01BFF8D5C00C463B3 /* custombutton3.png in Resources */,
+				3D1304F01BFF906E00C463B3 /* custombutton3.png in Resources */,
 				E418AA371BFA638600207878 /* CalculatorButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
