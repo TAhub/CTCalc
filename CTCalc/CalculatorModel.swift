@@ -136,6 +136,8 @@ class CalculatorModel
 	{
 		var tokens = tokens
 		
+		print(tokens.map() {$0.symbol})
+		
 		//first, cut the parens out and return values
 		var parenStart = 0
 		var parenLevel = 0
@@ -143,11 +145,16 @@ class CalculatorModel
 		{
 			if token.symbol == "("
 			{
-				parenStart = i
+				print(token.symbol)
+				if parenLevel == 0
+				{
+					parenStart = i
+				}
 				parenLevel += 1
 			}
 			if token.symbol == ")" || token.symbol == ","
 			{
+				print(token.symbol)
 				parenLevel -= 1
 				if parenLevel == 0
 				{
@@ -156,7 +163,11 @@ class CalculatorModel
 					let sliceAr = Array<Token>(slice)
 					
 					//empty parentheses like () will result in an empty array; guard against that
-					guard sliceAr.count > 0 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+					guard sliceAr.count > 0 else
+					{
+						print("empty array")
+						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+					}
 					
 					//get its value
 					let value = try collapseTokens(sliceAr)
@@ -175,7 +186,11 @@ class CalculatorModel
 				}
 			}
 		}
-		guard parenLevel == 0 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+		guard parenLevel == 0 else
+		{
+			print("invalid parentheses, level \(parenLevel)")
+			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+		}
 		
 		
 		//next, collapse all numbers into values
@@ -208,7 +223,11 @@ class CalculatorModel
 						number = number.substringFromIndex(number.startIndex.advancedBy(1))
 						mult *= -1
 					}
-					guard let value = Double(number) else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+					guard let value = Double(number) else
+					{
+						print("bad number")
+						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+					}
 					tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value * mult }), atIndex: numStart!)
 					
 					//and start over
@@ -225,7 +244,11 @@ class CalculatorModel
 				var functionTokens = try tokensFromFunctionString(functionReplace)
 				let functionVariables = variablesFromTokens(functionTokens)
 				
-				guard i + functionVariables.count < tokens.count else { throw CalculatorError.WhyDoINeedMultipleCases("NOT ENOUGH ARGUMENTS") }
+				guard i + functionVariables.count < tokens.count else
+				{
+					print("invalid argument list")
+					throw CalculatorError.WhyDoINeedMultipleCases("NOT ENOUGH ARGUMENTS")
+				}
 				
 				//TODO: get the next functionVariables.count tokens
 				//if there aren't enough, throw an error
@@ -304,6 +327,7 @@ class CalculatorModel
 			}
 			else
 			{
+				print("invalid function")
 				throw CalculatorError.WhyDoINeedMultipleCases("BAD FUNCTION")
 			}
 		}
@@ -313,7 +337,11 @@ class CalculatorModel
 	
 	private func collapseTokensInner(tokens:[Token], order:Int) throws -> Double
 	{
-		guard tokens.count != 0 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+		guard tokens.count != 0 else
+		{
+			print("empty tokens list")
+			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+		}
 		
 		//special case if there's only one thing left
 		if tokens.count == 1
@@ -326,6 +354,7 @@ class CalculatorModel
 			else
 			{
 				//oops, this is a pretty bad place for a non-zero variable token!
+				print("variable token survived too long")
 				throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 			}
 		}
@@ -342,7 +371,11 @@ class CalculatorModel
 				{
 				case 2:
 					//oops, it needs stuff on both sides
-					guard i > 0 && i < tokens.count - 1 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+					guard i > 0 && i < tokens.count - 1 else
+					{
+						print("not enough arguments for two-argument operator")
+						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+					}
 					
 					//get the value
 					let bef = tokens[i - 1]
@@ -358,12 +391,20 @@ class CalculatorModel
 					let other:Token
 					if token.before
 					{
-						guard i < tokens.count - 1 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+						guard i < tokens.count - 1 else
+						{
+							print("not enough arguments for one-argument postfix operator")
+							throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+						}
 						other = tokens[i + 1]
 					}
 					else
 					{
-						guard i > 0 else { throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX") }
+						guard i > 0 else
+						{
+							print("not enough arguments for one-argument prefix operator")
+							throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
+						}
 						other = tokens[i - 1]
 					}
 					let value = token.effect1!(try collapseTokensInner([other], order: order))
@@ -381,7 +422,9 @@ class CalculatorModel
 					}
 					return try collapseTokensInner(tokens, order: order)
 				case 0: break //nothing happens
-				default: throw CalculatorError.WhyDoINeedMultipleCases("BAD TOKEN")
+				default:
+					print("invalid token \(token.symbol)")
+					throw CalculatorError.WhyDoINeedMultipleCases("BAD TOKEN")
 				}
 			}
 		}
@@ -390,6 +433,7 @@ class CalculatorModel
 		{
 			//this is bad syntax
 			//it has probably ended up with multiple number literals in a row
+			print("order too far")
 			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 		}
 		
