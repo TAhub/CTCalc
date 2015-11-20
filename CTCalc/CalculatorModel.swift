@@ -145,11 +145,16 @@ class CalculatorModel
 		{
 			if token.symbol == "("
 			{
-				parenStart = i
+				print(token.symbol)
+				if parenLevel == 0
+				{
+					parenStart = i
+				}
 				parenLevel += 1
 			}
 			if token.symbol == ")" || token.symbol == ","
 			{
+				print(token.symbol)
 				parenLevel -= 1
 				if parenLevel == 0
 				{
