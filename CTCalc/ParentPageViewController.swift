@@ -17,9 +17,9 @@ class ParentPageViewController: UIViewController, UIPageViewControllerDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pageTitles = NSArray(objects: "Welcome","How to Make Functions")
+        self.pageTitles = NSArray(objects: "Welcome","Edit Mode", "Swapping Buttons", "Spare Buttons", "Custom Variable", "Make Custom Function", "Save Custom Function", "Farewell")
         
-        self.pageImages = NSArray(objects: "dunkleosteus", "nautilus")
+        self.pageImages = NSArray(objects: "CalcTutorialPage1", "CalcTutorialPage2", "CalcTutorialPage3", "CalcTutorialPage4", "CalcTutorialPage5", "CalcTutorialPage6", "CalcTutorialPage7", "CalcTutorialPage8")
         
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         
