@@ -113,9 +113,9 @@ class DraggableContainerViewController: UIViewController {
 	}
 	
 	//MARK: supported orientations
-	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-		return UIInterfaceOrientationMask.All
-	}
+//	override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+//		return UIInterfaceOrientationMask.All
+//	}
 	
 	//MARK: slightly entangled helper function zone
 	func removeToken(token:Token)

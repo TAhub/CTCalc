@@ -20,20 +20,20 @@ struct PickedUpCell
 
 class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate {
 	var buttonsPortrait = [Token]()
-	{
-		didSet
-		{
-			collectionView?.reloadData()
-		}
-	}
+//	{
+//		didSet
+//		{
+//			collectionView?.reloadData()
+//		}
+//	}
 	var buttonsLandscape = [Token]()
-	{
-		didSet
-		{
-			collectionView?.reloadData()
-		}
-	}
-	
+//	{
+//		didSet
+//		{
+//			collectionView?.reloadData()
+//		}
+//	}
+
 	var screenNum:Int!
 	@IBInspectable var rightSegue:String? = nil
 	@IBInspectable var leftSegue:String? = nil
@@ -134,7 +134,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		collectionView?.backgroundColor = UIColor.whiteColor()
 		
 		(self.parentViewController as! DraggableContainerViewController).dragDelegate = self
-		lastEditMode = false
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -186,7 +185,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	private var editMode:Bool = false
 	
-	private var lastEditMode = false
 	func toggleEditMode(sender: UILongPressGestureRecognizer)
 	{
 		if sender.state == UIGestureRecognizerState.Began
@@ -198,7 +196,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			}
 			collectionView?.reloadData()
 			collectionView?.layoutIfNeeded()
-			lastEditMode = editMode
 		}
 	}
 	
@@ -372,14 +369,13 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
         return readOnlyButtons.count
 	}
 	
-	private func shakePart(view:UIView)
+	private func shakePart(view:UIView, shakeRemoveClosure: () -> ())
 	{
 		let xMult = (CGFloat(arc4random_uniform(100)) - 50) / 50
 		let yMult = (CGFloat(arc4random_uniform(100)) - 50) / 50
 		let shakeXMag = 2 * xMult
 		let shakeYMag = 2 * yMult
 		let shakeInter = 0.12 * Double(arc4random_uniform(100) + 50) / 100
-		
 		
 		UIView.animateWithDuration(shakeInter, delay: 0, options: UIViewAnimationOptions.AllowUserInteraction, animations:
 		{
@@ -395,11 +391,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			{ (success) in
 				if self.editMode
 				{
-					self.shakePart(view)
+					self.shakePart(view, shakeRemoveClosure: shakeRemoveClosure)
 				}
 				else
 				{
-					self.collectionView?.reloadData()
+					shakeRemoveClosure()
+//					self.collectionView?.reloadData()
 				}
 			}
 		}
@@ -414,9 +411,24 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		cell.token = readOnlyButtons[indexPath.row]
 		
 		//cancel the cell's shake
-		if editMode && !lastEditMode
+		if editMode && !readOnlyButtons[indexPath.row].shaking
 		{
-			shakePart(cell)
+			if landscape
+			{
+				buttonsLandscape[indexPath.row].shaking = true
+				shakePart(cell)
+				{
+					self.buttonsLandscape[indexPath.row].shaking = false
+				}
+			}
+			else
+			{
+				buttonsPortrait[indexPath.row].shaking = true
+				shakePart(cell)
+				{
+					self.buttonsPortrait[indexPath.row].shaking = false
+				}
+			}
 		}
 		
 //		cell.layer.cornerRadius = 10

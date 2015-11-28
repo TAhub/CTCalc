@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png"), UIImage(named: "custombutton7.png")]
+//let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png"), UIImage(named: "custombutton7.png")]
+let kImages = [UIImage(named: "custombutton1.png"), UIImage(named: "custombutton2.png"), UIImage(named: "custombutton3.png"), UIImage(named: "custombutton4.png"), UIImage(named: "custombutton5.png"), UIImage(named: "custombutton6.png"), UIImage(named: "custombutton6.png")]
 
 struct Token
 {
@@ -20,6 +21,7 @@ struct Token
 	var effect1:((Double)->(Double))?
 	var effect2:((Double, Double)->(Double))?
 	var functionReplace:String?
+	var shaking:Bool
 	
 	init(symbol:String, order:Int, imageNumber:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil)
 	{
@@ -30,6 +32,7 @@ struct Token
 		self.effect1 = effect1
 		self.effect2 = effect2
 		self.functionReplace = functionReplace
+		self.shaking = false
 	}
 	
 	var before:Bool
