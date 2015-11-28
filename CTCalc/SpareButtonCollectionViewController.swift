@@ -129,4 +129,43 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             saveButtons()
 		}
 	}
+	
+	//MARK: press calculator buttons
+	private var temporaryScreen:Display?
+	
+	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		if !editing && !specialButtonPress(readOnlyButtons[indexPath.row])
+		{
+			let dgvc = parentViewController as! DraggableContainerViewController
+			let ccvc = dgvc.viewControllers[0] as! CalculatorCollectionViewController
+			ccvc.calculator.applyToken(readOnlyButtons[indexPath.row])
+			ccvc.collectionView?.reloadData()
+			
+			//make a screen to temporarily show the result
+			if temporaryScreen != nil
+			{
+				temporaryScreen!.layer.removeAllAnimations()
+			}
+			else
+			{
+				let cell = self.collectionView!.cellForItemAtIndexPath(indexPath)!
+				let loadedNib = NSBundle.mainBundle().loadNibNamed("Display", owner: self, options: nil)[0] as! Display
+				loadedNib.frame = CGRect(x: 0, y: 0, width: self.collectionView!.frame.width, height: cell.bounds.height)
+				temporaryScreen = loadedNib
+				view.addSubview(loadedNib)
+			}
+			
+			//make the screen fade
+			temporaryScreen!.alpha = 1
+			UIView.animateWithDuration(1.0, delay: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations:
+			{
+				self.temporaryScreen!.alpha = 0
+			}, completion: nil)
+			
+			//make the screen actually show the result
+			temporaryScreen!.entryLabel.text = ccvc.calculator.tokenString
+			temporaryScreen!.resultLabel.text = ccvc.calculator.result
+			
+		}
+	}
 }

@@ -354,6 +354,23 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		collectionView?.reloadData()
 	}
 	
+	//press buttons
+	internal func specialButtonPress(token:Token)->Bool
+	{
+		if token.symbol == "help"
+		{
+			showTutorial()
+			return true
+		}
+		return false
+	}
+	
+	private func showTutorial()
+	{
+		let dcvc = parentViewController! as! DraggableContainerViewController
+		dcvc.performSegueWithIdentifier("showTutorial", sender: self)
+	}
+	
 	//MARK: collection view dataSource
 	override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
 	{

@@ -118,29 +118,17 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
         if !NSUserDefaults.standardUserDefaults().boolForKey("shownTutorial")
         {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "shownTutorial")
-            showTutorial()
         }
     }
 	
 	//press buttons
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		if !editing && indexPath.section != 0
+		if !editing && indexPath.section != 0 && !specialButtonPress(readOnlyButtons[indexPath.row])
 		{
 			calculator.applyToken(readOnlyButtons[indexPath.row])
-            collectionView.reloadData()
-            
-            if readOnlyButtons[indexPath.row].symbol == "help"
-            {
-                showTutorial()
-            }
+			collectionView.reloadData()
 		}
 	}
-    
-    private func showTutorial()
-    {
-        let dcvc = parentViewController! as! DraggableContainerViewController
-        dcvc.performSegueWithIdentifier("showTutorial", sender: self)
-    }
     
     //MARK: overrides for display
     
