@@ -133,6 +133,32 @@ enum CalculatorError:ErrorType
 class CalculatorModel
 {
 	private var tokens = [Token]()
+	{
+		didSet
+		{
+			//save the calculator contents
+			NSUserDefaults.standardUserDefaults().setObject(tokens.map({ $0.symbol }).joinWithSeparator(" "), forKey: "calculatorContents")
+		}
+	}
+	
+	init()
+	{
+		//load calculator contents
+		if let calculatorString = NSUserDefaults.standardUserDefaults().stringForKey("calculatorContents")
+		{
+			do
+			{
+				tokens = try tokensFromFunctionString(calculatorString)
+			}
+			catch _
+			{
+				//it's a bad function
+				print("ERROR: failed to read function")
+			}
+		}
+		
+	}
+	
 	
 	//MARK: internal
 	private func collapseTokens(tokens:[Token]) throws -> Double
