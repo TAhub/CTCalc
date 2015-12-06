@@ -21,33 +21,51 @@ class SemiDraggableViewController: UINavigationController, DraggableContainerVie
 	
 	var psuedoSegueMode:Bool = false
 	
+	func swiped(sender: UISwipeGestureRecognizer)
+	{
+		//this is the only gesture recognizer that works, since you can't carry around buttons in this controller
+		let dir = sender.direction
+		psuedoSegueMode = true
+		switch(dir)
+		{
+		case UISwipeGestureRecognizerDirection.Right:
+			psuedoSegue(rightSegue, left: false)
+		case UISwipeGestureRecognizerDirection.Left:
+			psuedoSegue(leftSegue, left: true)
+		default: break
+		}
+	}
+	
 	func panned(sender: UIPanGestureRecognizer)
 	{
-		let point = sender.locationInView(view)
-		let drag = sender.translationInView(view)
-		sender.setTranslation(CGPointZero, inView: view)
+		//this is disabled for now
+		//I'm switching over to swipe gestures
 		
-		//change your view controller
-		if sender.state == UIGestureRecognizerState.Changed
-		{
-			if !psuedoSegueMode
-			{
-				if drag.x < 0 && point.x < kDragMargin
-				{
-					psuedoSegueMode = true
-					psuedoSegue(leftSegue, left: true)
-				}
-				else if drag.x > 0 && point.x > view!.bounds.width - kDragMargin
-				{
-					psuedoSegueMode = true
-					psuedoSegue(rightSegue, left: false)
-				}
-			}
-		}
-		else
-		{
-			psuedoSegueMode = false
-		}
+//		let point = sender.locationInView(view)
+//		let drag = sender.translationInView(view)
+//		sender.setTranslation(CGPointZero, inView: view)
+//		
+//		//change your view controller
+//		if sender.state == UIGestureRecognizerState.Changed
+//		{
+//			if !psuedoSegueMode
+//			{
+//				if drag.x < 0 && point.x < kDragMargin
+//				{
+//					psuedoSegueMode = true
+//					psuedoSegue(leftSegue, left: true)
+//				}
+//				else if drag.x > 0 && point.x > view!.bounds.width - kDragMargin
+//				{
+//					psuedoSegueMode = true
+//					psuedoSegue(rightSegue, left: false)
+//				}
+//			}
+//		}
+//		else
+//		{
+//			psuedoSegueMode = false
+//		}
 	}
 	
 	private func psuedoSegue(id:String?, left: Bool)

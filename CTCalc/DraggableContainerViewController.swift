@@ -11,6 +11,7 @@ import UIKit
 protocol DraggableContainerViewControllerDelegate
 {
 	func panned(sender: UIPanGestureRecognizer)
+	func swiped(sender: UISwipeGestureRecognizer)
 }
 
 let kViewControllerIDs:[String] = ["MainCollection", "FirstContainerCollection", "MakerNavigation"]
@@ -66,6 +67,10 @@ class DraggableContainerViewController: UIViewController {
 		pancakes.addTarget(self, action: "panned:")
 		view.addGestureRecognizer(pancakes)
 		
+		let swipecakes = UISwipeGestureRecognizer()
+		swipecakes.addTarget(self, action: "swiped:")
+		view.addGestureRecognizer(swipecakes)
+		
 		//load the view controllers
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		for id in kViewControllerIDs
@@ -110,6 +115,11 @@ class DraggableContainerViewController: UIViewController {
 	func panned(sender:UIPanGestureRecognizer)
 	{
 		dragDelegate?.panned(sender)
+	}
+	
+	func swiped(sender:UISwipeGestureRecognizer)
+	{
+		dragDelegate?.swiped(sender)
 	}
 	
 	//MARK: supported orientations

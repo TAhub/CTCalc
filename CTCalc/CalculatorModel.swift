@@ -194,7 +194,7 @@ class CalculatorModel
 					//empty parentheses like () will result in an empty array; guard against that
 					guard sliceAr.count > 0 else
 					{
-						print("empty array")
+						print("ERROR: empty array")
 						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 					}
 					
@@ -217,7 +217,7 @@ class CalculatorModel
 		}
 		guard parenLevel == 0 else
 		{
-			print("invalid parentheses, level \(parenLevel)")
+			print("ERROR: invalid parentheses, level \(parenLevel)")
 			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 		}
 		
@@ -254,7 +254,7 @@ class CalculatorModel
 					}
 					guard let value = Double(number) else
 					{
-						print("bad number")
+						print("ERROR: bad number")
 						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 					}
 					tokens.insert(Token(symbol: "num", order: kOrderLiteral, imageNumber: 0, effect0: { value * mult }), atIndex: numStart!)
@@ -275,7 +275,7 @@ class CalculatorModel
 				
 				guard i + functionVariables.count < tokens.count else
 				{
-					print("invalid argument list")
+					print("ERROR: invalid argument list")
 					throw CalculatorError.WhyDoINeedMultipleCases("NOT ENOUGH ARGUMENTS")
 				}
 				
@@ -356,7 +356,7 @@ class CalculatorModel
 			}
 			else
 			{
-				print("invalid function")
+				print("ERROR: invalid function")
 				throw CalculatorError.WhyDoINeedMultipleCases("BAD FUNCTION")
 			}
 		}
@@ -368,7 +368,7 @@ class CalculatorModel
 	{
 		guard tokens.count != 0 else
 		{
-			print("empty tokens list")
+			print("ERROR: empty tokens list")
 			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 		}
 		
@@ -383,7 +383,7 @@ class CalculatorModel
 			else
 			{
 				//oops, this is a pretty bad place for a non-zero variable token!
-				print("variable token survived too long")
+				print("ERROR: variable token survived too long")
 				throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 			}
 		}
@@ -402,7 +402,7 @@ class CalculatorModel
 					//oops, it needs stuff on both sides
 					guard i > 0 && i < tokens.count - 1 else
 					{
-						print("not enough arguments for two-argument operator")
+						print("ERROR: not enough arguments for two-argument operator")
 						throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 					}
 					
@@ -422,7 +422,7 @@ class CalculatorModel
 					{
 						guard i < tokens.count - 1 else
 						{
-							print("not enough arguments for one-argument postfix operator")
+							print("ERROR: not enough arguments for one-argument postfix operator")
 							throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 						}
 						other = tokens[i + 1]
@@ -431,7 +431,7 @@ class CalculatorModel
 					{
 						guard i > 0 else
 						{
-							print("not enough arguments for one-argument prefix operator")
+							print("ERROR: not enough arguments for one-argument prefix operator")
 							throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 						}
 						other = tokens[i - 1]
@@ -452,7 +452,7 @@ class CalculatorModel
 					return try collapseTokensInner(tokens, order: order)
 				case 0: break //nothing happens
 				default:
-					print("invalid token \(token.symbol)")
+					print("ERROR: invalid token \(token.symbol)")
 					throw CalculatorError.WhyDoINeedMultipleCases("BAD TOKEN")
 				}
 			}
@@ -462,7 +462,7 @@ class CalculatorModel
 		{
 			//this is bad syntax
 			//it has probably ended up with multiple number literals in a row
-			print("order too far")
+			print("ERROR: order too far")
 			throw CalculatorError.WhyDoINeedMultipleCases("BAD SYNTAX")
 		}
 		

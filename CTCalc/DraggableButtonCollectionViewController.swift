@@ -116,7 +116,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		
 		let nib = UINib(nibName: "CalculatorButton", bundle: nil)
 		collectionView?.registerNib(nib, forCellWithReuseIdentifier: "buttonCell")
-        
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -199,6 +198,26 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 	}
 	
+	func swiped(sender: UISwipeGestureRecognizer)
+	{
+		print("Swipe")
+		
+		//this changes view controller, but only while NOT carrying something
+		if self.pickedUp == nil
+		{
+			let dir = sender.direction
+			psuedoSegueMode = true
+			switch(dir)
+			{
+			case UISwipeGestureRecognizerDirection.Right:
+				psuedoSegue(rightSegue, left: false)
+			case UISwipeGestureRecognizerDirection.Left:
+				psuedoSegue(leftSegue, left: true)
+			default: break
+			}
+		}
+	}
+	
 	func panned(sender: UIPanGestureRecognizer)
 	{
 		let point = sender.locationInView(view)
@@ -276,28 +295,29 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		
 		
-		//TODO: this is temporary code to change view controller
-		//there is probably a better way to do this
-		//I tried a swipe recognizer, but you can't do that while dragging
-		if sender.state == UIGestureRecognizerState.Changed
+		//this moves to other screens, but only while carrying stuff
+		if pickedUp != nil
 		{
-			if !psuedoSegueMode
+			if sender.state == UIGestureRecognizerState.Changed
 			{
-				if drag.x < 0 && point.x < kDragMargin
+				if !psuedoSegueMode
 				{
-					psuedoSegueMode = true
-					psuedoSegue(leftSegue, left: true)
-				}
-				else if drag.x > 0 && point.x > collectionView!.bounds.width - kDragMargin
-				{
-					psuedoSegueMode = true
-					psuedoSegue(rightSegue, left: false)
+					if drag.x < 0 && point.x < kDragMargin
+					{
+						psuedoSegueMode = true
+						psuedoSegue(leftSegue, left: true)
+					}
+					else if drag.x > 0 && point.x > collectionView!.bounds.width - kDragMargin
+					{
+						psuedoSegueMode = true
+						psuedoSegue(rightSegue, left: false)
+					}
 				}
 			}
-		}
-		else
-		{
-			psuedoSegueMode = false
+			else
+			{
+				psuedoSegueMode = false
+			}
 		}
 	}
 	
