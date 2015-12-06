@@ -148,12 +148,33 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 			}
 			else
 			{
-				let cell = self.collectionView!.cellForItemAtIndexPath(indexPath)!
 				let loadedNib = NSBundle.mainBundle().loadNibNamed("Display", owner: self, options: nil)[0] as! Display
-				loadedNib.frame = CGRect(x: 0, y: 0, width: self.collectionView!.frame.width, height: cell.bounds.height)
 				temporaryScreen = loadedNib
-				view.addSubview(loadedNib)
+				loadedNib.translatesAutoresizingMaskIntoConstraints = false;
 			}
+			
+			//clear constraints
+			temporaryScreen!.removeConstraints(temporaryScreen!.constraints)
+			temporaryScreen!.removeFromSuperview()
+			view.addSubview(temporaryScreen!)
+			
+			//set constraints for the temporary view
+			let cell = self.collectionView!.cellForItemAtIndexPath(indexPath)!
+			let cH = Int(floor(cell.frame.height))
+			let cD = ["display" : temporaryScreen!]
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-0-[display]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: cD))
+			view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[display(==\(cH))]", options: NSLayoutFormatOptions(), metrics: nil, views: cD))
+			
+			//should it be on the bottom or top?
+			if cell.frame.origin.y == 0
+			{
+				view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[display]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: cD))
+			}
+			else
+			{
+				view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[display]", options: NSLayoutFormatOptions(), metrics: nil, views: cD))
+			}
+			
 			
 			//make the screen fade
 			temporaryScreen!.alpha = 1
