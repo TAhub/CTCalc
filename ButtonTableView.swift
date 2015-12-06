@@ -13,6 +13,13 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var buttonTableView: UITableView!
+	{
+		didSet
+		{
+			buttonTableView.estimatedRowHeight = 100
+			buttonTableView.rowHeight = UITableViewAutomaticDimension
+		}
+	}
     
     private var token:Token?
 
