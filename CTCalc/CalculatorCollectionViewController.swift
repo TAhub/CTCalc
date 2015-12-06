@@ -68,9 +68,9 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
             buttonsLandscape.append(kTokenExp)
             buttonsLandscape.append(kTokenInverse)
             
-            buttonsLandscape.append(kTokenSinH)
-            buttonsLandscape.append(kTokenTanH)
-            buttonsLandscape.append(kTokenCosH)
+            buttonsLandscape.append(kTokenArcSin)
+            buttonsLandscape.append(kTokenArcTan)
+            buttonsLandscape.append(kTokenArcCos)
             buttonsLandscape.append(kTokenCube)
             
             buttonsLandscape.append(kTokenOne)

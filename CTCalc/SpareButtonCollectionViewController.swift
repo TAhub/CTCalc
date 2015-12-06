@@ -57,9 +57,9 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsPortrait.append(kTokenRound)
             buttonsPortrait.append(kTokenNaturalLog)
 
-            buttonsPortrait.append(kTokenBlank)
-			buttonsPortrait.append(kTokenBlank)
-			buttonsPortrait.append(kTokenBlank)
+            buttonsPortrait.append(kTokenArcSin)
+			buttonsPortrait.append(kTokenArcCos)
+			buttonsPortrait.append(kTokenArcTan)
 			buttonsPortrait.append(kTokenBlank)
 			
             //landscape
@@ -70,9 +70,9 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape.append(kTokenD)
             
             buttonsLandscape.append(kTokenE)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenSinH)
+            buttonsLandscape.append(kTokenCosH)
+            buttonsLandscape.append(kTokenTanH)
             
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)

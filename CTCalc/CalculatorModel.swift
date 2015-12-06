@@ -79,6 +79,9 @@ let kTokenTan = Token(symbol: "tan", order: kOrderOperand, imageNumber: 2, effec
 let kTokenSinH = Token(symbol: "sinh", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: sinh)
 let kTokenCosH = Token(symbol: "cosh", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: cosh)
 let kTokenTanH = Token(symbol: "tanh", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: tanh)
+let kTokenArcSin = Token(symbol: "asin", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: asin)
+let kTokenArcCos = Token(symbol: "acos", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: acos)
+let kTokenArcTan = Token(symbol: "atan", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: atan)
 let kTokenExp = Token(symbol: "^", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: nil, effect2: { pow($0, $1) })
 let kTokenSquare = Token(symbol: "²", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: { pow($0, 2) })
 let kTokenCube = Token(symbol: "³", order: kOrderOperand, imageNumber: 2, effect0: nil, effect1: { pow($0, 3) })
@@ -123,7 +126,7 @@ let kTokenClear = Token(symbol: "©", order: kOrderEffectClear, imageNumber: 3)
 let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing, imageNumber: 6)
 let kTokenHelp = Token(symbol: "help", order: kOrderEffectHelp, imageNumber: 3)
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp, kTokenArcSin, kTokenArcCos, kTokenArcTan]
 
 enum CalculatorError:ErrorType
 {
