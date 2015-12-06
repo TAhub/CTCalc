@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setUpParse()
         
         //PageViewController Stuff
-        var pageController = UIPageControl.appearance()
+        let pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.whiteColor()
