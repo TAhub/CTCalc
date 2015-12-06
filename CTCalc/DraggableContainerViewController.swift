@@ -16,7 +16,7 @@ protocol DraggableContainerViewControllerDelegate
 
 let kViewControllerIDs:[String] = ["MainCollection", "FirstContainerCollection", "MakerNavigation"]
 
-class DraggableContainerViewController: UIViewController {
+class DraggableContainerViewController: UIViewController, UIGestureRecognizerDelegate {
 	
 	//I tried to be nice and do this with an IBInspectable array
 	//but it's not possible
@@ -65,11 +65,20 @@ class DraggableContainerViewController: UIViewController {
 		
 		let pancakes = UIPanGestureRecognizer()
 		pancakes.addTarget(self, action: "panned:")
+		pancakes.delegate = self
 		view.addGestureRecognizer(pancakes)
 		
-		let swipecakes = UISwipeGestureRecognizer()
-		swipecakes.addTarget(self, action: "swiped:")
-		view.addGestureRecognizer(swipecakes)
+		let swipecakesL = UISwipeGestureRecognizer()
+		swipecakesL.addTarget(self, action: "swiped:")
+		swipecakesL.delegate = self
+		swipecakesL.direction = UISwipeGestureRecognizerDirection.Left
+		view.addGestureRecognizer(swipecakesL)
+		
+		let swipecakesR = UISwipeGestureRecognizer()
+		swipecakesR.addTarget(self, action: "swiped:")
+		swipecakesR.delegate = self
+		swipecakesR.direction = UISwipeGestureRecognizerDirection.Right
+		view.addGestureRecognizer(swipecakesR)
 		
 		//load the view controllers
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -92,6 +101,10 @@ class DraggableContainerViewController: UIViewController {
 		}
 	}
 	
+	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
+	}
+	
 	func getControllerWithID(id:String) -> UIViewController?
 	{
 		for i in 0..<kViewControllerIDs.count
@@ -108,7 +121,7 @@ class DraggableContainerViewController: UIViewController {
 	{
 		if let vc = getControllerWithID(to)
 		{
-			transition(activeViewController!, to: vc, direction: (left ? -1 : 1, 0))
+			transition(activeViewController!, to: vc, direction: (left ? 1 : -1, 0))
 		}
 	}
 	

@@ -18,7 +18,7 @@ struct PickedUpCell
 	var viewControllerFrom:DraggableButtonCollectionViewController
 }
 
-class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate {
+class DraggableButtonCollectionViewController: UICollectionViewController, DraggableContainerViewControllerDelegate, UIGestureRecognizerDelegate {
 	var buttonsPortrait = [Token]()
 //	{
 //		didSet
@@ -111,11 +111,16 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		super.viewDidLoad()
 		
 		let recognizer = UILongPressGestureRecognizer()
+		recognizer.delegate = self
 		recognizer.addTarget(self, action: "toggleEditMode:")
 		view.addGestureRecognizer(recognizer)
 		
 		let nib = UINib(nibName: "CalculatorButton", bundle: nil)
 		collectionView?.registerNib(nib, forCellWithReuseIdentifier: "buttonCell")
+	}
+	
+	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
 	}
 	
 	override func viewWillAppear(animated: Bool)
@@ -200,8 +205,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	
 	func swiped(sender: UISwipeGestureRecognizer)
 	{
-		print("Swipe")
-		
 		//this changes view controller, but only while NOT carrying something
 		if self.pickedUp == nil
 		{
