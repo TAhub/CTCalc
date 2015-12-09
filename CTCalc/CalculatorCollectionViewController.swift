@@ -15,7 +15,7 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 	override func viewDidLoad() {
         super.viewDidLoad()
 		
-		screenNum = 0
+		loadMyStuff()
         
         let displayNib = UINib(nibName: "Display", bundle: nil)
         collectionView?.registerNib(displayNib, forCellWithReuseIdentifier: "Display")
@@ -26,6 +26,12 @@ class CalculatorCollectionViewController: DraggableButtonCollectionViewControlle
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
 		
+		loadMyStuff()
+	}
+	
+	func loadMyStuff()
+	{
+		screenNum = 0
 		if !loadButtons()
 		{
 			buttonsPortrait = [Token]()

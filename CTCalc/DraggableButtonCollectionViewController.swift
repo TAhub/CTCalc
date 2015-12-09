@@ -106,6 +106,25 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		saveButtonsInner("landscape", tokens: buttonsLandscape)
 	}
 	
+	func resetButtons()
+	{
+		//clear NSUserDefaults
+		let def = NSUserDefaults.standardUserDefaults()
+		def.removeObjectForKey("0exists");
+		def.removeObjectForKey("1exists");
+		
+		//force both controllers to reload
+		let dvc = self.parentViewController as! DraggableContainerViewController
+		let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
+		let spare = dvc.viewControllers[1] as! SpareButtonCollectionViewController
+		calc.editMode = false
+		spare.editMode = false
+		calc.loadMyStuff()
+		spare.loadMyStuff()
+		
+		collectionView?.reloadData()
+	}
+	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -383,6 +402,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		if token.symbol == "help"
 		{
 			showTutorial()
+			return true
+		}
+		else if token.symbol == "reset"
+		{
+			resetButtons()
 			return true
 		}
 		return false

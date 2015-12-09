@@ -63,6 +63,7 @@ let kOrderEffectBack = -1
 let kOrderEffectClear = -2
 let kOrderEffectNothing = -3
 let kOrderEffectHelp = -4
+let kOrderEffectReset = -5
 let kOrderFunc = 1
 let kOrderOperandBefore = 2
 let kOrderOperand = 3
@@ -125,8 +126,9 @@ let kTokenBack = Token(symbol: "←", order: kOrderEffectBack, imageNumber: 3)
 let kTokenClear = Token(symbol: "©", order: kOrderEffectClear, imageNumber: 3)
 let kTokenBlank = Token(symbol: " ", order: kOrderEffectNothing, imageNumber: 6)
 let kTokenHelp = Token(symbol: "help", order: kOrderEffectHelp, imageNumber: 3)
+let kTokenReset = Token(symbol: "reset", order: kOrderEffectReset, imageNumber: 3);
 
-let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp, kTokenArcSin, kTokenArcCos, kTokenArcTan]
+let kDefaultTokens = [kTokenPlus, kTokenMinus, kTokenMult, kTokenDiv, kTokenSin, kTokenCos, kTokenTan, kTokenExp, kTokenSquare, kTokenCube, kTokenSquareRoot, kTokenCubeRoot, kTokenSParen, kTokenEParen, kTokenComma, kTokenZero, kTokenOne, kTokenTwo, kTokenThree, kTokenFour, kTokenFive, kTokenSix, kTokenSeven, kTokenEight, kTokenNine, kTokenA, kTokenB, kTokenC, kTokenD, kTokenE, kTokenDot, kTokenPi, kTokenBlank, kTokenBack, kTokenClear, kTokenNaturalLog, kTokenEuler, kTokenLog, kTokenInverse, kTokenRandom, kTokenOneOver, kTokenRound, kTokenSinH, kTokenCosH, kTokenTanH, kTokenHelp, kTokenReset, kTokenArcSin, kTokenArcCos, kTokenArcTan]
 
 enum CalculatorError:ErrorType
 {

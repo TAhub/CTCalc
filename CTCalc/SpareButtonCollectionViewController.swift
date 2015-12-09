@@ -25,7 +25,6 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
 	func loadMyStuff()
 	{
 		screenNum = 1
-		
 		if !loadButtons()
 		{
             buttonsPortrait = [Token]()
@@ -60,7 +59,7 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsPortrait.append(kTokenArcSin)
 			buttonsPortrait.append(kTokenArcCos)
 			buttonsPortrait.append(kTokenArcTan)
-			buttonsPortrait.append(kTokenBlank)
+			buttonsPortrait.append(kTokenReset)
 			
             //landscape
             
@@ -74,7 +73,7 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape.append(kTokenCosH)
             buttonsLandscape.append(kTokenTanH)
             
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenReset)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
