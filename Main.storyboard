@@ -156,6 +156,9 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="leftSegue" value="MakerNavigation"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="rightSegue" value="FirstContainerCollection"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="B6U-49-jr6" kind="presentation" identifier="newButton" id="otU-h8-aYp"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iso-Ys-cCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,14 +276,7 @@
                             <constraint firstItem="fVG-bb-Usw" firstAttribute="leading" secondItem="Hbk-eW-VWW" secondAttribute="leading" id="rel-pk-pBC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gsa-th-S2V">
-                        <barButtonItem key="rightBarButtonItem" title="Add Custom Button" id="crG-k1-Ov5">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="B6U-49-jr6" kind="show" identifier="ButtonMakerViewController" id="D3s-HI-VHb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="gsa-th-S2V"/>
                     <connections>
                         <outlet property="buttonTableView" destination="fVG-bb-Usw" id="BqU-yq-xnl"/>
                         <outlet property="searchBar" destination="yiB-6S-oCq" id="4bS-J3-mus"/>
@@ -303,9 +299,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmB-NX-PD0">
-                                <rect key="frame" x="266" y="428" width="68" height="45"/>
+                                <rect key="frame" x="271" y="428" width="58" height="45"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="29"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -474,12 +470,25 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpJ-pH-fvy">
+                                <rect key="frame" x="267" y="481" width="66" height="38"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="B6U-49-jr6" eventType="touchUpInside" id="2No-zt-h5v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UUl-ST-lqD" firstAttribute="centerY" secondItem="wAO-3h-ZyJ" secondAttribute="centerY" id="2mB-iG-76h"/>
+                            <constraint firstItem="IpJ-pH-fvy" firstAttribute="top" secondItem="LmB-NX-PD0" secondAttribute="bottom" constant="8" symbolic="YES" id="CTq-M3-FdG"/>
                             <constraint firstItem="LmB-NX-PD0" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="Ob5-Rd-LJb"/>
+                            <constraint firstItem="IpJ-pH-fvy" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="Upq-OX-7XD"/>
                             <constraint firstItem="UUl-ST-lqD" firstAttribute="height" secondItem="wAO-3h-ZyJ" secondAttribute="height" multiplier="0.5" id="Xqd-iE-VJ9"/>
                             <constraint firstItem="UUl-ST-lqD" firstAttribute="centerX" secondItem="wAO-3h-ZyJ" secondAttribute="centerX" id="Yi2-Lt-fRF"/>
                             <constraint firstItem="UUl-ST-lqD" firstAttribute="width" secondItem="wAO-3h-ZyJ" secondAttribute="width" multiplier="0.75" id="m41-h2-ab0"/>
@@ -500,7 +509,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yW8-s3-aqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="906"/>
+            <point key="canvasLocation" x="2009" y="225"/>
         </scene>
         <!--Spare Button Collection View Controller-->
         <scene sceneID="WvX-9L-c0m">
@@ -526,10 +535,13 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftSegue" value="MainCollection"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="B6U-49-jr6" kind="presentation" identifier="newButton" id="UU0-Ny-d3C"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9C-Fm-ZWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="225"/>
+            <point key="canvasLocation" x="1330" y="225"/>
         </scene>
         <!--Semi Draggable View Controller-->
         <scene sceneID="DDV-fc-JLR">
@@ -562,4 +574,7 @@
         <image name="custombutton5.png" width="120" height="120"/>
         <image name="custombutton6.png" width="120" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UU0-Ny-d3C"/>
+    </inferredMetricsTieBreakers>
 </document>

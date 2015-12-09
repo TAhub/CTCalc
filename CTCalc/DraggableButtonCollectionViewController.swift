@@ -409,6 +409,11 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			resetButtons()
 			return true
 		}
+		else if token.symbol == "new"
+		{
+			self.performSegueWithIdentifier("newButton", sender: self)
+			return true
+		}
 		return false
 	}
 	
@@ -416,6 +421,15 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	{
 		let dcvc = parentViewController! as! DraggableContainerViewController
 		dcvc.performSegueWithIdentifier("showTutorial", sender: self)
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if let bmvc = segue.destinationViewController as? ButtonMakerViewController
+		{
+			let dvc = self.parentViewController as! DraggableContainerViewController
+			let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
+			bmvc.function = calc.calculator.functionString
+		}
 	}
 	
 	//MARK: collection view dataSource

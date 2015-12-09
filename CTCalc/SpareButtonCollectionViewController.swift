@@ -74,7 +74,7 @@ class SpareButtonCollectionViewController: DraggableButtonCollectionViewControll
             buttonsLandscape.append(kTokenTanH)
             
             buttonsLandscape.append(kTokenReset)
-            buttonsLandscape.append(kTokenBlank)
+            buttonsLandscape.append(kTokenNew)
             buttonsLandscape.append(kTokenBlank)
             buttonsLandscape.append(kTokenBlank)
             

@@ -95,12 +95,14 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		}
     }
     
-    var function:String
+    var function:String!
+	
+	@IBAction func cancel(sender: AnyObject)
 	{
-        let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-		let calc = dcvc.viewControllers[0] as! CalculatorCollectionViewController
-		return calc.calculator.functionString
-    }
+//		presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
     
     @IBAction func saveCustomButton(sender: AnyObject) {
         if symbolTextView.text == "" {
@@ -112,9 +114,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             uploadButton() { (success) -> () in
                 if success {
-                    print("yay")
+					self.cancel(self);
                 }else {
-                    print("boo")
+					let alertTwo = UIAlertController(title: "Failed to upload button", message: "", preferredStyle: .Alert)
+					let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+					alertTwo.addAction(okAction)
+					self.presentViewController(alertTwo, animated: true, completion: nil)
                 }
             }
         }
