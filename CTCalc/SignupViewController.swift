@@ -5,6 +5,7 @@
 //  Created by Cynthia Whitlatch on 12/6/15.
 //  Copyright © 2015 CTC. All rights reserved.
 //
+
 import UIKit
 import Parse
 
@@ -113,7 +114,6 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 userMessage = error!.localizedDescription
             }
             
-            
             let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
             
             let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){ action in
@@ -121,7 +121,6 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
                 {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
-                
             }
             
             myAlert.addAction(okAction)

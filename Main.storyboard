@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4Qb-0d-oXI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="t2G-OD-4z8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7K-T7-irZ">
-                                <rect key="frame" x="218" y="416" width="165" height="36"/>
+                                <rect key="frame" x="218" y="398" width="165" height="36"/>
                                 <color key="backgroundColor" red="0.071930416986640336" green="0.66387403446226978" blue="0.12368768451328097" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Sign Up">
@@ -179,14 +179,18 @@
                                     <segue destination="hne-6J-0mv" kind="presentation" id="gDk-uD-ffz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7B-O2-Hgh">
+                                <rect key="frame" x="226" y="456" width="149" height="30"/>
+                                <state key="normal" title="Signin With Facebook"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="leading" secondItem="A0z-xQ-mpF" secondAttribute="leading" id="7Hk-bL-eQn"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="top" secondItem="DeE-jo-gDL" secondAttribute="top" constant="168" id="7ef-Pb-fAf"/>
-                            <constraint firstItem="Whr-4H-NSn" firstAttribute="top" secondItem="B7K-T7-irZ" secondAttribute="bottom" constant="-205" id="9dh-2p-08W"/>
+                            <constraint firstItem="Whr-4H-NSn" firstAttribute="top" secondItem="B7K-T7-irZ" secondAttribute="bottom" constant="-187" id="9dh-2p-08W"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="centerX" secondItem="9vS-kW-lbm" secondAttribute="centerX" id="E1q-b5-mc4"/>
-                            <constraint firstItem="B7K-T7-irZ" firstAttribute="top" secondItem="9vS-kW-lbm" secondAttribute="bottom" constant="39" id="EBH-pn-P5p"/>
+                            <constraint firstItem="B7K-T7-irZ" firstAttribute="top" secondItem="9vS-kW-lbm" secondAttribute="bottom" constant="21" id="EBH-pn-P5p"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="centerX" secondItem="uOd-cn-0XS" secondAttribute="centerX" id="NMV-3x-deE"/>
                             <constraint firstItem="uOd-cn-0XS" firstAttribute="leading" secondItem="DeE-jo-gDL" secondAttribute="leading" constant="189" id="TSR-lD-GfN"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="trailing" secondItem="A0z-xQ-mpF" secondAttribute="trailing" id="Ujf-5u-baB"/>
