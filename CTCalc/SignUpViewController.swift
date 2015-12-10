@@ -1,5 +1,5 @@
 //
-//  SignupViewController.swift
+//  SignUpViewController.swift
 //  CTCalc
 //
 //  Created by Cynthia Whitlatch on 12/6/15.
@@ -96,15 +96,15 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         
-        // Show activity indicator
-//        let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//        spiningActivity.labelText = "Sending"
-//        spiningActivity.detailsLabelText = "Please wait"
+//         Show activity indicator
+        let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        spiningActivity.labelText = "Sending"
+        spiningActivity.detailsLabelText = "Please wait"
        
         myUser.signUpInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
             
             // Hide activity indicator
-//           spiningActivity.hide(true)
+            spiningActivity.hide(true)
             
             var userMessage = "Registration is successful. Thank you!"
             
@@ -125,8 +125,7 @@ class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             myAlert.addAction(okAction)
             
-            self.presentViewController(myAlert, animated: true, completion: nil)
-            
+            self.presentViewController(myAlert, animated: true, completion: nil)            
         }
     }
 }

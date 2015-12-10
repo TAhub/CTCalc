@@ -112,7 +112,7 @@
         <!--Sign In-->
         <scene sceneID="npO-Xd-T07">
             <objects>
-                <viewController id="4Qb-0d-oXI" customClass="MainPageViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Qb-0d-oXI" customClass="SigninViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Be4-v6-KdA"/>
                         <viewControllerLayoutGuide type="bottom" id="w8P-H0-lbU"/>
@@ -176,12 +176,16 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="signInButtonTapped:" destination="4Qb-0d-oXI" eventType="touchUpInside" id="DgI-n1-bIG"/>
                                     <segue destination="hne-6J-0mv" kind="presentation" id="gDk-uD-ffz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7B-O2-Hgh">
                                 <rect key="frame" x="226" y="456" width="149" height="30"/>
                                 <state key="normal" title="Signin With Facebook"/>
+                                <connections>
+                                    <action selector="facebookButtonTapped:" destination="4Qb-0d-oXI" eventType="touchUpInside" id="P7a-Se-4uJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -204,6 +208,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="PnC-mn-Ro0"/>
+                    <connections>
+                        <outlet property="userEmailAddressTextField" destination="O0e-gU-Bok" id="hi2-WK-Og9"/>
+                        <outlet property="userPasswordTextField" destination="A0z-xQ-mpF" id="yvU-Y5-h6d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bGU-sd-HH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

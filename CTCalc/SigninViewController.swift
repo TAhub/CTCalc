@@ -1,28 +1,21 @@
 //
-//  ViewController.swift
-//  MyNewApp
+//  SigninViewController.swift
+//  CTCalc
 //
-//  Created by Sergey Kargopolov on 2015-06-04.
-//  Copyright (c) 2015 Sergey Kargopolov. All rights reserved.
+//  Created by Cynthia Whitlatch on 12/6/15.
+//  Copyright © 2015 CTC. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
+class SigninViewController: UIViewController {
 
     @IBOutlet weak var userEmailAddressTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
  
     @IBAction func signInButtonTapped(sender: AnyObject) {
@@ -30,27 +23,24 @@ class ViewController: UIViewController {
         let userEmail = userEmailAddressTextField.text
         let userPassword = userPasswordTextField.text
         
-        if(userEmail.isEmpty || userPassword.isEmpty)
+        if(userEmail!.isEmpty || userPassword!.isEmpty)
         {
           return
         }
         
         
-        let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        spiningActivity.labelText = "Sending"
-        spiningActivity.detailsLabelText = "Please wait"
-        //spiningActivity.userInteractionEnabled = false
-        
-        
-        PFUser.logInWithUsernameInBackground(userEmail, password: userPassword) { (user:PFUser?, error:NSError?) -> Void in
+//        let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//        spiningActivity.labelText = "Sending"
+//        spiningActivity.detailsLabelText = "Please wait"
+//        //spiningActivity.userInteractionEnabled = false
+       
+        PFUser.logInWithUsernameInBackground(userEmail!, password: userPassword!) { (user:PFUser?, error:NSError?) -> Void in
             
-           MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-    
-            
+//           MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+       
             var userMessage = "Welcome!"
             
-            if(user != nil)
-            {
+            if(user != nil) {
                 
                 // Remember the sign in state
                 let userName:String? = user?.username
@@ -59,17 +49,14 @@ class ViewController: UIViewController {
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
                 // Navigate to Protected page
-               
-                var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 
                  appDelegate.buildUserInterface()
-                
-              
                 
             } else {
                 
                 userMessage = error!.localizedDescription
-                var myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
                 
@@ -77,11 +64,7 @@ class ViewController: UIViewController {
                 
                 self.presentViewController(myAlert, animated: true, completion: nil)
             }
-        
-            
         }
-        
-        
     }
     
     @IBAction func facebookButtonTapped(sender: AnyObject) {
@@ -105,14 +88,10 @@ class ViewController: UIViewController {
             }            
             // Load facebook details like user First name, User last name, email address, profile picture. 
             self.loadFacebookUserDetails()
-            
-            
         })
-        
     }
     
-    func loadFacebookUserDetails()
-    {
+    func loadFacebookUserDetails() {
         
         // Show activity indicator
         let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -203,8 +182,7 @@ class ViewController: UIViewController {
                 }
                 
                 
-                if(success)
-                {
+                if(success) {
                     if !userId.isEmpty
                     {
                         NSUserDefaults.standardUserDefaults().setObject(userId, forKey: "user_name")
@@ -215,24 +193,11 @@ class ViewController: UIViewController {
                             var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                             appDelegate.buildUserInterface()
                         }
-                        
                     }
-                    
                 }
-
-                
-                
-                
-                
-                
-                
             })
-            
-            
-            
         })
     }
-    
     
 }
 
