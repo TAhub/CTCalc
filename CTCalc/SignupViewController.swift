@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  SignupViewController.swift
 //  CTCalc
 //
 //  Created by Cynthia Whitlatch on 12/6/15.
@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class SignupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var profilePhotoImageView: UIImageView!
     @IBOutlet weak var userEmailAddressTextField: UITextField!

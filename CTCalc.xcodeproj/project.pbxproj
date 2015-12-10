@@ -38,7 +38,7 @@
 		3D19C1E31BFBA83E00596252 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */; };
 		3D19C1E51BFBA84800596252 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */; };
 		3D3F6EF61C19E870003E11BF /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F6EF51C19E870003E11BF /* SigninViewController.swift */; };
-		3D7D71D41C15276C0090A82C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7D71D31C15276C0090A82C /* SignUpViewController.swift */; };
+		3D7D71D41C15276C0090A82C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7D71D31C15276C0090A82C /* SignupViewController.swift */; };
 		3D7D72AC1C19206E0090A82C /* connectivity-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7D72A81C19206E0090A82C /* connectivity-bar.png */; };
 		3D7D72AD1C19206E0090A82C /* connectivity-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7D72A91C19206E0090A82C /* connectivity-bar@2x.png */; };
 		3D7D72AE1C19206E0090A82C /* left_side.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D7D72AA1C19206E0090A82C /* left_side.png */; };
@@ -107,7 +107,7 @@
 		3D19C1E21BFBA83E00596252 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		3D19C1E41BFBA84800596252 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		3D3F6EF51C19E870003E11BF /* SigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
-		3D7D71D31C15276C0090A82C /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3D7D71D31C15276C0090A82C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		3D7D72A81C19206E0090A82C /* connectivity-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connectivity-bar.png"; sourceTree = "<group>"; };
 		3D7D72A91C19206E0090A82C /* connectivity-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connectivity-bar@2x.png"; sourceTree = "<group>"; };
 		3D7D72AA1C19206E0090A82C /* left_side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_side.png; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 				3D19C1B81BFBA4F900596252 /* Main.storyboard */,
 				3D19C1B31BFBA4F900596252 /* AppDelegate.swift */,
 				3D19C1B91BFBA4F900596252 /* ParseKeys.swift */,
-				3D7D71D31C15276C0090A82C /* SignUpViewController.swift */,
+				3D7D71D31C15276C0090A82C /* SignupViewController.swift */,
 				3D3F6EF51C19E870003E11BF /* SigninViewController.swift */,
 				3D7D72B01C1920F00090A82C /* PasswordResetViewController.swift */,
 				3D7D72D41C19280F0090A82C /* MainPageViewController.swift */,
@@ -420,7 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D7D71D41C15276C0090A82C /* SignUpViewController.swift in Sources */,
+				3D7D71D41C15276C0090A82C /* SignupViewController.swift in Sources */,
 				C18A8A771BFE5F9E00343C9C /* ParentPageViewController.swift in Sources */,
 				E46FC2F01BFE4B0C00F5DB90 /* SemiDraggableViewController.swift in Sources */,
 				3D19C1BA1BFBA4F900596252 /* AppDelegate.swift in Sources */,
