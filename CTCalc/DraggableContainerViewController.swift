@@ -147,7 +147,7 @@ class DraggableContainerViewController: UIViewController, UIGestureRecognizerDel
 		{
 			for (i, t) in from.buttonsLandscape.enumerate()
 			{
-				if t.symbol == token.symbol
+				if t.symbol == token.symbol && t.random == token.random
 				{
 					from.buttonsLandscape[i] = kTokenBlank
 					from.saveButtons()
@@ -164,13 +164,13 @@ class DraggableContainerViewController: UIViewController, UIGestureRecognizerDel
 		removeTokenInner(token, from: spc)
 	}
 	
-	func hasToken(token:Token)->Bool
+	func hasToken(token:Token, checkRandom:Bool)->Bool
 	{
 		func hasToken(token:Token, to:DraggableButtonCollectionViewController) -> Bool
 		{
 			for t in to.buttonsLandscape
 			{
-				if t.symbol == token.symbol
+				if t.symbol == token.symbol && (!checkRandom || t.random == token.random)
 				{
 					return true
 				}
@@ -187,7 +187,7 @@ class DraggableContainerViewController: UIViewController, UIGestureRecognizerDel
 	
 	func addToken(token:Token)->Bool
 	{
-		if hasToken(token)
+		if hasToken(token, checkRandom: false)
 		{
 			return false
 		}

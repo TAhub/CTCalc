@@ -58,7 +58,7 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func getParseData(searchTerm: String? = nil) {
         let query = PFQuery(className: "ButtomImages")
-        query.selectKeys(["imageNumber", "symbol", "function"])
+        query.selectKeys(["imageNumber", "symbol", "function", "random"])
         
         if let searchTerm = searchTerm {
             query.whereKey("function", containsString: searchTerm.lowercaseString)
@@ -159,6 +159,7 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
 			self.buttonTableView.reloadData()
 		}
 		cell.token = Token(symbol: buttonImage["symbol"] as! String, order: kOrderFunc, imageNumber: buttonImage["imageNumber"] as! Int, effect0: nil, effect1: nil, effect2: nil, functionReplace: (buttonImage["function"] as? String) ?? "")
+		cell.token!.random = buttonImage["random"] as? Int ?? 0
         return cell
     }
     

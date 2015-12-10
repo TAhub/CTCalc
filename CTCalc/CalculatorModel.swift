@@ -22,9 +22,11 @@ struct Token
 	var effect2:((Double, Double)->(Double))?
 	var functionReplace:String?
 	var shaking:Bool
+	var random:Int
 	
 	init(symbol:String, order:Int, imageNumber:Int, effect0:(()->(Double))? = nil, effect1:((Double)->(Double))? = nil, effect2:((Double, Double)->(Double))? = nil, functionReplace: String? = nil)
 	{
+		self.random = 0
 		self.symbol = symbol
 		self.order = order
 		self.imageNumber = imageNumber

@@ -32,7 +32,13 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 	private var tokenView:UIView?
 	private func reloadToken()
 	{
+		if symbolTextView.text!.characters.count >= 5
+		{
+			symbolTextView.text = symbolTextView.text!.substringToIndex(symbolTextView.text!.startIndex.advancedBy(5))
+		}
+		
 		token = Token(symbol: symbolTextView.text!, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function)
+		token!.random = Int(arc4random_uniform(999999))
 		
 		tokenView?.removeFromSuperview()
 		
@@ -78,6 +84,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
         imageNumber = 5
     }
 
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		reloadToken()
+	}
+	
+	var dcvc:DraggableContainerViewController!
     
             //           SAVES BUTTONS TO PARSE
     func uploadButton(completion: (success: Bool) -> ()) {
@@ -85,7 +97,6 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		//add it to your list
 		if let token = token
 		{
-			let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
 			print(dcvc.addToken(token))
 			
 			
@@ -93,6 +104,7 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 			status["imageNumber"] = token.imageNumber
 			status["symbol"] = token.symbol
 			status["function"] = token.functionReplace ?? ""
+			status["random"] = token.random
 			
 			status.saveInBackgroundWithBlock( { (success, error) -> Void in
 				if success {

@@ -45,9 +45,8 @@ class ButtonTableViewCell: UITableViewCell {
 			symbol.text = token.symbol
 			buttonImage.image = kImages[token.imageNumber]
 			
-			let hasToken = dcvc.hasToken(token)
-			addButton.hidden = hasToken
-			removeButton.hidden = !hasToken
+			addButton.hidden = dcvc.hasToken(token, checkRandom: false)
+			removeButton.hidden = !dcvc.hasToken(token, checkRandom: true)
 		}
 	}
 

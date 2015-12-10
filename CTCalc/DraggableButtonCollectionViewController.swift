@@ -54,6 +54,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				let symbols = def.stringArrayForKey("screen\(screenNum)\(prefix)symbols")!
 				let functions = def.stringArrayForKey("screen\(screenNum)\(prefix)functions")!
 				let imageNumbers = def.stringArrayForKey("screen\(screenNum)\(prefix)images")!
+				let randoms = def.stringArrayForKey("screen\(screenNum)\(prefix)randoms")!
 				
 				var tokens = [Token]()
 				for i in 0..<symbols.count
@@ -61,6 +62,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					let symbol = symbols[i]
 					let function = functions[i]
 					let imageNumber = Int(imageNumbers[i])!
+					let random = Int(randoms[i])!
 					
 					//check the default ones
 					var isPreset = false
@@ -76,7 +78,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					if !isPreset
 					{
 						//it must be custom
-						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
+						var tok = Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function)
+						tok.random = random
+						tokens.append(tok)
 					}
 				}
 				return tokens
@@ -100,6 +104,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			def.setObject(tokens.map() { $0.symbol }, forKey: "screen\(screenNum)\(prefix)symbols")
 			def.setObject(tokens.map() { $0.functionReplace ?? "" }, forKey: "screen\(screenNum)\(prefix)functions")
 			def.setObject(tokens.map() { "\($0.imageNumber)" }, forKey: "screen\(screenNum)\(prefix)images")
+			def.setObject(tokens.map() { "\($0.random)" }, forKey : "screen\(screenNum)\(prefix)randoms")
 		}
 		
 		saveButtonsInner("portrait", tokens: buttonsPortrait)
@@ -428,6 +433,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			let dvc = self.parentViewController as! DraggableContainerViewController
 			let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
 			controller.function = calc.calculator.functionString
+			controller.dcvc = dvc
 			
 			controller.view.backgroundColor = UIColor.clearColor()
 			self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
