@@ -156,9 +156,6 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="leftSegue" value="MakerNavigation"/>
                         <userDefinedRuntimeAttribute type="string" keyPath="rightSegue" value="FirstContainerCollection"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="B6U-49-jr6" kind="presentation" identifier="newButton" id="otU-h8-aYp"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iso-Ys-cCl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,7 +286,7 @@
         <!--Button Maker View Controller-->
         <scene sceneID="Ffq-jn-ITD">
             <objects>
-                <viewController id="B6U-49-jr6" customClass="ButtonMakerViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="makeButton" id="B6U-49-jr6" customClass="ButtonMakerViewController" customModule="CTCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Sc-gs-bF3"/>
                         <viewControllerLayoutGuide type="bottom" id="MDR-cO-bj2"/>
@@ -502,6 +499,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backer" destination="UUl-ST-lqD" id="pUH-jL-fzo"/>
                         <outlet property="buttonFunctionLabel" destination="M2a-ee-25f" id="DkD-u0-a9B"/>
                         <outlet property="buttonView" destination="mIF-9V-on9" id="sme-Ca-cgl"/>
                         <outlet property="symbolTextView" destination="4LV-Ge-nCY" id="kgW-h4-6j4"/>
@@ -535,9 +533,6 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="leftSegue" value="MainCollection"/>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="B6U-49-jr6" kind="presentation" identifier="newButton" id="UU0-Ny-d3C"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9C-Fm-ZWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -574,7 +569,4 @@
         <image name="custombutton5.png" width="120" height="120"/>
         <image name="custombutton6.png" width="120" height="120"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="UU0-Ny-d3C"/>
-    </inferredMetricsTieBreakers>
 </document>

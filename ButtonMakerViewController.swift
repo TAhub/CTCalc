@@ -19,6 +19,15 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		}
 	}
 	
+	@IBOutlet weak var backer: UIView!
+	{
+		didSet
+		{
+			backer.layer.cornerRadius = 10
+		}
+	}
+	
+	
 	private var token:Token?
 	private var tokenView:UIView?
 	private func reloadToken()
@@ -97,9 +106,10 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     
     var function:String!
 	
+	var doneCompletion:(()->())!
 	@IBAction func cancel(sender: AnyObject)
 	{
-//		presentingViewController!.dismissViewControllerAnimated(true, completion: nil)
+		doneCompletion()
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	

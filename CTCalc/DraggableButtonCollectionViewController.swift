@@ -411,7 +411,39 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 		}
 		else if token.symbol == "new"
 		{
-			self.performSegueWithIdentifier("newButton", sender: self)
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let controller = storyboard.instantiateViewControllerWithIdentifier("makeButton") as! ButtonMakerViewController
+			
+			//get a screenshot
+			UIGraphicsBeginImageContext(view.frame.size)
+			view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: false)
+			let shot = UIImageView(image: UIGraphicsGetImageFromCurrentImageContext())
+			UIGraphicsEndImageContext()
+			
+			let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+			let vEfV = UIVisualEffectView(effect: blur)
+			vEfV.frame = self.view.frame;
+			view.addSubview(vEfV);
+			
+			let dvc = self.parentViewController as! DraggableContainerViewController
+			let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
+			controller.function = calc.calculator.functionString
+			
+			controller.view.backgroundColor = UIColor.clearColor()
+			self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+				
+			self.presentViewController(controller, animated: true)
+			{
+				vEfV.removeFromSuperview()
+				controller.view.insertSubview(vEfV, atIndex: 0)
+				controller.view.insertSubview(shot, atIndex: 0)
+			}
+			controller.doneCompletion =
+			{
+				vEfV.removeFromSuperview()
+				shot.removeFromSuperview()
+			}
+			
 			return true
 		}
 		return false
@@ -421,15 +453,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 	{
 		let dcvc = parentViewController! as! DraggableContainerViewController
 		dcvc.performSegueWithIdentifier("showTutorial", sender: self)
-	}
-	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if let bmvc = segue.destinationViewController as? ButtonMakerViewController
-		{
-			let dvc = self.parentViewController as! DraggableContainerViewController
-			let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
-			bmvc.function = calc.calculator.functionString
-		}
 	}
 	
 	//MARK: collection view dataSource
