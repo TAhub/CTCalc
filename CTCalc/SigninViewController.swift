@@ -20,22 +20,21 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
  
     @IBAction func signInButtonTapped(sender: AnyObject) {
         
-        let userEmail = userEmailAddressTextField.text
-        let userPassword = userPasswordTextField.text
+        var userEmail = userEmailAddressTextField.text!
+        var userPassword = userPasswordTextField.text!
         
-        if(userEmail!.isEmpty || userPassword!.isEmpty)
-        {
+        if (userEmail.isEmpty || userPassword.isEmpty) {
           return
         }
         
-        PFUser.logInWithUsernameInBackground(userEmail!, password: userPassword!) { (
-            user:PFUser?, error:NSError?) -> Void in
+        PFUser.logInWithUsernameInBackground(userEmail, password: userPassword) { (user, error) -> Void in
             
             var userMessage = "Welcome!"
             
             if(user != nil) {
                 
                 let userName:String? = user?.username
+                
                 NSUserDefaults.standardUserDefaults().setObject(userName, forKey: "user_name")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
@@ -52,16 +51,13 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             } else {
                 
                 userMessage = error!.localizedDescription
-
-                
-                let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-                myAlert.addAction(action)
-
-                self.presentViewController(myAlert, animated: true, completion:nil)
-                
             }
-
+            
+            let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+            myAlert.addAction(action)
+            
+            self.presentViewController(myAlert, animated: true, completion:nil)
         }
     }
 }

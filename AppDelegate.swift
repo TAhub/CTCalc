@@ -14,18 +14,31 @@ import Bolts
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-//    var drawerContainer: MMDrawerController?
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         setUpParse()
         
-        let pageController = UIPageControl.appearance()
-        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageController.backgroundColor = UIColor.whiteColor()
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success: Bool, error:NSError?) -> Void in
+            print("Object Saved")
+        }
         
-        buildUserInterface()
+        let userName:String? = NSUserDefaults.standardUserDefaults().stringForKey("user_name")
+        
+        if(userName != nil) {
+            
+            //Navigate to Protected Page
+        let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
+        var mainPage:MainPageViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainPageViewController") as! MainPageViewController
+        var mainPageNav = UINavigationController(rootViewController: mainPage)
+        
+        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.window?.rootViewController = mainPageNav
+            
+        }
         
         return true
     }
@@ -33,18 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setUpParse() {
         Parse.setApplicationId(kParseApplicationId, clientKey: kParseApplicationClientKey)
     }	
-    func buildUserInterface() {
-        
-        let userName:String? =  NSUserDefaults.standardUserDefaults().stringForKey("user_name")
-        
-        if(userName != nil)
-        {
-            let mainStoryBoard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
-            
-            var mainPage:MainPageViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("MainPageViewController") as! MainPageViewController
-            
-            var mainPageNav = UINavigationController(rootViewController:mainPage)
 
-        }
-    }
+    
 }

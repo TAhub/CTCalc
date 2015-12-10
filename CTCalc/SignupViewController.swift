@@ -81,58 +81,79 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
             return
         }
         
-        let myUser:PFUser = PFUser()
-        myUser.username = userName
-        myUser.password = userPassword
-        myUser.email = userName
-        myUser.setObject(userFirstName!, forKey: "first_name")
-        myUser.setObject(userLastName!, forKey: "last_name")
-        
+        let User:PFUser = PFUser()
+        User.username = userName
+        User.password = userPassword
+        User.email = userName
+        User.setObject(userFirstName!, forKey: "first_name")
+        User.setObject(userLastName!, forKey: "last_name")
+        User.setObject(userPassword!, forKey: "password")
+        User.setObject(userPasswordRepeat!, forKey: "password_verified")
+        User.setObject(userName!, forKey: "email")
         
         let profileImageData = UIImageJPEGRepresentation(profilePhotoImageView.image!, 1)
         if(profileImageData != nil) {
             let profileImageFile = PFFile(data: profileImageData!)
-            myUser.setObject(profileImageFile!, forKey: "profile_picture")
+            User.setObject(profileImageFile!, forKey: "profile_picture")
         }
         
+        User.signUpInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+        
+        var userMessage = "Registration is successful. Thank you!"
+    
+        if(!success)
+        {
+            userMessage = error!.localizedDescription
+        }
+            var myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
+        
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){ action in
+        
+                if(success)
+                {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+        
+            myAlert.addAction(okAction)
+            
+            self.presentViewController(myAlert, animated: true, completion: nil)
+            
+        }
     }
 
 }
 
 
 
+
 //
-//    //         Show activity indicator
-//    let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//    spiningActivity.labelText = "Sending"
-//    spiningActivity.detailsLabelText = "Please wait"
-//    
-//    myUser.signUpInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
-//    
-//    // Hide activity indicator
-//    spiningActivity.hide(true)
-//    
-//    var userMessage = "Registration is successful. Thank you!"
-//    
-//    if(!success)
-//    {
-//    userMessage = "Could not register at this time please try again later."
-//    userMessage = error!.localizedDescription
-//    }
-//    
-//    let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
+//
+//// Show activity indicator
+//let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//spiningActivity.labelText = "Sending"
+//spiningActivity.detailsLabelText = "Please wait"
+
+//    var myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
 //    
 //    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){ action in
-//    if(success)
-//    {
-//    self.dismissViewControllerAnimated(true, completion: nil)
-//    }
+//        
+//        if(success)
+//        {
+//            self.dismissViewControllerAnimated(true, completion: nil)
+//        }
+//        
 //    }
 //    
 //    myAlert.addAction(okAction)
 //    
 //    self.presentViewController(myAlert, animated: true, completion: nil)
-//    }
+//    
+//}
+//
+//
+//
+//}
 //}
 
 
