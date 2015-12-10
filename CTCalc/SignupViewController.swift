@@ -95,45 +95,45 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
             myUser.setObject(profileImageFile!, forKey: "profile_picture")
         }
         
-        
-//         Show activity indicator
-        let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        spiningActivity.labelText = "Sending"
-        spiningActivity.detailsLabelText = "Please wait"
-       
-        myUser.signUpInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
-            
-            // Hide activity indicator
-            spiningActivity.hide(true)
-            
-            var userMessage = "Registration is successful. Thank you!"
-            
-            if(!success)
-            {
-                userMessage = "Could not register at this time please try again later."
-                userMessage = error!.localizedDescription
-            }
-            
-            let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
-            
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){ action in
-                if(success)
-                {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                }
-            }
-            
-            myAlert.addAction(okAction)
-            
-            self.presentViewController(myAlert, animated: true, completion: nil)            
-        }
     }
+
 }
 
 
 
-
-
+//
+//    //         Show activity indicator
+//    let spiningActivity = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//    spiningActivity.labelText = "Sending"
+//    spiningActivity.detailsLabelText = "Please wait"
+//    
+//    myUser.signUpInBackgroundWithBlock { (success:Bool, error:NSError?) -> Void in
+//    
+//    // Hide activity indicator
+//    spiningActivity.hide(true)
+//    
+//    var userMessage = "Registration is successful. Thank you!"
+//    
+//    if(!success)
+//    {
+//    userMessage = "Could not register at this time please try again later."
+//    userMessage = error!.localizedDescription
+//    }
+//    
+//    let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.Alert)
+//    
+//    let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default){ action in
+//    if(success)
+//    {
+//    self.dismissViewControllerAnimated(true, completion: nil)
+//    }
+//    }
+//    
+//    myAlert.addAction(okAction)
+//    
+//    self.presentViewController(myAlert, animated: true, completion: nil)
+//    }
+//}
 
 
 
