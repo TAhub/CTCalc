@@ -127,7 +127,7 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 	
     
     @IBAction func saveCustomButton(sender: AnyObject) {
-        if symbolTextView.text == "" {
+        if token!.symbol == "" || token!.functionReplace == "" {
             let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
                 message: "" as String, preferredStyle:.Alert)
             let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
