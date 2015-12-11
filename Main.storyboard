@@ -137,19 +137,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whr-4H-NSn">
-                                <rect key="frame" x="357" y="247" width="104" height="29"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="Forgot Password">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Jeg-Zq-5gS" kind="presentation" id="ivf-Iv-B4U"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7K-T7-irZ">
-                                <rect key="frame" x="123" y="305" width="75" height="36"/>
+                                <rect key="frame" x="123" y="261" width="75" height="36"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.071930416986640336" green="0.66387403446226978" blue="0.12368768451328097" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
@@ -161,7 +150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIb-8M-7KV">
-                                <rect key="frame" x="185" y="470" width="115" height="30"/>
+                                <rect key="frame" x="103" y="305" width="115" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Forgot Password"/>
                                 <connections>
@@ -179,7 +168,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vS-kW-lbm">
-                                <rect key="frame" x="133" y="240" width="54" height="36"/>
+                                <rect key="frame" x="133" y="217" width="54" height="36"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.74115725826656109" blue="0.17436117270463014" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
@@ -196,22 +185,28 @@
                         <constraints>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="leading" secondItem="A0z-xQ-mpF" secondAttribute="leading" id="7Hk-bL-eQn"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="top" secondItem="DeE-jo-gDL" secondAttribute="top" constant="133" id="7ef-Pb-fAf"/>
-                            <constraint firstItem="Whr-4H-NSn" firstAttribute="top" secondItem="B7K-T7-irZ" secondAttribute="bottom" constant="-94" id="9dh-2p-08W"/>
+                            <constraint firstItem="hIb-8M-7KV" firstAttribute="top" secondItem="B7K-T7-irZ" secondAttribute="bottom" constant="8" symbolic="YES" id="BpK-qe-c7t"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="centerX" secondItem="9vS-kW-lbm" secondAttribute="centerX" id="E1q-b5-mc4"/>
-                            <constraint firstItem="B7K-T7-irZ" firstAttribute="top" secondItem="9vS-kW-lbm" secondAttribute="bottom" constant="29" id="EBH-pn-P5p"/>
+                            <constraint firstItem="B7K-T7-irZ" firstAttribute="top" secondItem="9vS-kW-lbm" secondAttribute="bottom" constant="8" symbolic="YES" id="EBH-pn-P5p"/>
+                            <constraint firstItem="hIb-8M-7KV" firstAttribute="centerX" secondItem="DeE-jo-gDL" secondAttribute="centerX" id="Jok-2C-LC2"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="centerX" secondItem="uOd-cn-0XS" secondAttribute="centerX" id="NMV-3x-deE"/>
                             <constraint firstItem="uOd-cn-0XS" firstAttribute="leading" secondItem="DeE-jo-gDL" secondAttribute="leading" constant="56" id="TSR-lD-GfN"/>
                             <constraint firstItem="w8P-H0-lbU" firstAttribute="top" secondItem="hIb-8M-7KV" secondAttribute="bottom" constant="68" id="U0r-Lh-iy9"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="trailing" secondItem="A0z-xQ-mpF" secondAttribute="trailing" id="Ujf-5u-baB"/>
-                            <constraint firstItem="Whr-4H-NSn" firstAttribute="centerX" secondItem="B7K-T7-irZ" secondAttribute="centerX" constant="248.5" id="XkS-tP-pos"/>
                             <constraint firstItem="hIb-8M-7KV" firstAttribute="trailing" secondItem="A0z-xQ-mpF" secondAttribute="trailing" id="Yia-Aq-NYI"/>
                             <constraint firstItem="A0z-xQ-mpF" firstAttribute="top" secondItem="O0e-gU-Bok" secondAttribute="bottom" constant="16" id="bQQ-Sh-ABe"/>
                             <constraint firstAttribute="trailing" secondItem="uOd-cn-0XS" secondAttribute="trailing" constant="55.5" id="kUS-6p-LjT"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="centerX" secondItem="B7K-T7-irZ" secondAttribute="centerX" id="ozH-nZ-drU"/>
                             <constraint firstItem="uOd-cn-0XS" firstAttribute="top" secondItem="Be4-v6-KdA" secondAttribute="bottom" constant="25" id="svi-rB-ZTD"/>
                             <constraint firstItem="O0e-gU-Bok" firstAttribute="top" secondItem="uOd-cn-0XS" secondAttribute="bottom" constant="8" id="wWc-hg-FhR"/>
-                            <constraint firstItem="9vS-kW-lbm" firstAttribute="top" secondItem="A0z-xQ-mpF" secondAttribute="bottom" constant="31" id="zd6-ZF-bNv"/>
+                            <constraint firstItem="9vS-kW-lbm" firstAttribute="top" secondItem="A0z-xQ-mpF" secondAttribute="bottom" constant="8" symbolic="YES" id="zd6-ZF-bNv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Yia-Aq-NYI"/>
+                                <exclude reference="U0r-Lh-iy9"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Sign In" id="PnC-mn-Ro0"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -1013,7 +1008,4 @@
         <image name="custombutton5.png" width="120" height="120"/>
         <image name="custombutton6.png" width="120" height="120"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ivf-Iv-B4U"/>
-    </inferredMetricsTieBreakers>
 </document>
