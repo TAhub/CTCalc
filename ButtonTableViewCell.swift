@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ButtonTableViewCell: UITableViewCell {
 
@@ -28,7 +29,9 @@ class ButtonTableViewCell: UITableViewCell {
     }
 
 	var reloadClosure:(()->())!
+	var deleteClosure:(()->())!
 	var dcvc:DraggableContainerViewController!
+	var user:String!
 	var token:Token?
 	{
 		didSet
@@ -37,6 +40,11 @@ class ButtonTableViewCell: UITableViewCell {
 		}
 	}
 
+	private var myButton:Bool
+	{
+		return user != nil && PFUser.currentUser()!.objectId == user
+	}
+	
 	private func reloadNames()
 	{
 		if let token = token
@@ -45,9 +53,19 @@ class ButtonTableViewCell: UITableViewCell {
 			symbol.text = token.symbol
 			buttonImage.image = kImages[token.imageNumber]
 			
-			let hasToken = dcvc.hasToken(token)
-			addButton.hidden = hasToken
-			removeButton.hidden = !hasToken
+			addButton.hidden = dcvc.hasToken(token, checkRandom: false)
+			removeButton.hidden = !dcvc.hasToken(token, checkRandom: true)
+			
+			if myButton && removeButton.hidden
+			{
+				//add the delete button
+				removeButton.setTitle("Delete", forState: .Normal)
+				removeButton.hidden = false
+			}
+			else
+			{
+				removeButton.setTitle("Remove", forState: .Normal)
+			}
 		}
 	}
 
@@ -63,8 +81,15 @@ class ButtonTableViewCell: UITableViewCell {
 	
 	@IBAction func removeAction()
 	{
-		dcvc.removeToken(token!)
-		reloadClosure()
+		if myButton && !dcvc.hasToken(token!, checkRandom: true)
+		{
+			deleteClosure()
+		}
+		else
+		{
+			dcvc.removeToken(token!)
+			reloadClosure()
+		}
 	}
 	
 }

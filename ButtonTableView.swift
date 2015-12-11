@@ -9,6 +9,42 @@
 import UIKit
 import Parse
 
+func checkUser(view:UIView)
+{
+	if(PFUser.currentUser() == nil)
+	{
+		//Navigate to login panel
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		let oldRoot = appDelegate.window?.rootViewController
+		let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
+		let nav = mainStoryboard.instantiateViewControllerWithIdentifier("login") as! UINavigationController
+		let login = nav.viewControllers[0] as! SigninViewController
+		
+		//frosty background effect
+		UIGraphicsBeginImageContext(view.frame.size)
+		view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: false)
+		let shot = UIImageView(image: UIGraphicsGetImageFromCurrentImageContext())
+		UIGraphicsEndImageContext()
+		
+		let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+		let vEfV = UIVisualEffectView(effect: blur)
+		vEfV.frame = view.frame;
+		
+		login.view.insertSubview(vEfV, atIndex: 0)
+		login.view.insertSubview(shot, atIndex: 0)
+		
+		login.logged =
+		{
+			appDelegate.window?.rootViewController = oldRoot
+		}
+		login.nevermind =
+		{
+			appDelegate.window?.rootViewController = mainStoryboard.instantiateInitialViewController()
+		}
+		appDelegate.window?.rootViewController = nav
+	}
+}
+
 class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,6 +69,12 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.searchBar.resignFirstResponder()
         }
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		checkUser(self.view)
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +83,6 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         self.searchBar.showsCancelButton = true
         self.searchBar.delegate = self
-        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: "setButtonTableViewEditing:")
     }
     
     func setButtonTableViewEditing(editing: Bool) {
@@ -57,8 +97,8 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func getParseData(searchTerm: String? = nil) {
-        let query = PFQuery(className: "ButtomImages")
-        query.selectKeys(["imageNumber", "symbol", "function"])
+        let query = PFQuery(className: "Buttons")
+        query.selectKeys(["imageNumber", "symbol", "function", "random", "user"])
         
         if let searchTerm = searchTerm {
             query.whereKey("function", containsString: searchTerm.lowercaseString)
@@ -80,51 +120,6 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         return true
         
     }
-    
-//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == .Delete {
-//            
-//        let myAlert = UIAlertController(title: "Delete", message: "Are you sure you want to permanently delete this button?", preferredStyle: UIAlertControllerStyle.Alert)
-//            
-//            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (UIAlertAction) -> Void in
-////                self.buttonImages.removeAtIndex(indexPath.row)
-////                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//                
-//            })
-//            
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//            
-//        myAlert.addAction(okAction)
-//        myAlert.addAction(cancelAction)
-//            
-//        self.presentViewController(myAlert, animated: true, completion: nil)
-//       
-//        }
-// 
-//        func deleteButton(completion: (success: Bool) -> ()) {
-//            
-//            if let token = token
-//            {
-//                let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-//                print(dcvc.addToken(token))
-//                
-//                
-//                let status = PFObject(className: "ButtomImages")
-//                status["imageNumber"] = token.imageNumber
-//                status["symbol"] = token.symbol
-//                status["function"] = token.functionReplace ?? ""
-//                
-//                status.deleteInBackgroundWithBlock( { (success, error) -> Void in
-//                    if success {
-//                        completion(success: success)
-//                        
-//                    } else {
-//                        completion(success: false)
-//                    }
-//                })
-//            }
-//        }
-//    }
 	
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return buttonImages.count
@@ -136,29 +131,22 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCellWithIdentifier(ButtonTableViewCell.identifier(), forIndexPath: indexPath) as! ButtonTableViewCell
         
         let buttonImage = self.buttonImages[indexPath.row]
-//        let symbol = buttonImage["symbol"] as? String
-		
-//        cell.symbol.text = symbol
-		
-		
-		
-//        if let imageFile = buttonImage["Image"] as? PFFile {
-//            imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-//                guard let data = data else {return}
-//                cell.buttonImage.image = UIImage(data: data)
-//            })
-//	}
-//		if let imageNumber = buttonImage["imageNumber"] as? Int
-//		{
-//			cell.buttonImage.image = kImages[imageNumber]
-//		}
 		
 		cell.dcvc = navigationController!.parentViewController as! DraggableContainerViewController
 		cell.reloadClosure =
 		{
 			self.buttonTableView.reloadData()
 		}
+		cell.deleteClosure =
+		{
+			buttonImage.deleteInBackgroundWithBlock()
+			{ (success, error) in
+				self.getParseData()
+			}
+		}
+		cell.user = buttonImage["user"] as? String
 		cell.token = Token(symbol: buttonImage["symbol"] as! String, order: kOrderFunc, imageNumber: buttonImage["imageNumber"] as! Int, effect0: nil, effect1: nil, effect2: nil, functionReplace: (buttonImage["function"] as? String) ?? "")
+		cell.token!.random = buttonImage["random"] as? Int ?? 0
         return cell
     }
     

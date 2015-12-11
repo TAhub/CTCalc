@@ -19,11 +19,26 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		}
 	}
 	
+	@IBOutlet weak var backer: UIView!
+	{
+		didSet
+		{
+			backer.layer.cornerRadius = 10
+		}
+	}
+	
+	
 	private var token:Token?
 	private var tokenView:UIView?
 	private func reloadToken()
 	{
+		if symbolTextView.text!.characters.count >= 5
+		{
+			symbolTextView.text = symbolTextView.text!.substringToIndex(symbolTextView.text!.startIndex.advancedBy(5))
+		}
+		
 		token = Token(symbol: symbolTextView.text!, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function)
+		token!.random = Int(arc4random_uniform(999999))
 		
 		tokenView?.removeFromSuperview()
 		
@@ -69,6 +84,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
         imageNumber = 5
     }
 
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		reloadToken()
+	}
+	
+	var dcvc:DraggableContainerViewController!
     
             //           SAVES BUTTONS TO PARSE
     func uploadButton(completion: (success: Bool) -> ()) {
@@ -76,17 +97,16 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		//add it to your list
 		if let token = token
 		{
-			let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-			print(dcvc.addToken(token))
-			
-			
-			let status = PFObject(className: "ButtomImages")
+			let status = PFObject(className: "Buttons")
 			status["imageNumber"] = token.imageNumber
 			status["symbol"] = token.symbol
 			status["function"] = token.functionReplace ?? ""
+			status["random"] = token.random
+			status["user"] = PFUser.currentUser()!.objectId
 			
 			status.saveInBackgroundWithBlock( { (success, error) -> Void in
 				if success {
+					self.dcvc.addToken(self.token!)
 					completion(success: success)
 				} else {
 					completion(success: false)
@@ -95,15 +115,18 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		}
     }
     
-    var function:String
+    var function:String!
+	
+	var doneCompletion:(()->())!
+	@IBAction func cancel(sender: AnyObject)
 	{
-        let dcvc = navigationController!.parentViewController as! DraggableContainerViewController
-		let calc = dcvc.viewControllers[0] as! CalculatorCollectionViewController
-		return calc.calculator.functionString
-    }
+		doneCompletion()
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
     
     @IBAction func saveCustomButton(sender: AnyObject) {
-        if symbolTextView.text == "" {
+        if token!.symbol == "" || token!.functionReplace == "" {
             let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
                 message: "" as String, preferredStyle:.Alert)
             let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
@@ -112,9 +135,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
         } else{
             uploadButton() { (success) -> () in
                 if success {
-                    print("yay")
+					self.cancel(self);
                 }else {
-                    print("boo")
+					let alertTwo = UIAlertController(title: "Failed to upload button", message: "", preferredStyle: .Alert)
+					let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+					alertTwo.addAction(okAction)
+					self.presentViewController(alertTwo, animated: true, completion: nil)
                 }
             }
         }
@@ -123,8 +149,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         symbolTextView.delegate = self
-        
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		checkUser(self.view)
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -54,6 +54,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				let symbols = def.stringArrayForKey("screen\(screenNum)\(prefix)symbols")!
 				let functions = def.stringArrayForKey("screen\(screenNum)\(prefix)functions")!
 				let imageNumbers = def.stringArrayForKey("screen\(screenNum)\(prefix)images")!
+				let randoms = def.stringArrayForKey("screen\(screenNum)\(prefix)randoms")!
 				
 				var tokens = [Token]()
 				for i in 0..<symbols.count
@@ -61,6 +62,7 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					let symbol = symbols[i]
 					let function = functions[i]
 					let imageNumber = Int(imageNumbers[i])!
+					let random = Int(randoms[i])!
 					
 					//check the default ones
 					var isPreset = false
@@ -76,7 +78,9 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 					if !isPreset
 					{
 						//it must be custom
-						tokens.append(Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function))
+						var tok = Token(symbol: symbol, order: kOrderFunc, imageNumber: imageNumber, effect0: nil, effect1: nil, effect2: nil, functionReplace: function)
+						tok.random = random
+						tokens.append(tok)
 					}
 				}
 				return tokens
@@ -100,10 +104,30 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			def.setObject(tokens.map() { $0.symbol }, forKey: "screen\(screenNum)\(prefix)symbols")
 			def.setObject(tokens.map() { $0.functionReplace ?? "" }, forKey: "screen\(screenNum)\(prefix)functions")
 			def.setObject(tokens.map() { "\($0.imageNumber)" }, forKey: "screen\(screenNum)\(prefix)images")
+			def.setObject(tokens.map() { "\($0.random)" }, forKey : "screen\(screenNum)\(prefix)randoms")
 		}
 		
 		saveButtonsInner("portrait", tokens: buttonsPortrait)
 		saveButtonsInner("landscape", tokens: buttonsLandscape)
+	}
+	
+	func resetButtons()
+	{
+		//clear NSUserDefaults
+		let def = NSUserDefaults.standardUserDefaults()
+		def.removeObjectForKey("0exists");
+		def.removeObjectForKey("1exists");
+		
+		//force both controllers to reload
+		let dvc = self.parentViewController as! DraggableContainerViewController
+		let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
+		let spare = dvc.viewControllers[1] as! SpareButtonCollectionViewController
+		calc.editMode = false
+		spare.editMode = false
+		calc.loadMyStuff()
+		spare.loadMyStuff()
+		
+		collectionView?.reloadData()
 	}
 	
 	override func viewDidLoad()
@@ -240,6 +264,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				}
 				else if let path = collectionView?.indexPathForItemAtPoint(point), let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: path.row, inSection: path.section))
 				{
+					if path.row == 0 && collectionView?.numberOfSections() == 2
+					{
+						//don't pick up the display
+						return
+					}
+					
 					//pick something up
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
 					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
@@ -385,6 +415,49 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 			showTutorial()
 			return true
 		}
+		else if token.symbol == "reset"
+		{
+			resetButtons()
+			return true
+		}
+		else if token.symbol == "new"
+		{
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let controller = storyboard.instantiateViewControllerWithIdentifier("makeButton") as! ButtonMakerViewController
+			
+			//get a screenshot
+			UIGraphicsBeginImageContext(view.frame.size)
+			view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: false)
+			let shot = UIImageView(image: UIGraphicsGetImageFromCurrentImageContext())
+			UIGraphicsEndImageContext()
+			
+			let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+			let vEfV = UIVisualEffectView(effect: blur)
+			vEfV.frame = self.view.frame;
+			view.addSubview(vEfV);
+			
+			let dvc = self.parentViewController as! DraggableContainerViewController
+			let calc = dvc.viewControllers[0] as! CalculatorCollectionViewController
+			controller.function = calc.calculator.functionString
+			controller.dcvc = dvc
+			
+			controller.view.backgroundColor = UIColor.clearColor()
+			self.modalPresentationStyle = UIModalPresentationStyle.CurrentContext
+				
+			self.presentViewController(controller, animated: true)
+			{
+				vEfV.removeFromSuperview()
+				controller.view.insertSubview(vEfV, atIndex: 0)
+				controller.view.insertSubview(shot, atIndex: 0)
+			}
+			controller.doneCompletion =
+			{
+				vEfV.removeFromSuperview()
+				shot.removeFromSuperview()
+			}
+			
+			return true
+		}
 		return false
 	}
 	
@@ -436,7 +509,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				else
 				{
 					shakeRemoveClosure()
-//					self.collectionView?.reloadData()
 				}
 			}
 		}

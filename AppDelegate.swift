@@ -17,15 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        //Parse stuff
         setUpParse()
-        
-        //PageViewController Stuff
-        let pageController = UIPageControl.appearance()
-        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageController.backgroundColor = UIColor.whiteColor()
-        
+        		
         return true
     }
     
@@ -33,5 +26,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId(kParseApplicationId, clientKey: kParseApplicationClientKey)
     }	
 
+    
 }
-
