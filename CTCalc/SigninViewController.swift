@@ -40,12 +40,6 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
             var userMessage = "Welcome!"
             
             if(user != nil) {
-                
-                let userName:String? = user?.username
-                
-                NSUserDefaults.standardUserDefaults().setObject(userName, forKey: "user_name")
-                NSUserDefaults.standardUserDefaults().synchronize()
-                
                 self.logged()
                 
             } else {

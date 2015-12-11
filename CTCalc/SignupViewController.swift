@@ -15,8 +15,8 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 	@IBOutlet weak var userEmailAddressTextField: UITextField!
 	@IBOutlet weak var userPasswordTextField: UITextField!
 	@IBOutlet weak var userPasswordRepeatTextField: UITextField!
-	@IBOutlet weak var userFirstNameTextField: UITextField!
-	@IBOutlet weak var userLastNameTextField: UITextField!
+//	@IBOutlet weak var userFirstNameTextField: UITextField!
+//	@IBOutlet weak var userLastNameTextField: UITextField!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,12 +56,23 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 		let userName = userEmailAddressTextField.text
 		let userPassword = userPasswordTextField.text
 		let userPasswordRepeat = userPasswordRepeatTextField.text
-		let userFirstName = userFirstNameTextField.text
-		let userLastName = userLastNameTextField.text
+		let userFirstName = "blank" //userFirstNameTextField.text
+		let userLastName = "blank" //userLastNameTextField.text
 		
-		if(userName!.isEmpty || userPassword!.isEmpty || userPasswordRepeat!.isEmpty || userFirstName!.isEmpty || userLastName!.isEmpty)
+		if(userName!.isEmpty || userPassword!.isEmpty || userPasswordRepeat!.isEmpty)// || userFirstName.isEmpty || userLastName!.isEmpty)
 		{
-			let myAlert = UIAlertController(title:"Alert", message:"All fields are required to fill in", preferredStyle:UIAlertControllerStyle.Alert)
+			let myAlert = UIAlertController(title:"Alert", message:"All fields are required to fill in.", preferredStyle:UIAlertControllerStyle.Alert)
+			let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+			myAlert.addAction(okAction)
+			
+			self.presentViewController(myAlert, animated: true, completion: nil)
+			
+			return
+		}
+		
+		if profilePhotoImageView.image == nil
+		{
+			let myAlert = UIAlertController(title:"Alert", message:"You need to have a profile photo.", preferredStyle:UIAlertControllerStyle.Alert)
 			let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
 			myAlert.addAction(okAction)
 			
@@ -72,7 +83,7 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 		
 		if(userPassword != userPasswordRepeat)
 		{
-			let myAlert = UIAlertController(title:"Alert", message:"Passwords do not match. Please try again", preferredStyle:UIAlertControllerStyle.Alert)
+			let myAlert = UIAlertController(title:"Alert", message:"Passwords do not match. Please try again.", preferredStyle:UIAlertControllerStyle.Alert)
 			let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
 			myAlert.addAction(okAction)
 			
@@ -85,8 +96,8 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 		User.username = userName
 		User.password = userPassword
 		User.email = userName
-		User.setObject(userFirstName!, forKey: "first_name")
-		User.setObject(userLastName!, forKey: "last_name")
+		User.setObject(userFirstName, forKey: "first_name")
+		User.setObject(userLastName, forKey: "last_name")
 		User.setObject(userPassword!, forKey: "password")
 		User.setObject(userPasswordRepeat!, forKey: "password_verified")
 		User.setObject(userName!, forKey: "email")
@@ -117,8 +128,10 @@ class SignupViewController: UIViewController, UIImagePickerControllerDelegate, U
 			
 			myAlert.addAction(okAction)
 			
-			self.presentViewController(myAlert, animated: true, completion: nil)
-			
+			self.presentViewController(myAlert, animated: true, completion:
+			{
+				self.navigationController?.popViewControllerAnimated(true)
+			})
 		}
 	}
 	

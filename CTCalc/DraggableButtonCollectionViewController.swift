@@ -264,6 +264,12 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				}
 				else if let path = collectionView?.indexPathForItemAtPoint(point), let cell = collectionView?.cellForItemAtIndexPath(NSIndexPath(forItem: path.row, inSection: path.section))
 				{
+					if path.row == 0 && collectionView?.numberOfSections() == 2
+					{
+						//don't pick up the display
+						return
+					}
+					
 					//pick something up
 					let startX = collectionView!.contentOffset.x + cell.frame.origin.x
 					let startY = collectionView!.contentOffset.y + cell.frame.origin.y
@@ -503,7 +509,6 @@ class DraggableButtonCollectionViewController: UICollectionViewController, Dragg
 				else
 				{
 					shakeRemoveClosure()
-//					self.collectionView?.reloadData()
 				}
 			}
 		}

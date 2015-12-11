@@ -42,14 +42,14 @@ class PasswordResetViewController: UIViewController {
                 self.displayMessage(userMessage)
             } else {
                 let userMessage:String = "An email message was sent to you \(emailAddress)"
-                self.displayMessage(userMessage)
+				self.displayMessage(userMessage, goBack: true)
             }
             
         })
      
     }
 
-    func displayMessage(userMessage:String)
+	func displayMessage(userMessage:String, goBack:Bool = false)
     {
        let myAlert = UIAlertController(title: "Alert", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -59,7 +59,13 @@ class PasswordResetViewController: UIViewController {
         }
         
         myAlert.addAction(okAction)
-        self.presentViewController(myAlert, animated:true, completion:nil)
+        self.presentViewController(myAlert, animated:true)
+		{
+			if goBack
+			{
+				self.navigationController?.popViewControllerAnimated(true)
+			}
+		}
     }
     
         @IBAction func cancelButtonTapped(sender: AnyObject) {

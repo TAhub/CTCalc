@@ -97,17 +97,16 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 		//add it to your list
 		if let token = token
 		{
-			print(dcvc.addToken(token))
-			
-			
-			let status = PFObject(className: "ButtomImages")
+			let status = PFObject(className: "Buttons")
 			status["imageNumber"] = token.imageNumber
 			status["symbol"] = token.symbol
 			status["function"] = token.functionReplace ?? ""
 			status["random"] = token.random
+			status["user"] = PFUser.currentUser()!.objectId
 			
 			status.saveInBackgroundWithBlock( { (success, error) -> Void in
 				if success {
+					self.dcvc.addToken(self.token!)
 					completion(success: success)
 				} else {
 					completion(success: false)
