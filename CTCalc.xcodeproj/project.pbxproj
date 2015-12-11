@@ -48,7 +48,6 @@
 		3D7D72B51C1921FE0090A82C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7D72B41C1921FE0090A82C /* FBSDKLoginKit.framework */; };
 		3D7D72B71C19220A0090A82C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7D72B61C19220A0090A82C /* FBSDKShareKit.framework */; };
 		3D7D72BB1C19222C0090A82C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D7D72BA1C19222C0090A82C /* MobileCoreServices.framework */; };
-		3D7D72D51C19280F0090A82C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7D72D41C19280F0090A82C /* MainPageViewController.swift */; };
 		3D9920A21C19CFD5003A30D2 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D9920A11C19CFD5003A30D2 /* Accounts.framework */; };
 		C13BADB11BFBBD6100694E94 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13BADB01BFBBD6100694E94 /* Display.swift */; };
 		C13BADB31BFBBDBC00694E94 /* Display.xib in Resources */ = {isa = PBXBuildFile; fileRef = C13BADB21BFBBDBC00694E94 /* Display.xib */; };
@@ -116,7 +115,6 @@
 		3D7D72B41C1921FE0090A82C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3D7D72B61C19220A0090A82C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		3D7D72BA1C19222C0090A82C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MobileCoreServices.framework; sourceTree = "<group>"; };
-		3D7D72D41C19280F0090A82C /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		3D9920A11C19CFD5003A30D2 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		C13BADB01BFBBD6100694E94 /* Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		C13BADB21BFBBDBC00694E94 /* Display.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Display.xib; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 				3D7D71D31C15276C0090A82C /* SignupViewController.swift */,
 				3D3F6EF51C19E870003E11BF /* SigninViewController.swift */,
 				3D7D72B01C1920F00090A82C /* PasswordResetViewController.swift */,
-				3D7D72D41C19280F0090A82C /* MainPageViewController.swift */,
 			);
 			name = PARSE;
 			path = CTCalc;
@@ -431,7 +428,6 @@
 				E4E0C7791BFA4EF000F80A33 /* DraggableContainerViewController.swift in Sources */,
 				E418AA391BFA63C300207878 /* ButtonCollectionViewCell.swift in Sources */,
 				E418AA3B1BFA7EFE00207878 /* CalculatorModel.swift in Sources */,
-				3D7D72D51C19280F0090A82C /* MainPageViewController.swift in Sources */,
 				3D7D72B11C1920F00090A82C /* PasswordResetViewController.swift in Sources */,
 				3D19C1BD1BFBA4F900596252 /* ButtonTableView.swift in Sources */,
 				C13BADB11BFBBD6100694E94 /* Display.swift in Sources */,

@@ -18,6 +18,14 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
     }
  
+	var logged:(()->())!
+	var nevermind:(()->())!
+	@IBAction func nevermindButton()
+	{
+		nevermind();
+	}
+	
+	
     @IBAction func signInButtonTapped(sender: AnyObject) {
         
         let userEmail = userEmailAddressTextField.text!
@@ -38,15 +46,7 @@ class SigninViewController: UIViewController, UITextFieldDelegate {
                 NSUserDefaults.standardUserDefaults().setObject(userName, forKey: "user_name")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 
-                let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
-                
-                let mainPage:MainPageViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainPageViewController") as! MainPageViewController
-                
-                let mainPageNav = UINavigationController(rootViewController: mainPage)
-                
-                let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                
-                appDelegate.window?.rootViewController = mainPageNav
+                self.logged()
                 
             } else {
                 

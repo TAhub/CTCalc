@@ -150,8 +150,12 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         symbolTextView.delegate = self
-        
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		checkUser(self.view)
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

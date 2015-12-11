@@ -9,6 +9,42 @@
 import UIKit
 import Parse
 
+func checkUser(view:UIView)
+{
+	if(PFUser.currentUser() == nil)
+	{
+		//Navigate to login panel
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		let oldRoot = appDelegate.window?.rootViewController
+		let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
+		let nav = mainStoryboard.instantiateViewControllerWithIdentifier("login") as! UINavigationController
+		let login = nav.viewControllers[0] as! SigninViewController
+		
+		//frosty background effect
+		UIGraphicsBeginImageContext(view.frame.size)
+		view.drawViewHierarchyInRect(view.frame, afterScreenUpdates: false)
+		let shot = UIImageView(image: UIGraphicsGetImageFromCurrentImageContext())
+		UIGraphicsEndImageContext()
+		
+		let blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+		let vEfV = UIVisualEffectView(effect: blur)
+		vEfV.frame = view.frame;
+		
+		login.view.insertSubview(vEfV, atIndex: 0)
+		login.view.insertSubview(shot, atIndex: 0)
+		
+		login.logged =
+		{
+			appDelegate.window?.rootViewController = oldRoot
+		}
+		login.nevermind =
+		{
+			appDelegate.window?.rootViewController = mainStoryboard.instantiateInitialViewController()
+		}
+		appDelegate.window?.rootViewController = nav
+	}
+}
+
 class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -33,6 +69,12 @@ class ButtonTableView: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.searchBar.resignFirstResponder()
         }
     }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		checkUser(self.view)
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()

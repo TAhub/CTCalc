@@ -19,27 +19,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setUpParse()
         
-        let testObject = PFObject(className: "TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error:NSError?) -> Void in
-            print("Object Saved")
-        }
-        
-        let userName:String? = NSUserDefaults.standardUserDefaults().stringForKey("user_name")
-        
-        if(userName != nil) {
-            
-            //Navigate to Protected Page
-        let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
-        let mainPage:MainPageViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainPageViewController") as! MainPageViewController
-        let mainPageNav = UINavigationController(rootViewController: mainPage)
-        
-        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        appDelegate.window?.rootViewController = mainPageNav
-            
-        }
-        
+//        let testObject = PFObject(className: "TestObject")
+//        testObject["foo"] = "bar"
+//        testObject.saveInBackgroundWithBlock { (success: Bool, error:NSError?) -> Void in
+//            print("Object Saved")
+//        }
+		
+//        let userName:String? = NSUserDefaults.standardUserDefaults().stringForKey("user_name")
+//        if(userName != nil)
+//		{
+//            //Navigate to Protected Page
+//			let mainStoryboard = UIStoryboard(name:"Main", bundle:nil)
+//			let mainPage:MainPageViewController = mainStoryboard.instantiateViewControllerWithIdentifier("MainPageViewController") as! MainPageViewController
+//			let mainPageNav = UINavigationController(rootViewController: mainPage)
+//			
+//			let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//			
+//			appDelegate.window?.rootViewController = mainPageNav
+//        }
+		
         return true
     }
     
