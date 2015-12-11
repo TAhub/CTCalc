@@ -126,13 +126,24 @@ class ButtonMakerViewController: UIViewController, UITextViewDelegate, UITextFie
 	
     
     @IBAction func saveCustomButton(sender: AnyObject) {
+		reloadToken()
         if token!.symbol == "" || token!.functionReplace == "" {
             let alertView = UIAlertController(title: "You must enter a Button Name and a Function",
                 message: "" as String, preferredStyle:.Alert)
             let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
-        } else{
+        }
+		else if dcvc.hasToken(token!, checkRandom: false)
+		{
+			let alertView = UIAlertController(title: "You already have a button called \(token!.symbol)!",
+				message: "" as String, preferredStyle:.Alert)
+			let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
+			alertView.addAction(okAction)
+			self.presentViewController(alertView, animated: true, completion: nil)
+		}
+		else
+		{
             uploadButton() { (success) -> () in
                 if success {
 					self.cancel(self);
